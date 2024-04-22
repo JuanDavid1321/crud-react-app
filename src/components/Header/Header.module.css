@@ -1,0 +1,18 @@
+header{
+    background-color: var(--main-color);
+    height: 12vh;
+    color: var(--light-text-color);
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    padding: 0 20px;
+}
+p{
+    text-decoration: none;
+    padding-left: 5vw;
+    color: var(--light-text-color);
+    font-weight: 500;
+    font-size: 1.5em;
+
+}

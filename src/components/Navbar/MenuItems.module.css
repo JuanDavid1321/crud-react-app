@@ -1,0 +1,19 @@
+li{
+    position: relative;
+    font-size: 1em;
+    padding-right: 3em;
+    font-weight: 500;
+}
+a{
+    display: block;
+    font-size: inherit;
+    color: inherit;
+    text-decoration: none;
+}
+button{
+    font-size: inherit;
+    font-weight: 500;
+    color: inherit;
+    background-color: var(--main-color);
+    border: none;
+}
