@@ -7,6 +7,7 @@ import DocumentTypesManagement from './routes/DocumentTypesManagement';
 import RolesManagement from './routes/RolesManagement';
 import UsersManagement from './routes/UsersManagement';
 import Home from './routes/Home';
+import Login from './routes/Login';
 
 const router = createBrowserRouter([
   {
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
       {
         path: "users",
         element: <UsersManagement/>,
+      },
+      {
+        path: "login",
+        element: <Login/>
       },
     ]
   }
