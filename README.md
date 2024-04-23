@@ -1,70 +1,32 @@
-# Getting Started with Create React App
+# Proyecto CRUD App
+Este proyecto fue desarrollado como requerimiento para la asignatura de Desarrollo de Aplicaciones  perteneciente al Departamento de Telemática del programa de Ingeniería en Electrónica y Telecomunicaciones de la Universidad del Cauca. El objetivo específico del desarrollo del proyecto es reforzar los conceptos más importantes para la implementación de aplicaciones web desde el desarrollo FrontEnd.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Elementos clave para el desarrollo del proyecto
+Para el desarrollo del microproyecto, además de los requerimientos generales de este, fue necesario cumplir con ciertas condiciones particulares:
 
-## Available Scripts
+1. El proyecto debe garantizar la encriptación de contraseñas:
 
-In the project directory, you can run:
+Para dar solución a esta condición y tomando en cuenta que la base de datos a emplear es Firestore de Firebase, esta destaca por utilizar encriptación Advanced Encryption Standard (AES). Más información está disponible en: [Publicación de seguridad en Firestore](https://cloud.google.com/firestore/docs/server-side-encryption?hl=es-419)
 
-### `npm start`
+## Instrucciones de uso
+Para replicar este proyecto, debe realizar los siguientes pasos:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Paso 1: clonar el repositorio
+Para clonar el repositorio en su entorno local ejecute:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+`git clone http://github.com/JuanDavid1321/crud-react-app.git`
 
-### `npm test`
+No olvide dejar su estrella ⭐ a este repositorio por favor!
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Paso 2: instalar dependencias
+En su consola de preferencia ejecute:
 
-### `npm run build`
+`npm install`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Paso 3: ejecutar el proyecto de forma local
+Una vez que haya terminado de instalar las dependencias puede ejecutar el proyecto, en sy consola de preferencia ejecute:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+`npm start`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Este comando ejecuta la aplicación en modo de desarrollo.\
+Abra [http://localhost:3000](http://localhost:3000) para verla en su navegador de preferencia.
