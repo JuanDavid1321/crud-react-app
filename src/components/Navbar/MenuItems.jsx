@@ -2,17 +2,11 @@ import DropDown from "./DropDown";
 import styles from "./MenuItems.module.css";
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
-const MenuItems = ({items, depthLevel}) => {
+const MenuItems = ({items}) => {
     const [dropDown, setDropDown] = useState(false);
 
     return ( 
-        <li 
-            className={styles.li}
-            // ref={ref}
-            // onMouseEnter={onMouseEnter}
-            // onMouseLeave={onMouseLeave}
-            // onClick={closDropdown}
-        >
+        <li className={styles.li}>
             {items.submenu?(
                     <>
                         <button 
