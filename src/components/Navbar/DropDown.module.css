@@ -7,7 +7,6 @@
     font-size: inherit;
     z-index: 9999;
     min-width: 17rem;
-    padding: 0.5rem 0.5rem;
     list-style: none;
     background-color: #fff;
     border-radius: 0.5rem;
@@ -21,4 +20,12 @@
 .custom{
     padding-right: 2.09em;
     padding-left: .5em;
+    padding-top: .3em;
+    padding-bottom: .3em;
+    border: none;
+    border-bottom: 2px solid var(--border-color);
+}
+
+.custom:last-child {
+    border: none;
 }
