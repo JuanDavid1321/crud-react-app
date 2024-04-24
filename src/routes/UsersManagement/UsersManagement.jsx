@@ -1,5 +1,5 @@
-import Header from "../components/Header/Header";
-import Table from "../components/Table/Table";
+import Header from "../../components/Header/Header";
+import Table from "../../components/Table/Table";
 
 const UsersManagement = () => {
     // Simulación de datos (reemplazar con tu lógica de datos)
