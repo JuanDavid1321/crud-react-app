@@ -20,6 +20,11 @@
     display: none;
 }
 
+/* When there´s an error and the input is not focused, put a border to the input*/
+input:invalid[focused="true"]{
+    border: 1px solid red;
+}
+
 /* When the input is invalid, show the error message */
 input:invalid[focused="true"] ~ .particularErrorMessage{
     display: block;

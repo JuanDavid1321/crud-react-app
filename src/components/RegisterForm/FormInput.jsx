@@ -5,7 +5,7 @@ const FormInput = (props) => { //props used for a lot of props from the father
 
     const [notFocused, setNotFocused] = useState(false); //Hook for display error message (validation) just when input is not focused 
 
-    const handleNotFocused = () => {
+    const handleNotFocused = (e) => {
         setNotFocused(true);  // Set not focused to true when input is not in focus
     }
 
