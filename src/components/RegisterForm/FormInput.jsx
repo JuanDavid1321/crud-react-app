@@ -6,8 +6,7 @@ const FormInput = (props) => { //props used for a lot of props from the father
         <div className={styles.formInput}>
             <label className={styles.labelGeneric}>{label}</label>
             <input required className={styles.inputGeneric} {...inputProps} onChange={onChange}/>
-            <span className={styles.errorMessageGeneric}>Campo obligatorio!</span>
-            <span className={styles.errorMessageGeneric}>{errorMessage}</span>
+            <span className={styles.particularErrorMessage}>{errorMessage}</span>
         </div>
     );
 }

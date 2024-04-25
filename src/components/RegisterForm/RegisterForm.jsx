@@ -11,6 +11,7 @@ const RegisterForm = ({formTitle}) => {
         birthday: "",
         password: "",
         confirmPassword: "",
+        role: "visitante", //by default the user is a visitor 
     });
 
     const handleSubmit = (e) => {

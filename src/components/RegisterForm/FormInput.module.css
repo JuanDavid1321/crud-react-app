@@ -14,12 +14,13 @@
     width: 85%;
 }
 
-.errorMessageGeneric{
+.particularErrorMessage{
     font-size: 12px;
     color: red;
     display: none;
 }
 
-input:invalid ~ .errorMessageGeneric{
+/* When the input is invalid, show the error message */
+input:invalid ~ .particularErrorMessage{
     display: block;
 }
