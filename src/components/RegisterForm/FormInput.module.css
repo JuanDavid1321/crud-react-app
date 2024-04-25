@@ -21,6 +21,6 @@
 }
 
 /* When the input is invalid, show the error message */
-input:invalid ~ .particularErrorMessage{
+input:invalid[focused="true"] ~ .particularErrorMessage{
     display: block;
 }
