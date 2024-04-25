@@ -2,6 +2,7 @@ import { useState } from "react";
 import FormInput from "./FormInput";
 import styles from "./RegisterForm.module.css"
 import { inputs } from "../../utils/registerInputsData"; // Array with the props for each input element
+import ImageInput from "./ImageInput";
 
 const RegisterForm = ({formTitle}) => {
     // useState hook for onChange event in the input elements
@@ -35,6 +36,7 @@ const RegisterForm = ({formTitle}) => {
                     {inputs.map(
                         item => <FormInput key={item.id} {...item} value={values[inputs.name]} onChange={onChange}/>
                     )}
+                    <ImageInput/>
                 </div>
                 <div className={styles.buttonContainer}>
                     <button className={styles.submitButton}>Guardar</button>
