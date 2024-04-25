@@ -1,0 +1,25 @@
+.formInput{
+    width: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: start;
+}
+
+.inputGeneric{
+    padding: 15px;
+    border-radius: 5px;
+    border: 1px solid var(--border-color);
+    width: 85%;
+}
+
+.errorMessageGeneric{
+    font-size: 12px;
+    color: red;
+    display: none;
+}
+
+input:invalid ~ .errorMessageGeneric{
+    display: block;
+}
