@@ -70,11 +70,4 @@ export const inputs = [
         */
         pattern: "^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,200}$",
     },
-    {   id:6,
-        name:"confirmPassword",
-        type:"password",
-        placeholder: "Confirme su constraseña",
-        label:"Confirmar contraseña",
-        errorMessage: "¡Las contraseñas no coinciden!",
-    },
 ];
