@@ -2,5 +2,30 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 80%;
+    height: 100%;
+}
+
+.form{
+    width: 50%;
+    background-color: white;
+    padding: 20px 60px;
+    border-radius: 20px;
+}
+
+.inputscontainer{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
+}
+
+.formtitle{
+    color: var(--main-color);
+    text-align: center;
+}
+
+.submitbutton{
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    width: 20%;
 }

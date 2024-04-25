@@ -1,8 +1,11 @@
+import RegisterForm from "../../components/RegisterForm/RegisterForm";
+import "./Login.css"
+
 const Login = () => {
     return (
-        <>
-            <h1>LOGIN</h1>
-        </> 
+        <div className="login">
+            <RegisterForm/>
+        </div> 
     );
 }
 export default Login;
