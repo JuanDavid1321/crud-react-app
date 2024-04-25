@@ -1,8 +1,9 @@
 import { useState } from "react";
 import FormInput from "./FormInput";
 import styles from "./RegisterForm.module.css"
+import { inputs } from "../../utils/registerInputsData"; // Array with the props for each input element
 
-const RegisterForm = () => {
+const RegisterForm = ({formTitle}) => {
     // useState hook for onChange event in the input elements
     const [values, setValues] = useState({
         username: "",
@@ -12,60 +13,31 @@ const RegisterForm = () => {
         confirmPassword: "",
     });
 
-    // Array with the props for each input element
-    const inputs = [
-        {
-            id:1,
-            name:"username",
-            type:"text",
-            placeholder: "Username",
-            label:"Username",
-        }, 
-        {   id:2,
-            name:"email",
-            type:"email",
-            placeholder: "Email address",
-            label:"Email",
-        },
-        {   id:3,
-            name:"birthday",
-            type:"date",
-            placeholder: "Birthday",
-            label:"Birthday",
-        },
-        {   id:4,
-            name:"password",
-            type:"password",
-            placeholder: "Password",
-            label:"Password",
-        },
-        {   id:5,
-            name:"confirmPassword",
-            type:"password",
-            placeholder: "Confirm password",
-            label:"Confirm password",
-        },
-    ];
-
     const handleSubmit = (e) => {
         e.preventDefault();
     };
 
-    const onChange = (e)=>{
-        setValues({...values, [e.target.name]: e.target.value}) //spread the values, that means take all the current values and add/change only
+    const onChange = (e) => {
+        /* 
+        *   Spread the values, that means take all the current values 
+        *   and add/change only the one we are handling in this onChange function
+        */
+        setValues({...values, [e.target.name]: e.target.value}) 
     }
     console.log(values);
     return ( 
-        <div className={styles.formcontainer}>
+        <div className={styles.formContainer}>
             <form action="" className={styles.form}>
-                <h2 className={styles.formtitle}>Registrar</h2>
-                <div className={styles.inputscontainer}>
+                <h2 className={styles.formTitle}>{formTitle}</h2>
+                <div className={styles.inputsContainer}>
                     {/* Map through the array of objects to create an Input component for each item */}
                     {inputs.map(
                         item => <FormInput key={item.id} {...item} value={values[inputs.name]} onChange={onChange}/>
                     )}
                 </div>
-                <button className={styles.submitbutton}>Guardar</button>
+                <div className={styles.buttonContainer}>
+                    <button className={styles.submitButton}>Guardar</button>
+                </div>
             </form>
         </div>
     );

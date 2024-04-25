@@ -1,5 +1,4 @@
 import Header from "../../components/Header/Header";
-import RegisterForm from "../../components/RegisterForm/RegisterForm";
 import './Home.css'
 
 const Home = () => {
@@ -7,6 +6,7 @@ const Home = () => {
         <div className="home">
             <Header />
             <h1>Bienvenido!</h1>
+            {/* <WelcomeCard/> */}
         </div>
     );
 }
