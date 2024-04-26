@@ -12,7 +12,7 @@ const RegisterForm = ({formTitle}) => {
         email: "",
         birthday: "",
         password: "",
-        confirmPassword: "",
+        phoneNumber: "",
         role: "visitante", //by default the user is a visitor 
         image: null, //by default there's no selected file
     });
