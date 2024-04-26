@@ -29,8 +29,4 @@ export const menuItemsData = [
         title: "Opción 3",
         url: "/",
     },
-    {
-        title: "Salir",
-        url: "/login",
-    },
 ];
