@@ -1,7 +1,15 @@
 import styles from "./ImageInput.module.css"
 import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUploadOutlined";
 
-const ImageInput = () => {
+const ImageInput = ({onImageChange}) => {
+
+    const handleChange = (event) => {
+        const selectedFile = event.target.files[0]; 
+        if (selectedFile) {
+          onImageChange(selectedFile); 
+        }
+    };
+
     return ( 
         <div className={styles.imageInputContainer}>
             <label>Subir foto</label>
@@ -15,6 +23,7 @@ const ImageInput = () => {
                     id="file" 
                     name="file" 
                     accept=".jpg,.jpeg,.png"
+                    onChange={handleChange}
                 />
             </div>
         </div>

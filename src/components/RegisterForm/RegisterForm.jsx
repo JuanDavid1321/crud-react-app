@@ -13,7 +13,12 @@ const RegisterForm = ({formTitle}) => {
         password: "",
         confirmPassword: "",
         role: "visitante", //by default the user is a visitor 
+        image: null, //by default there's no selected file
     });
+
+    const handleImageChange = (selectedFile) => {
+        setValues({ ...values, image: selectedFile }); 
+    };
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -36,7 +41,7 @@ const RegisterForm = ({formTitle}) => {
                     {inputs.map(
                         item => <FormInput key={item.id} {...item} value={values[inputs.name]} onChange={onChange}/>
                     )}
-                    <ImageInput/>
+                    <ImageInput onImageChange={handleImageChange}/>  {/* Pass handleImageChange prop */}
                 </div>
                 <div className={styles.buttonContainer}>
                     <button className={styles.submitButton}>Guardar</button>
