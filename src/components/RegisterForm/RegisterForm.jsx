@@ -3,6 +3,8 @@ import FormInput from "./FormInput";
 import styles from "./RegisterForm.module.css"
 import { inputs } from "../../utils/registerInputsData"; // Array with the props for each input element
 import ImageInput from "./ImageInput";
+import GoogleButtonSeparator from '../GoogleButtonSeparator/GoogleButtonSeparator';
+import GoogleButton from 'react-google-button'
 
 const RegisterForm = ({formTitle}) => {
     // useState hook for onChange event in the input elements
@@ -44,7 +46,13 @@ const RegisterForm = ({formTitle}) => {
                     <ImageInput onImageChange={handleImageChange}/>  {/* Pass handleImageChange prop */}
                 </div>
                 <div className={styles.buttonContainer}>
-                    <button className={styles.submitButton}>Guardar</button>
+                    <button className={styles.submitButton}>Enviar</button>
+                </div>
+
+                {/* Separator component for Google Signin button*/}
+                <GoogleButtonSeparator/>
+                <div className={styles.googleButtonContainer}>
+                    <GoogleButton style={{marginBottom: "30px"}} onClick={()=>console.log('Clicked!')} />
                 </div>
             </form>
     );

@@ -10,7 +10,7 @@ const LoginForm = ({formTitle}) => {
                 
             </div>
             <div className={styles.buttonContainer}>
-                <button className={styles.submitButton}>Guardar</button>
+                <button className={styles.submitButton}>Enviar</button>
             </div>
 
             {/* Separator component for Google Signin button*/}
