@@ -8,7 +8,7 @@ const Header = () => {
     return ( 
         <header className={styles.header}>
             <Link to="/" style={{display: "flex"}}>
-                <HomeRoundedIcon sx={{ fontSize: 30, paddingLeft: "5vw",  }} />
+                <HomeRoundedIcon sx={{ fontSize: 30, paddingLeft: "5vw"}} />
             </Link>
             <Navbar/>
             <Link to="/login" style={{display: "flex"}}>
