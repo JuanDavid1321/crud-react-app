@@ -1,6 +1,7 @@
 import GoogleButtonSeparator from '../GoogleButtonSeparator/GoogleButtonSeparator';
 import styles from './LoginForm.module.css'
 import GoogleButton from 'react-google-button'
+import { UserAuth } from '../../context/AuthContext';
 
 const LoginForm = ({formTitle}) => {
     return ( 
