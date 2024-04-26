@@ -21,9 +21,9 @@ const LoginForm = ({formTitle}) => {
 
     useEffect(()=>{
         if(user != null){
-            navigate('/users');
+            navigate('/');
         }        
-    },[user])
+    },[user]) //[user] is a condition for useEffect, this hook will execute the logic inside only when the value of user changes 
 
     return ( 
         <form action="" className={styles.form}>
