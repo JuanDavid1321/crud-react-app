@@ -3,8 +3,8 @@ import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUpload
 
 const ImageInput = ({onImageChange}) => {
 
-    const handleChange = (event) => {
-        const selectedFile = event.target.files[0]; 
+    const handleChange = (e) => {
+        const selectedFile = e.target.files[0]; 
         if (selectedFile) {
           onImageChange(selectedFile); 
         }

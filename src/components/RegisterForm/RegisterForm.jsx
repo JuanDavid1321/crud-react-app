@@ -7,7 +7,8 @@ import ImageInput from "./ImageInput";
 const RegisterForm = ({formTitle}) => {
     // useState hook for onChange event in the input elements
     const [values, setValues] = useState({
-        username: "",
+        firstName: "",
+        lastName: "",
         email: "",
         birthday: "",
         password: "",
