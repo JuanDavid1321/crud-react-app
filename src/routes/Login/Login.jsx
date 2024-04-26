@@ -1,11 +1,25 @@
 import RegisterForm from "../../components/RegisterForm/RegisterForm";
-import "./Login.css"
+import styles from "./Login.module.css"
 
 const Login = () => {
     return (
-        <div className="login">
-            <RegisterForm formTitle={"Registrarse"}/>
-        </div> 
+        <div className={styles.login}>
+            <div className={styles.formContainer}>
+                <div className={styles.buttonsSection}>
+                    <button 
+                        className={`${styles.loginFormViewButton} ${styles.activeLoginFormViewButton}`}
+                    >
+                        Iniciar sesión
+                    </button>
+                    <button
+                        className={`${styles.registerFormViewButton} ${styles.activeRegisterFormViewButton}`}
+                    >
+                        Registrarse
+                    </button>
+                </div>
+                <RegisterForm formTitle={"Registrarse"}/>
+            </div> 
+        </div>
     );
 }
 export default Login;

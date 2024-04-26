@@ -34,7 +34,6 @@ const RegisterForm = ({formTitle}) => {
     }
     console.log(values);
     return ( 
-        <div className={styles.formContainer}>
             <form action="" className={styles.form}>
                 <h2 className={styles.formTitle}>{formTitle}</h2>
                 <div className={styles.inputsContainer}>
@@ -48,7 +47,6 @@ const RegisterForm = ({formTitle}) => {
                     <button className={styles.submitButton}>Guardar</button>
                 </div>
             </form>
-        </div>
     );
 }
 export default RegisterForm;
