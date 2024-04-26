@@ -49,7 +49,7 @@ const Login = () => {
                 {registerButtonClicked?(
                         <RegisterForm formTitle={"Registrarse"}/>
                     ):(
-                        <LoginForm></LoginForm>
+                        <LoginForm formTitle={"Ingresar"} />
                     )
                 }
             </div> 
