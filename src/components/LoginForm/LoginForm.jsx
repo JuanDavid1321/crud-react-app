@@ -4,6 +4,16 @@ import GoogleButton from 'react-google-button'
 import { UserAuth } from '../../context/AuthContext';
 
 const LoginForm = ({formTitle}) => {
+
+    const handleGoogleSignIn = async() =>{
+        const {googleSignIn} = UserAuth;
+        try {
+            await googleSignIn();
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
     return ( 
         <form action="" className={styles.form}>
             <h2 className={styles.formTitle}>{formTitle}</h2>
@@ -17,7 +27,7 @@ const LoginForm = ({formTitle}) => {
             {/* Separator component for Google Signin button*/}
             <GoogleButtonSeparator/>
             <div className={styles.googleButtonContainer}>
-                <GoogleButton style={{marginBottom: "30px"}} onClick={()=>console.log('Clicked!')} />
+                <GoogleButton style={{marginBottom: "30px"}} onClick={handleGoogleSignIn} />
             </div>
         </form>
     );
