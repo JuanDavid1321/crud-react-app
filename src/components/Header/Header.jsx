@@ -3,8 +3,20 @@ import Navbar from "../Navbar/Navbar";
 import styles from "./Header.module.css"
 import LogoutIcon from '@mui/icons-material/Logout';
 import HomeRoundedIcon from '@mui/icons-material/HomeRounded';
+import { UserAuth } from '../../context/AuthContext'; //for loging out 
 
 const Header = () => {
+
+    const {logOut} = UserAuth();
+
+    const handleLogOut = async()=>{
+        try {
+            await logOut();
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
     return ( 
         <header className={styles.header}>
             <Link to="/" style={{display: "flex"}}>
@@ -12,7 +24,10 @@ const Header = () => {
             </Link>
             <Navbar/>
             <Link to="/login" style={{display: "flex"}}>
-                <LogoutIcon sx={{ fontSize: 30 }}/>
+                <LogoutIcon 
+                    sx={{ fontSize: 30 }}
+                    onClick={handleLogOut}
+                />
             </Link>
         </header>
     );

@@ -2,17 +2,28 @@ import GoogleButtonSeparator from '../GoogleButtonSeparator/GoogleButtonSeparato
 import styles from './LoginForm.module.css'
 import GoogleButton from 'react-google-button'
 import { UserAuth } from '../../context/AuthContext';
+import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
 
 const LoginForm = ({formTitle}) => {
 
+    const {googleSignIn, user} = UserAuth();
+
+    const navigate = useNavigate();
+
     const handleGoogleSignIn = async() =>{
-        const {googleSignIn} = UserAuth;
         try {
             await googleSignIn();
         } catch (error) {
             console.log(error);
         }
     }
+
+    useEffect(()=>{
+        if(user != null){
+            navigate('/users');
+        }        
+    },[user])
 
     return ( 
         <form action="" className={styles.form}>
