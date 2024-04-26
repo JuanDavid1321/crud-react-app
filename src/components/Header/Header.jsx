@@ -3,11 +3,11 @@ import Navbar from "../Navbar/Navbar";
 import styles from "./Header.module.css"
 import LogoutIcon from '@mui/icons-material/Logout';
 import HomeRoundedIcon from '@mui/icons-material/HomeRounded';
-import { UserAuth } from '../../context/AuthContext'; //for loging out 
+import { useAuth } from '../../context/AuthContext'; //for loging out 
 
 const Header = () => {
 
-    const {logOut} = UserAuth();
+    const {logOut} = useAuth();
 
     const handleLogOut = async()=>{
         try {

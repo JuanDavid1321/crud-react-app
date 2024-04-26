@@ -1,13 +1,13 @@
 import GoogleButtonSeparator from '../GoogleButtonSeparator/GoogleButtonSeparator';
 import styles from './LoginForm.module.css'
 import GoogleButton from 'react-google-button'
-import { UserAuth } from '../../context/AuthContext';
+import { useAuth } from '../../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 
 const LoginForm = ({formTitle}) => {
 
-    const {googleSignIn, user} = UserAuth();
+    const {googleSignIn, user} = useAuth();
 
     const navigate = useNavigate();
 
@@ -38,7 +38,16 @@ const LoginForm = ({formTitle}) => {
             {/* Separator component for Google Signin button*/}
             <GoogleButtonSeparator/>
             <div className={styles.googleButtonContainer}>
-                <GoogleButton style={{marginBottom: "30px"}} onClick={handleGoogleSignIn} />
+                <GoogleButton 
+                    style={
+                            {
+                                marginBottom: "30px", 
+                                borderRadius:"10px", 
+                                padding: "5px"
+                            }
+                    } 
+                    onClick={handleGoogleSignIn}
+                />
             </div>
         </form>
     );

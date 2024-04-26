@@ -5,24 +5,46 @@ import IDTypesManagement from "./routes/IDTypesManagement/IDTypesManagement";
 import RolesManagement from "./routes/RolesManagement/RolesManagement";
 import UsersManagement from "./routes/UsersManagement/UsersManagement";
 import { AuthContextProvider } from "./context/AuthContext";
+import Protected from "./context/Protected";
 
 function App() {
     return (
-        <BrowserRouter>
+        <BrowserRouter basename={process.env.PUBLIC_URL}>
             <AuthContextProvider>
                 <Routes>
                     <Route path="/login" element={<Login />} />
                     <Route
                         path="/"
                         element={
-                            // <RequireAuth>
+                            <Protected>
                                 <Home />
-                            // </RequireAuth>
+                            </Protected>
                         }
                     />
-                    <Route path="/documents" element={<IDTypesManagement />} />
-                    <Route path="/roles" element={<RolesManagement />} />
-                    <Route path="/users" element={<UsersManagement />} />
+                    <Route 
+                        path="/documents" 
+                        element={
+                            <Protected>
+                                <IDTypesManagement />
+                            </Protected>
+                        } 
+                    />
+                    <Route  
+                        path="/roles" 
+                        element={
+                            <Protected>
+                                <RolesManagement />
+                            </Protected>
+                        } 
+                    />
+                    <Route  
+                        path="/users" 
+                        element={
+                            <Protected>
+                                <UsersManagement />
+                            </Protected>
+                        } 
+                    />
                 </Routes>
             </AuthContextProvider>
         </BrowserRouter>

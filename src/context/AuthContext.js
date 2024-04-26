@@ -1,40 +1,53 @@
-import { useContext, createContext, useEffect, useState } from "react";
-import { GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged } from "firebase/auth";
+import { createContext, useContext, useEffect, useState } from "react";
+import { GoogleAuthProvider, signInWithPopup, signInWithRedirect, signOut, onAuthStateChanged } from "firebase/auth";
 import { auth } from "../firebase";
 
+// Create an authentication context
 const AuthContext = createContext();
 
-export const AuthContextProvider = ({children}) => {
+// Create a component that provides the authentication context to its children
+export const AuthContextProvider = ({ children }) => {
+    // Initialize the user state with null
+    const [user, setUser] = useState(null);
 
-    const [user, setUser] = useState({})
-
-    const googleSignIn = () => {
+    // Create a function to sign in with Google
+    const googleSignIn = async () => {
+        // Create a Google provider
         const provider = new GoogleAuthProvider();
-        signInWithPopup(auth, provider)
+        // Sign in with Google and wait for the response
+        const result = await signInWithRedirect(auth, provider);
+        // Set the user state with the authentication result
+        setUser(result.user);
     };
 
+    // Create a function to sign out
     const logOut = () => {
+        // Sign out with Firebase
         signOut(auth);
-    }
+        // Set the user state with null
+        setUser(null);
+    };
 
-    useEffect(()=>{
-        const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
+    // Use useEffect to listen for changes in the authentication state
+    useEffect(() => {
+        // Create a function to listen for changes in the authentication state
+        const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+            // Set the user state with the current user
             setUser(currentUser);
-            console.log('User', currentUser);
         });
+        // Return a function to unsubscribe when the component is unmounted
         return () => {
-            unSubscribe();
-        }
-    },[])
+            unsubscribe();
+        };
+    }, []);
 
-    return ( 
-        //Values pass to all elements wrap with AuthContext (all children)
-        <AuthContext.Provider value={{googleSignIn, logOut, user}}> 
+    // Provide the authentication context to the children
+    return (
+        <AuthContext.Provider value={{ user, googleSignIn, logOut }}>
             {children}
         </AuthContext.Provider>
     );
-}
+};
 
-export const UserAuth = () => {
-    return useContext(AuthContext);
-}
+// Create a hook to consume the authentication context
+export const useAuth = () => useContext(AuthContext);

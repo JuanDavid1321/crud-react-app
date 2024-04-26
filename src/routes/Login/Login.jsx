@@ -16,8 +16,6 @@ const Login = () => {
         setRegisterButtonClicked(true);
         setLoginButtonClicked(false);
     };
-    console.log(loginButtonClicked);
-    console.log(registerButtonClicked);
 
     return (
         <div className={styles.login}>
