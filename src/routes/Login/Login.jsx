@@ -14,7 +14,7 @@ const Login = () => {
     };
     const handleRegisterButtonClicked = () => {
         setRegisterButtonClicked(true);
-        setLoginButtonClicked(false)
+        setLoginButtonClicked(false);
     };
     console.log(loginButtonClicked);
     console.log(registerButtonClicked);
@@ -26,8 +26,7 @@ const Login = () => {
                     <button 
                         className={
                             `
-                                ${styles.loginFormViewButton} 
-                                ${loginButtonClicked?styles.activeLoginFormViewButton:""}
+                                ${loginButtonClicked ? styles.activeLoginFormViewButton:styles.loginFormViewButton}
                             `
                         }
                         onClick={handleLoginButtonClicked}
@@ -37,8 +36,7 @@ const Login = () => {
                     <button
                         className={
                             `
-                                ${styles.registerFormViewButton} 
-                                ${registerButtonClicked?styles.activeRegisterFormViewButton:""}
+                                ${registerButtonClicked ? styles.activeRegisterFormViewButton:styles.registerFormViewButton}
                             `
                         }
                         onClick={handleRegisterButtonClicked}
@@ -46,8 +44,14 @@ const Login = () => {
                         Registrarse
                     </button>
                 </div>
-                <RegisterForm formTitle={"Registrarse"}/>
-                <LoginForm></LoginForm>
+
+                {/* Which form to show */}
+                {registerButtonClicked?(
+                        <RegisterForm formTitle={"Registrarse"}/>
+                    ):(
+                        <LoginForm></LoginForm>
+                    )
+                }
             </div> 
         </div>
     );
