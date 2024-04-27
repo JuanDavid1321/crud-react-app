@@ -13,7 +13,7 @@ const GoogleAuthContext = createContext();
 // Create a component that provides the authentication context to its children
 export const GoogleAuthContextProvider = ({ children }) => {
     // State variables for user information
-    const [user, setUser] = useState({});
+    const [googleUser, setGoogleUser] = useState({});
     const [isLoggedInWithGoogle, setIsLoggedInWithGoogle] = useState(false);
 
     // Create a function to sign in with Google
@@ -24,7 +24,7 @@ export const GoogleAuthContextProvider = ({ children }) => {
             // Sign in with Google and wait for the response
             const result = await signInWithRedirect(auth, provider);
             // Set the user state props and spread with the authentication result
-            setUser(result.user);
+            setGoogleUser(result.googleUser);
         } catch (error) {
             console.log("Error signing in with Google", error);
         }
@@ -36,7 +36,7 @@ export const GoogleAuthContextProvider = ({ children }) => {
             // Sign out with Firebase
             await signOut(auth);
             // Set the user state with init values
-            setUser(null);
+            setGoogleUser(null);
             setIsLoggedInWithGoogle(false);
         } catch (error) {
             console.log(error);
@@ -47,7 +47,7 @@ export const GoogleAuthContextProvider = ({ children }) => {
     useEffect(() => {
         // Create a function to listen for changes in the authentication state
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-            setUser(currentUser);
+            setGoogleUser(currentUser);
             setIsLoggedInWithGoogle(true);
         });
         // Return a function to unsubscribe when the component is unmounted
@@ -59,7 +59,12 @@ export const GoogleAuthContextProvider = ({ children }) => {
     // Provide the authentication context to the children
     return (
         <GoogleAuthContext.Provider
-            value={{ user, googleSignIn, googleLogOut, isLoggedInWithGoogle }}
+            value={{
+                googleUser,
+                googleSignIn,
+                googleLogOut,
+                isLoggedInWithGoogle,
+            }}
         >
             {children}
         </GoogleAuthContext.Provider>

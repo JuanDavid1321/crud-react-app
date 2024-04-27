@@ -4,13 +4,11 @@ import Header from "../../components/Header/Header";
 import WelcomeCard from "../../components/WelcomeCard/WelcomeCard";
 
 const Home = () => {
-    const { user, isLoggedInWithGoogle } = useGoogleAuth();
-    console.log(user);
-    console.log(isLoggedInWithGoogle);
+    const { googleUser } = useGoogleAuth();
     return (
         <div className="home">
             <Header />
-            <WelcomeCard userName={user.displayName} />
+            <WelcomeCard userName={googleUser.displayName} />
         </div>
     );
 };
