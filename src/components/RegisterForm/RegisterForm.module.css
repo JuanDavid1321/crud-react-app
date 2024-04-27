@@ -1,10 +1,8 @@
 .form{
     width: 50%;
-    /* width: 30%; */
     background-color: white;
     padding: 20px 60px;
     border-radius: 20px;
-    /* box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px; */
     box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
 }
 
@@ -33,7 +31,7 @@
     font-weight: bold;
     padding: 10px;
     border-radius: 10px;
-    width: 100%;
+    width: 250px; /*Same as default Google Button width*/
     text-transform: uppercase;
     cursor: pointer;
     margin: 30px 0;
@@ -54,11 +52,6 @@
         text-align: left;
         margin-bottom: 15px;
     }
-
-    .submitButton{
-        width: 100%;
-        margin-top: 20px;
-    }
 }
 
 @media (min-width: 769px) and (max-width: 1300px) {
@@ -75,10 +68,4 @@
     .formTitle{
         margin-bottom: 15px;
     }
-
-    .submitButton{
-        width: 100%;
-        margin-top: 20px;
-    }
-
 }
