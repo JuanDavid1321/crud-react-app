@@ -7,8 +7,8 @@ const AuthContext = createContext();
 
 // Create a component that provides the authentication context to its children
 export const AuthContextProvider = ({ children }) => {
-    // Initialize the user state with null
-    const [user, setUser] = useState(null);
+    // State variables for user information
+    const [user, setUser] = useState({});
 
     // Create a function to sign in with Google
     const googleSignIn = async () => {
