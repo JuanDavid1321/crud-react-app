@@ -1,16 +1,16 @@
+import "./Home.css";
+import { useGoogleAuth } from "../../context/GoogleAuthContext";
 import Header from "../../components/Header/Header";
 import WelcomeCard from "../../components/WelcomeCard/WelcomeCard";
-import './Home.css'
-import { useAuth } from '../../context/AuthContext';
 
 const Home = () => {
-    const {user} = useAuth();
-
-    return ( 
+    const { user } = useGoogleAuth();
+    console.log(user);
+    return (
         <div className="home">
             <Header />
-            <WelcomeCard userName={user.displayName}/>
+            <WelcomeCard userName={user.displayName} />
         </div>
     );
-}
+};
 export default Home;

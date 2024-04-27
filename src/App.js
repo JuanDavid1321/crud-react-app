@@ -1,52 +1,52 @@
+import { GoogleAuthContextProvider } from "./context/GoogleAuthContext";
+import ProtectedWithGoogleAuth from "./context/ProtectedWithGoogleAuth";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Login from "./routes/Login/Login";
 import Home from "./routes/Home/Home";
 import IDTypesManagement from "./routes/IDTypesManagement/IDTypesManagement";
 import RolesManagement from "./routes/RolesManagement/RolesManagement";
 import UsersManagement from "./routes/UsersManagement/UsersManagement";
-import { AuthContextProvider } from "./context/AuthContext";
-import Protected from "./context/Protected";
 
 function App() {
     return (
         <BrowserRouter basename={process.env.PUBLIC_URL}>
-            <AuthContextProvider>
+            <GoogleAuthContextProvider>
                 <Routes>
                     <Route path="/login" element={<Login />} />
                     <Route
                         path="/"
                         element={
-                            <Protected>
+                            <ProtectedWithGoogleAuth>
                                 <Home />
-                            </Protected>
+                            </ProtectedWithGoogleAuth>
                         }
                     />
-                    <Route 
-                        path="/documents" 
+                    <Route
+                        path="/documents"
                         element={
-                            <Protected>
+                            <ProtectedWithGoogleAuth>
                                 <IDTypesManagement />
-                            </Protected>
-                        } 
+                            </ProtectedWithGoogleAuth>
+                        }
                     />
-                    <Route  
-                        path="/roles" 
+                    <Route
+                        path="/roles"
                         element={
-                            <Protected>
+                            <ProtectedWithGoogleAuth>
                                 <RolesManagement />
-                            </Protected>
-                        } 
+                            </ProtectedWithGoogleAuth>
+                        }
                     />
-                    <Route  
-                        path="/users" 
+                    <Route
+                        path="/users"
                         element={
-                            <Protected>
+                            <ProtectedWithGoogleAuth>
                                 <UsersManagement />
-                            </Protected>
-                        } 
+                            </ProtectedWithGoogleAuth>
+                        }
                     />
                 </Routes>
-            </AuthContextProvider>
+            </GoogleAuthContextProvider>
         </BrowserRouter>
     );
 }

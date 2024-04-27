@@ -1,36 +1,24 @@
-import { Link } from 'react-router-dom'
+import styles from "./Header.module.css";
+import { useGoogleAuth } from "../../context/GoogleAuthContext"; //for loging out
+import { Link } from "react-router-dom";
 import Navbar from "../Navbar/Navbar";
-import styles from "./Header.module.css"
-import LogoutIcon from '@mui/icons-material/Logout';
-import HomeRoundedIcon from '@mui/icons-material/HomeRounded';
-import { useAuth } from '../../context/AuthContext'; //for loging out 
+import HomeRoundedIcon from "@mui/icons-material/HomeRounded";
+import LogoutIcon from "@mui/icons-material/Logout";
 
 const Header = () => {
+    const { googleLogOut } = useGoogleAuth(); //destructuring  assignment to access the function 'logOut' from GoogleAuthContext
 
-    const {logOut} = useAuth();
-
-    const handleLogOut = async()=>{
-        try {
-            await logOut();
-        } catch (error) {
-            console.log(error);
-        }
-    }
-
-    return ( 
+    return (
         <header className={styles.header}>
-            <Link to="/" style={{display: "flex"}}>
-                <HomeRoundedIcon sx={{ fontSize: 30, paddingLeft: "5vw"}} />
+            <Link to="/" style={{ display: "flex" }}>
+                <HomeRoundedIcon sx={{ fontSize: 30, paddingLeft: "5vw" }} />
             </Link>
-            <Navbar/>
-            <Link to="/login" style={{display: "flex"}}>
-                <LogoutIcon 
-                    sx={{ fontSize: 30 }}
-                    onClick={handleLogOut}
-                />
+            <Navbar />
+            <Link to="/login" style={{ display: "flex" }}>
+                <LogoutIcon sx={{ fontSize: 30 }} onClick={googleLogOut} />
             </Link>
         </header>
     );
-}
- 
+};
+
 export default Header;
