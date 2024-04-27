@@ -1,10 +1,9 @@
+import styles from "./RegisterForm.module.css";
 import { useState } from "react";
 import FormInput from "./FormInput";
-import styles from "./RegisterForm.module.css";
 import { inputs } from "../../utils/registerInputsData"; // Array with the props for each input element
 import ImageInput from "./ImageInput";
-import GoogleButtonSeparator from "../GoogleButtonSeparator/GoogleButtonSeparator";
-import GoogleButton from "react-google-button";
+import GoogleAuth from "../GoogleAuth/GoogleAuth";
 
 const RegisterForm = ({ formTitle }) => {
     // useState hook for onChange event in the input elements
@@ -14,9 +13,9 @@ const RegisterForm = ({ formTitle }) => {
         email: "",
         birthday: "",
         password: "",
-        phoneNumber: "",
+        phoneNumber: 0,
         role: "Visitante", //by default the user is a visitor
-        image: null, //by default there's no selected file
+        image: "", //by default there's no selected file
     });
 
     const handleImageChange = (selectedFile) => {
@@ -36,7 +35,7 @@ const RegisterForm = ({ formTitle }) => {
     };
     console.log(values);
     return (
-        <form action="" className={styles.form}>
+        <form className={styles.form} onSubmit={handleSubmit}>
             <h2 className={styles.formTitle}>{formTitle}</h2>
             <div className={styles.inputsContainer}>
                 {/* Map through the array of objects to create an Input component for each item */}
@@ -48,21 +47,16 @@ const RegisterForm = ({ formTitle }) => {
                         onChange={onChange}
                     />
                 ))}
-                <ImageInput onImageChange={handleImageChange} />{" "}
                 {/* Pass handleImageChange prop */}
+                <ImageInput onImageChange={handleImageChange} />{" "}
             </div>
             <div className={styles.buttonContainer}>
-                <button className={styles.submitButton}>Enviar</button>
+                <button type="submit" className={styles.submitButton}>
+                    Enviar
+                </button>
             </div>
 
-            {/* Separator component for Google Signin button*/}
-            <GoogleButtonSeparator />
-            <div className={styles.googleButtonContainer}>
-                <GoogleButton
-                    style={{ marginBottom: "30px" }}
-                    onClick={() => console.log("Clicked!")}
-                />
-            </div>
+            <GoogleAuth />
         </form>
     );
 };

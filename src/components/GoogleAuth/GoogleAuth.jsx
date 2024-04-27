@@ -8,13 +8,13 @@ import { useNavigate } from "react-router-dom";
 const GoogleAuth = () => {
     const { googleSignIn, googleUser } = useGoogleAuth();
 
+    const navigate = useNavigate();
+
     useEffect(() => {
         if (googleUser) {
             navigate("/");
         }
-    }, [googleUser]); //[user] is a condition for useEffect, this hook will execute the logic inside only when the value of user changes
-
-    const navigate = useNavigate();
+    }, [googleUser, navigate]); //googleUser and navigate state changing are dependencies of the effect hook
 
     return (
         <>
@@ -29,7 +29,6 @@ const GoogleAuth = () => {
                         borderRadius: "10px",
                         padding: "5px",
                     }}
-                    // don´t forget to define label prop for GoogleButton
                     onClick={googleSignIn}
                 />
             </div>
