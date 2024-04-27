@@ -1,4 +1,4 @@
-header{
+.header{
     background-color: var(--main-color);
     height: 12vh;
     color: var(--light-text-color);
