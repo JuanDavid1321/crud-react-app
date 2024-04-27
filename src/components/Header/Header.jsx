@@ -7,7 +7,7 @@ import { useAuth } from '../../context/AuthContext'; //for loging out
 
 const Header = () => {
 
-    const {logOut, user} = useAuth();
+    const {logOut} = useAuth();
 
     const handleLogOut = async()=>{
         try {

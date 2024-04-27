@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Login from "./routes/Login/Login";
 import Home from "./routes/Home/Home";
 import IDTypesManagement from "./routes/IDTypesManagement/IDTypesManagement";
