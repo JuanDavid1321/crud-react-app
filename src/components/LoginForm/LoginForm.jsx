@@ -9,10 +9,10 @@ const LoginForm = ({ formTitle }) => {
     const { googleSignIn, user } = useGoogleAuth();
 
     useEffect(() => {
-        if (user.isLoggedInWithGoogle) {
+        if (user) {
             navigate("/");
         }
-    }, [user.isLoggedInWithGoogle]); //[user] is a condition for useEffect, this hook will execute the logic inside only when the value of user changes
+    }, [user]); //[user] is a condition for useEffect, this hook will execute the logic inside only when the value of user changes
 
     const navigate = useNavigate();
 
