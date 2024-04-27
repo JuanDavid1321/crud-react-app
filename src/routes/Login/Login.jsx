@@ -45,7 +45,7 @@ const Login = () => {
 
                 {/* Which form to show */}
                 {registerButtonClicked?(
-                        <RegisterForm formTitle={"Registrarse"}/>
+                        <RegisterForm formTitle={"Registrarse"} />
                     ):(
                         <LoginForm formTitle={"Ingresar"} />
                     )

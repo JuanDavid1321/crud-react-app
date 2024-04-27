@@ -46,6 +46,7 @@ const LoginForm = ({formTitle}) => {
                                 padding: "5px"
                             }
                     } 
+                    // don´t forgot to define label prop for GoogleButton
                     onClick={handleGoogleSignIn}
                 />
             </div>
