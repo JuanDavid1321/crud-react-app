@@ -2,6 +2,9 @@ nav{
     background-color: var(--main-color);
     color: var(--light-text-color);
     padding: 0 10vw;
+    height: 40px;
+    display: flex;
+    align-items: center;
 }
 
 ul{

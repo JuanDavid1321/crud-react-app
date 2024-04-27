@@ -1,13 +1,25 @@
+import "./Home.css";
+import { useGoogleAuth } from "../../context/GoogleAuthContext";
 import Header from "../../components/Header/Header";
-import './Home.css'
+import WelcomeCard from "../../components/WelcomeCard/WelcomeCard";
+import HeaderForGoogleUsers from "../../components/Header/HeaderForGoogleUsers";
 
 const Home = () => {
-    return ( 
-        <div className="home">
-            <Header />
-            <h1>Bienvenido!</h1>
-            {/* <WelcomeCard/> */}
-        </div>
+    const { googleUser, isLoggedInWithGoogle } = useGoogleAuth();
+    return (
+        <>
+            {isLoggedInWithGoogle ? (
+                <div className="home">
+                    <HeaderForGoogleUsers />
+                    <WelcomeCard userName={googleUser.displayName} />
+                </div>
+            ) : (
+                <div className="home">
+                    <Header />
+                    <WelcomeCard userName={"Visitante"} />
+                </div>
+            )}
+        </>
     );
-}
+};
 export default Home;
