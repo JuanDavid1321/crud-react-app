@@ -38,10 +38,11 @@
 }
 
 @media (max-width: 768px){
+    
     .form{
         width: 80%;
         padding: 5% 4%;
-        margin-top: 30%;
+        /* margin-top: 30%; */
     }
 
     .inputsContainer{
