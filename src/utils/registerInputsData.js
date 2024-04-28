@@ -38,6 +38,8 @@ export const inputs = [
         id: 3,
         name: "birthday",
         type: "date",
+        min: "1924-01-01", // The minimum date that can be selected.
+        max: "2011-12-31", // The maximum date that can be selected, minimum (13 years old) https://www.icbf.gov.co/mis-manos-te-ensenan/que-edad-puedo-darle-un-celular-una-tableta-o-acceso-internet-un-nino
         placeholder: "Seleccione su cumpleaños",
         label: "Fecha de nacimiento",
         errorMessage: "¡No debe estar vacío, seleccione su cumpleaños!",
@@ -58,7 +60,7 @@ export const inputs = [
             \.[a-zA-Z0-9-.]+  coincide con un punto seguido de uno o más caracteres alfanuméricos, guiones bajos o puntos en la extensión del dominio.
             $                 coincide con el final de la cadena.
         */
-        pattern: "^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$",
+        pattern: "^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$",
     },
     {
         id: 5,
@@ -85,14 +87,13 @@ export const inputs = [
         placeholder: "Digite su número de celular",
         label: "Número de celular",
         errorMessage: "¡No debe estar vacío, ingrese su número de celular!",
-        /*
-            ^                   coincide con el inicio de la cadena.
-            (?=.*[0-9])         asegura que haya al menos un número del 0-9 en la cadena
-            (?=.*[!@#$%^&*])    asegura que haya al menos un símbolo especial.
-            [a-zA-Z0-9!@#$%^&*] coincide con caracteres alfanuméricos o símbolos especiales.
-            {8,200}             coincide con un rango de 8 a 200 caracteres 
-            $                   coincide con el final de la cadena.
-        */
-        pattern: "^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,200}$",
     },
 ];
+
+export const idDocumentInput = {
+    label: "Documento de identidad",
+    type: "number",
+    name: "idDocument",
+    placeholder: "Digite su número de identidad",
+    errorMessage: "¡No debe estar vacío, ingrese su documento de identidad!",
+};
