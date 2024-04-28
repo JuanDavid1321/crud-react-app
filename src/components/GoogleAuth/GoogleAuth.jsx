@@ -29,6 +29,7 @@ const GoogleAuth = () => {
                         borderRadius: "10px",
                         padding: "5px",
                         background: "var(--main-color)",
+                        fontFamily: "Nunito Sans, sans-serif",
                     }}
                     onClick={googleSignIn}
                 />
