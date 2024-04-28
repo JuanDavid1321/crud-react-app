@@ -1,6 +1,6 @@
-import styles from "./RegisterForm.module.css";
+import styles from "./NewUserForm.module.css";
 import { useState } from "react";
-import FormInput from "./FormInput";
+import GeneralInputs from "./GeneralInputs";
 import {
     inputs,
     idDocumentInput,
@@ -10,7 +10,7 @@ import ImageInput from "./ImageInput";
 import GoogleAuth from "../GoogleAuth/GoogleAuth";
 import SelectInput from "./SelectInput";
 
-const RegisterForm = ({ formTitle }) => {
+const NewUserForm = ({ formTitle }) => {
     // useState hook for onChange event in the input elements
     const [values, setValues] = useState({
         firstName: "",
@@ -50,7 +50,7 @@ const RegisterForm = ({ formTitle }) => {
             <div className={styles.inputsContainer}>
                 {/* Map through the array of objects to create an Input component for each item */}
                 {inputs.map((item) => (
-                    <FormInput
+                    <GeneralInputs
                         key={item.id}
                         {...item}
                         value={values[inputs.name]}
@@ -65,7 +65,7 @@ const RegisterForm = ({ formTitle }) => {
                     options={selectsData[1].options} // Options for this select are in /utils/registerInputsData.js
                     name={selectsData[1].name}
                 />
-                <FormInput
+                <GeneralInputs
                     {...idDocumentInput}
                     value={values.idDocument}
                     onChange={onChange}
@@ -90,4 +90,4 @@ const RegisterForm = ({ formTitle }) => {
         </form>
     );
 };
-export default RegisterForm;
+export default NewUserForm;
