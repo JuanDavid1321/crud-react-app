@@ -1,54 +1,12 @@
-/* .login{
+.login{
     height: 100vh;
-} */
-
-.buttonsSection{
-    width: 55%;
-    display: flex;
-    justify-content: end;
-    align-items: center;
-    
-}
-
-.activeLoginFormViewButton, .activeRegisterFormViewButton{
-    margin: 0 0 0 1vw;
-    background-color: var(--main-color);
-    color: white;
-    text-transform: uppercase;
-    padding: 10px;
-    border-radius: 10px 10px 0 0;
-    cursor: pointer;
-    font-weight: bold;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-}
-
-.loginFormViewButton, .registerFormViewButton{
-    margin: 0 0 0 1vw;
-    background-color: var(--container-color);
-    color: var(--border-color);
-    text-transform: uppercase;
-    padding: 10px;
-    border-radius: 10px 10px 0 0;
-    cursor: pointer;
-    font-weight: bold;
-    border-bottom: none;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 .formContainer{
-    margin-top: 2%;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     height: 100%;
     transform: translate(0, 2px);
-}
-
-@media (max-width: 768px){
-    .buttonsSection{
-        display: flex;
-        justify-content: left;
-        width: 80%;
-    }
 }
