@@ -1,9 +1,9 @@
 import styles from "./NewUserModal.module.css";
 import * as React from "react";
 import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
 import Modal from "@mui/material/Modal";
 import NewUserForm from "../NewUserForm/NewUserForm";
+import PersonAddRoundedIcon from "@mui/icons-material/PersonAddRounded";
 
 const modalStyle = {
     position: "absolute",
@@ -25,8 +25,11 @@ export default function NewUserModal() {
     const handleClose = () => setOpen(false);
 
     return (
-        <div>
-            <Button onClick={handleOpen}>Nuevo usuario</Button>
+        <>
+            <button className={styles.newUserButton} onClick={handleOpen}>
+                <PersonAddRoundedIcon />
+                Nuevo usuario
+            </button>
             <Modal
                 open={open}
                 onClose={handleClose}
@@ -37,6 +40,6 @@ export default function NewUserModal() {
                     <NewUserForm formTitle={"Crear nuevo usuario"} />
                 </Box>
             </Modal>
-        </div>
+        </>
     );
 }

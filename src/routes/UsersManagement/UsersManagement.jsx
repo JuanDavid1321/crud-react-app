@@ -5,13 +5,17 @@ import UsersTable from "../../components/Tables/UsersTable";
 
 const UsersManagement = () => {
     return (
-        <div className={styles.usersManagementContainer}>
+        <>
             <Header />
-            <NewUserModal />
-            <div className={styles.usersTableContainer}></div>
-            <UsersTable />
-            <div />
-        </div>
+            <div className={styles.usersManagementContainer}>
+                <NewUserModal />
+                <div className={styles.usersTableContainer}>
+                    <UsersTable />
+                </div>
+
+                <div />
+            </div>
+        </>
     );
 };
 export default UsersManagement;
