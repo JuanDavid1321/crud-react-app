@@ -28,6 +28,7 @@ const GoogleAuth = () => {
                         marginBottom: "30px",
                         borderRadius: "10px",
                         padding: "5px",
+                        background: "var(--main-color)",
                     }}
                     onClick={googleSignIn}
                 />
