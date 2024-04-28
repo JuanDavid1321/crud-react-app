@@ -1,7 +1,11 @@
 import styles from "./RegisterForm.module.css";
 import { useState } from "react";
 import FormInput from "./FormInput";
-import { inputs, idDocumentInput } from "../../utils/registerInputsData"; // Array with the props for each input element
+import {
+    inputs,
+    idDocumentInput,
+    selectsData,
+} from "../../utils/registerInputsData"; // Arrays with the props for each input element
 import ImageInput from "./ImageInput";
 import GoogleAuth from "../GoogleAuth/GoogleAuth";
 import SelectInput from "./SelectInput";
@@ -54,13 +58,25 @@ const RegisterForm = ({ formTitle }) => {
                     />
                 ))}
                 {/* Pass handleSelectChange callback as a prop */}
-                <SelectInput />
+                <SelectInput
+                    label={"Tipo de documento de identidad"}
+                    errorMessage={"¡Por favor, debe seleccionar una opción!"}
+                    onChange={onChange}
+                    options={selectsData[1].options} // Options for this select are in /utils/registerInputsData.js
+                    name={selectsData[1].name}
+                />
                 <FormInput
                     {...idDocumentInput}
                     value={values.idDocument}
                     onChange={onChange}
                 />
-                <SelectInput />
+                <SelectInput
+                    label={"Identidad de género"}
+                    errorMessage={"¡Por favor, debe seleccionar una opción!"}
+                    onChange={onChange}
+                    options={selectsData[0].options} // Options for this select are in /utils/registerInputsData.js
+                    name={selectsData[0].name}
+                />
                 {/* Pass handleImageChange callback as a prop */}
                 <ImageInput onImageChange={handleImageChange} />{" "}
             </div>
