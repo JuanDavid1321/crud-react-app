@@ -1,7 +1,7 @@
 .header{
     background-color: var(--main-color);
     height: 12vh;
-    color: var(--light-text-color);
+    color: var(--container-color);
     display: flex;
     flex-direction: row;
     justify-content: start;
