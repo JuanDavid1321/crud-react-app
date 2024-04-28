@@ -7,7 +7,6 @@ import {
     selectsData,
 } from "../../utils/registerInputsData"; // Arrays with the props for each input element
 import ImageInput from "./ImageInput";
-import GoogleAuth from "../GoogleAuth/GoogleAuth";
 import SelectInput from "./SelectInput";
 
 const NewUserForm = ({ formTitle }) => {
@@ -85,8 +84,6 @@ const NewUserForm = ({ formTitle }) => {
                     Enviar
                 </button>
             </div>
-
-            <GoogleAuth />
         </form>
     );
 };

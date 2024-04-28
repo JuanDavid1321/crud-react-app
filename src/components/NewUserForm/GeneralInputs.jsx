@@ -1,5 +1,5 @@
 import { useState } from "react";
-import styles from "./FormInput.module.css";
+import styles from "./GeneralInputs.module.css";
 
 const GeneralInputs = (props) => {
     //props used for a lot of props from the father
