@@ -7,7 +7,7 @@ export const inputs = [
         placeholder: "Escriba su nombre/nombres",
         label: "Nombres",
         errorMessage:
-            "¡No debe estar vacío y/o no debe contener caracteres especiales y números!",
+            "¡Por favor, no debe estar vacío y/o no debe contener caracteres especiales y números!",
         /*
             ^                  coincide con el inicio de la cadena.
             [A-Za-zÀÁÉÍÓÚñü]   coincide con una letra mayúscula o minúscula con acentos (español).
@@ -24,7 +24,7 @@ export const inputs = [
         placeholder: "Escriba su apellido/apellidos",
         label: "Apellidos",
         errorMessage:
-            "¡No debe estar vacío y/o no debe contener caracteres especiales y números!",
+            "¡Por favor, no debe estar vacío y/o no debe contener caracteres especiales y números!",
         /*
             ^                  coincide con el inicio de la cadena.
             [A-Za-zÀÁÉÍÓÚñü]   coincide con una letra mayúscula o minúscula con acentos (español).
@@ -38,9 +38,12 @@ export const inputs = [
         id: 3,
         name: "birthday",
         type: "date",
+        min: "1924-01-01", // The minimum date that can be selected.
+        max: "2011-12-31", // The maximum date that can be selected, minimum (13 years old) https://www.icbf.gov.co/mis-manos-te-ensenan/que-edad-puedo-darle-un-celular-una-tableta-o-acceso-internet-un-nino
         placeholder: "Seleccione su cumpleaños",
         label: "Fecha de nacimiento",
-        errorMessage: "¡No debe estar vacío, seleccione su cumpleaños!",
+        errorMessage:
+            "¡Por favor, no debe estar vacío. Seleccione su fecha de cumpleaños!",
     },
     {
         id: 4,
@@ -49,7 +52,7 @@ export const inputs = [
         placeholder: "Escriba su correo electrónico",
         label: "Email",
         errorMessage:
-            "¡No debe estar vacío y/o debe ser un correo electrónico válido!",
+            "¡Por favor, no debe estar vacío y/o debe ser un correo electrónico válido!",
         /*
             ^                 coincide con el inicio de la cadena.
             [a-zA-Z0-9_.+-]   coincide con un carácter alfanumérico, guión bajo, punto o signo más.
@@ -58,7 +61,7 @@ export const inputs = [
             \.[a-zA-Z0-9-.]+  coincide con un punto seguido de uno o más caracteres alfanuméricos, guiones bajos o puntos en la extensión del dominio.
             $                 coincide con el final de la cadena.
         */
-        pattern: "^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$",
+        pattern: "^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$",
     },
     {
         id: 5,
@@ -67,7 +70,7 @@ export const inputs = [
         placeholder: "Escriba su nueva contraseña",
         label: "Contraseña",
         errorMessage:
-            "¡No debe estar vacío y/o debe tener entre 8-200 caracteres, contener al menos una letra, contener al menos un número y un simbolo especial (!@#$%^&*)!",
+            "¡Por favor, no debe estar vacío y/o debe tener entre 8-200 caracteres, contener al menos una letra, contener al menos un número y un simbolo especial (!@#$%^&*)!",
         /*
             ^                   coincide con el inicio de la cadena.
             (?=.*[0-9])         asegura que haya al menos un número del 0-9 en la cadena
@@ -84,15 +87,35 @@ export const inputs = [
         type: "number",
         placeholder: "Digite su número de celular",
         label: "Número de celular",
-        errorMessage: "¡No debe estar vacío, ingrese su número de celular!",
-        /*
-            ^                   coincide con el inicio de la cadena.
-            (?=.*[0-9])         asegura que haya al menos un número del 0-9 en la cadena
-            (?=.*[!@#$%^&*])    asegura que haya al menos un símbolo especial.
-            [a-zA-Z0-9!@#$%^&*] coincide con caracteres alfanuméricos o símbolos especiales.
-            {8,200}             coincide con un rango de 8 a 200 caracteres 
-            $                   coincide con el final de la cadena.
-        */
-        pattern: "^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,200}$",
+        errorMessage:
+            "¡Por favor, no debe estar vacío. Ingrese su número de celular!",
+    },
+];
+
+export const idDocumentInput = {
+    label: "Documento de identidad",
+    type: "number",
+    name: "idDocument",
+    placeholder: "Digite su número de identidad",
+    errorMessage:
+        "¡Por favor, no debe estar vacío. Ingrese su documento de identidad!",
+};
+
+export const selectsData = [
+    {
+        id: 1,
+        name: "idDocumentType",
+        options: [
+            "Masculino",
+            "Femenino",
+            "Trans",
+            "Otro",
+            "No deseo responder",
+        ],
+    },
+    {
+        id: 2,
+        name: "genderIdentity",
+        options: ["C.C.", "C.E.", "T.I.", "P.B.", "R.C."],
     },
 ];
