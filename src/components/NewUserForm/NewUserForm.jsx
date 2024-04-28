@@ -44,7 +44,7 @@ const NewUserForm = ({ formTitle }) => {
     console.log(values);
 
     return (
-        <form className={styles.form} onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit}>
             <h2 className={styles.formTitle}>{formTitle}</h2>
             <div className={styles.inputsContainer}>
                 {/* Map through the array of objects to create an Input component for each item */}
