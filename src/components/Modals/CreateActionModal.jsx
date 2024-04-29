@@ -1,12 +1,10 @@
-import styles from "./NewUserModal.module.css";
+import styles from "./CreateActionModal.module.css";
 import { useState } from "react";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
-import NewUserForm from "../../NewUserForm/NewUserForm";
-import PersonAddRoundedIcon from "@mui/icons-material/PersonAddRounded";
-import { modalStyle } from "../../../utils/modalStyles";
+import { modalStyle } from "../../utils/modalStyles";
 
-export default function NewUserModal() {
+export default function CreateActionModal({ ModalContent, IconForButton }) {
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
@@ -14,7 +12,7 @@ export default function NewUserModal() {
     return (
         <>
             <button className={styles.newUserButton} onClick={handleOpen}>
-                <PersonAddRoundedIcon />{" "}
+                {IconForButton}
                 <p className={styles.buttonText}>Nuevo usuario</p>
             </button>
             <Modal
@@ -23,9 +21,7 @@ export default function NewUserModal() {
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
             >
-                <Box sx={modalStyle}>
-                    <NewUserForm formTitle={"Crear nuevo usuario"} />
-                </Box>
+                <Box sx={modalStyle}>{ModalContent}</Box>
             </Modal>
         </>
     );

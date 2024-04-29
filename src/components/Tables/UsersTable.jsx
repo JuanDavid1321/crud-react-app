@@ -1,4 +1,3 @@
-import styles from "./UsersTable.module.css";
 import * as React from "react";
 import { DataGrid } from "@mui/x-data-grid";
 import UsersActionButtons from "../ActionButtons/UsersActionButtons/UsersActionButtons";
