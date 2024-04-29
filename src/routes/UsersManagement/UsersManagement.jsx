@@ -3,8 +3,7 @@ import Header from "../../components/Header/Header";
 import NewUserForm from "../../components/NewUserForm/NewUserForm";
 import PersonAddRoundedIcon from "@mui/icons-material/PersonAddRounded";
 import CreateActionButtonAndModal from "../../components/Modals/CreateActionButtonAndModal";
-import Table from "../../components/Table/Table";
-import UsersActionButtons from "../../components/ActionButtons/UsersActionButtons/UsersActionButtons";
+import UsersTable from "../../components/Tables/UsersTable";
 
 const UsersManagement = () => {
     return (
@@ -24,7 +23,7 @@ const UsersManagement = () => {
                             }
                         />
                     </div>
-                    <Table ActionButtons={<UsersActionButtons />} />
+                    <UsersTable />
                 </div>
             </div>
         </>

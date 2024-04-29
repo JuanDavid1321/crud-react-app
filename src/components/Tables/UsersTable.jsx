@@ -1,6 +1,7 @@
 import { DataGrid } from "@mui/x-data-grid";
+import UsersActionButtons from "../ActionButtons/UsersActionButtons/UsersActionButtons";
 
-const Table = ({ ActionButtons }) => {
+const UsersTable = () => {
     const columns = [
         { field: "id", headerName: "ID", width: 60 },
         { field: "firstName", headerName: "First name", width: 130 },
@@ -15,8 +16,10 @@ const Table = ({ ActionButtons }) => {
             field: "actions",
             headerName: "Acciones",
             width: 320,
-            renderCell: () => {
-                return ActionButtons;
+            renderCell: (params) => {
+                // const user = users.find((u) => u.id === params.row.id);
+                // return <ActionButtons user={user} />;
+                return <UsersActionButtons />;
             },
         },
     ];
@@ -53,4 +56,4 @@ const Table = ({ ActionButtons }) => {
     );
 };
 
-export default Table;
+export default UsersTable;
