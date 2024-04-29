@@ -1,6 +1,6 @@
 import styles from "./UsersManagement.module.css";
 import Header from "../../components/Header/Header";
-import NewUserModal from "../../components/Modals/NewUserModal";
+import NewUserModal from "../../components/Modals/UsersModals/NewUserModal";
 import UsersTable from "../../components/Tables/UsersTable";
 
 const UsersManagement = () => {

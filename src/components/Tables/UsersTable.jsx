@@ -1,7 +1,7 @@
 import styles from "./UsersTable.module.css";
 import * as React from "react";
 import { DataGrid } from "@mui/x-data-grid";
-import Button from "@mui/material/Button";
+import UsersActionButtons from "../ActionButtons/UsersActionButtons/UsersActionButtons";
 
 const columns = [
     { field: "id", headerName: "ID", width: 60 },
@@ -26,13 +26,7 @@ const columns = [
         field: "actions",
         headerName: "Acciones",
         width: 320,
-        renderCell: () => (
-            <div>
-                <Button variant="contained">Action 1</Button>
-                <Button variant="contained">Action 2</Button>
-                <Button variant="contained">Action 3</Button>
-            </div>
-        ),
+        renderCell: () => <UsersActionButtons />,
     },
 ];
 

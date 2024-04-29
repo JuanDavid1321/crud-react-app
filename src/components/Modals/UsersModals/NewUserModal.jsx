@@ -2,7 +2,7 @@ import styles from "./NewUserModal.module.css";
 import * as React from "react";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
-import NewUserForm from "../NewUserForm/NewUserForm";
+import NewUserForm from "../../NewUserForm/NewUserForm";
 import PersonAddRoundedIcon from "@mui/icons-material/PersonAddRounded";
 
 const modalStyle = {
