@@ -21,7 +21,7 @@ const NewUserForm = ({ formTitle }) => {
         idDocumentType: "",
         idDocument: "",
         genderIdentity: "",
-        role: "Visitante", //by default the user is a visitor
+        role: "", //by default the user is a visitor
         image: "", //by default there's no selected file
     });
 
@@ -78,6 +78,13 @@ const NewUserForm = ({ formTitle }) => {
                 />
                 {/* Pass handleImageChange callback as a prop */}
                 <ImageInput onImageChange={handleImageChange} />{" "}
+                <SelectInput
+                    label={"Rol en la organización"}
+                    errorMessage={"¡Por favor, debe seleccionar una opción!"}
+                    onChange={onChange}
+                    options={selectsData[2].options} // Options for this select are in /utils/registerInputsData.js
+                    name={selectsData[2].name}
+                />
             </div>
             <div className={styles.buttonContainer}>
                 <button type="submit" className={styles.submitButton}>

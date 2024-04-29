@@ -118,4 +118,9 @@ export const selectsData = [
         name: "genderIdentity",
         options: ["C.C.", "C.E.", "T.I.", "P.B.", "R.C."],
     },
+    {
+        id: 3,
+        name: "role",
+        options: ["Usuario", "Moderador"],
+    },
 ];
