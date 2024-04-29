@@ -1,5 +1,5 @@
 import styles from "./NewUserModal.module.css";
-import * as React from "react";
+import { useState } from "react";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import NewUserForm from "../../NewUserForm/NewUserForm";
@@ -7,7 +7,7 @@ import PersonAddRoundedIcon from "@mui/icons-material/PersonAddRounded";
 import { modalStyle } from "../../../utils/modalStyles";
 
 export default function NewUserModal() {
-    const [open, setOpen] = React.useState(false);
+    const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
 
