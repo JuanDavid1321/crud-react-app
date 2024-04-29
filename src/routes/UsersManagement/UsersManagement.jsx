@@ -3,7 +3,8 @@ import Header from "../../components/Header/Header";
 import NewUserForm from "../../components/NewUserForm/NewUserForm";
 import PersonAddRoundedIcon from "@mui/icons-material/PersonAddRounded";
 import CreateActionButtonAndModal from "../../components/Modals/CreateActionButtonAndModal";
-import UsersTable from "../../components/Tables/UsersTable";
+import Table from "../../components/Table/Table";
+import UsersActionButtons from "../../components/ActionButtons/UsersActionButtons/UsersActionButtons";
 
 const UsersManagement = () => {
     return (
@@ -15,6 +16,7 @@ const UsersManagement = () => {
                         <h2>Gestionar usuarios</h2>
                         <CreateActionButtonAndModal
                             IconForButton={<PersonAddRoundedIcon />}
+                            textForButton={"Nuevo usuario"}
                             ModalContent={
                                 <NewUserForm
                                     formTitle={"Crear nuevo usuario"}
@@ -22,7 +24,7 @@ const UsersManagement = () => {
                             }
                         />
                     </div>
-                    <UsersTable />
+                    <Table ActionButtons={<UsersActionButtons />} />
                 </div>
             </div>
         </>

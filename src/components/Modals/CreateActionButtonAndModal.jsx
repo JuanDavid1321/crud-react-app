@@ -7,6 +7,7 @@ import { modalStyle } from "../../utils/modalStyles";
 export default function CreateActionButtonAndModal({
     ModalContent,
     IconForButton,
+    textForButton,
 }) {
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
@@ -16,7 +17,7 @@ export default function CreateActionButtonAndModal({
         <>
             <button className={styles.newUserButton} onClick={handleOpen}>
                 {IconForButton}
-                <p className={styles.buttonText}>Nuevo usuario</p>
+                <p className={styles.buttonText}>{textForButton}</p>
             </button>
             <Modal
                 open={open}
