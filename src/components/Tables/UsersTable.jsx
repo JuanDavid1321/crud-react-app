@@ -40,7 +40,6 @@ const UsersTable = () => {
         <div
             style={{
                 background: "white",
-                fontFamily: "Nunito Sans, sans-serif",
             }}
         >
             <DataGrid

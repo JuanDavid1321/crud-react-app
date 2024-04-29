@@ -1,21 +1,29 @@
-*{
-  margin: 0;
-  font-family: "Nunito Sans", sans-serif;
+* {
+    margin: 0;
+    font-family: "Nunito Sans", sans-serif;
 }
-html, body{
-  height: 100vh;
+html,
+body {
+    height: 100vh;
 }
 :root {
-  --main-color       : #1F3C4D;
-  --title-color      : #0D1E2B;
-  --text-color       : #45637D;
-  --light-text-color : #AFAFB8;
-  --border-color     : #A0A7AC;
-  --container-color  : WHITE;
-  --body-color       : #D9D4D3;
+    --main-color: #1f3c4d;
+    --title-color: #0d1e2b;
+    --text-color: #45637d;
+    --light-text-color: #afafb8;
+    --border-color: #a0a7ac;
+    --container-color: WHITE;
+    --body-color: #d9d4d3;
 }
 
 body {
-  background : var(--body-color);
-  color      : var(--text-color);
+    background: var(--body-color);
+    color: var(--text-color);
 }
+
+/* CRUD Actions colors
+  create  ->   green: #0A8B5E
+  read    ->   light-blue: #08A6C1
+  update  ->   yellow: #FF9C26
+  delete  ->   red: #DE3C14
+*/

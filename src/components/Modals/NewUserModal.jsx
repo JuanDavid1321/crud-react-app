@@ -27,8 +27,8 @@ export default function NewUserModal() {
     return (
         <>
             <button className={styles.newUserButton} onClick={handleOpen}>
-                <PersonAddRoundedIcon />
-                Nuevo usuario
+                <PersonAddRoundedIcon />{" "}
+                <p className={styles.buttonText}>Nuevo usuario</p>
             </button>
             <Modal
                 open={open}

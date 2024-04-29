@@ -8,7 +8,10 @@ const UsersManagement = () => {
         <>
             <Header />
             <div className={styles.usersManagementContainer}>
-                <NewUserModal />
+                <div className={styles.usersTitleAndButtonContainer}>
+                    <h2>Gestionar usuarios</h2>
+                    <NewUserModal />
+                </div>
                 <div className={styles.usersTableContainer}>
                     <UsersTable />
                 </div>
