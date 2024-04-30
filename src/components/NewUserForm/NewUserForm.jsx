@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { doc, serverTimestamp, setDoc } from "firebase/firestore";
 import { auth, db, storage } from "../../firebase";
+import Swal from "sweetalert2";
 import GeneralInputs from "./GeneralInputs";
 import {
     inputs,
@@ -13,21 +14,9 @@ import {
 import ImageInput from "./ImageInput";
 import SelectInput from "./SelectInput";
 
-const NewUserForm = ({ formTitle }) => {
+const NewUserForm = ({ formTitle, setOpen }) => {
     // useState hook for onChange event in the input elements
-    const [values, setValues] = useState({
-        firstName: "",
-        lastName: "",
-        email: "",
-        birthday: "",
-        password: "",
-        phoneNumber: "",
-        idDocumentType: "",
-        idDocument: "",
-        genderIdentity: "",
-        role: "", //by default the user is a visitor
-        image: "", //by default there's no selected file
-    });
+    const [values, setValues] = useState({});
     const navigate = useNavigate();
 
     const handleImageChange = (selectedFile) => {
@@ -54,8 +43,27 @@ const NewUserForm = ({ formTitle }) => {
                 ...values,
                 timeStamp: serverTimestamp(),
             });
-            navigate(0);
+            setOpen(false);
+            //Remember to remove navigate when onSnapShot Firebase method is implemented
+            Swal.fire({
+                icon: "success",
+                title: "Usuario registrado",
+                showConfirmButton: false,
+                timer: 3000,
+            }).then(() => {
+                navigate(0);
+            });
         } catch (error) {
+            setOpen(false);
+            //Remember to remove navigate when onSnapShot Firebase method is implemented
+            Swal.fire({
+                icon: "error",
+                title: "Error",
+                text: error.message,
+                showConfirmButton: true,
+            }).then(() => {
+                navigate(0);
+            });
             console.log(error);
         }
     };

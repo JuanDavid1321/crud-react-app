@@ -16,11 +16,7 @@ const UsersManagement = () => {
                         <CreateActionButtonAndModal
                             IconForButton={<PersonAddRoundedIcon />}
                             textForButton={"Nuevo usuario"}
-                            ModalContent={
-                                <NewUserForm
-                                    formTitle={"Crear nuevo usuario"}
-                                />
-                            }
+                            ModalContent={NewUserForm}
                         />
                     </div>
                     <UsersTable />
