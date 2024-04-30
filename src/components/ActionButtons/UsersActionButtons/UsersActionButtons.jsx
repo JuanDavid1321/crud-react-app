@@ -12,12 +12,12 @@ const UsersActionButtons = (props) => {
             <ActionButton
                 buttonType={"read"}
                 IconComponent={<RemoveRedEyeIcon />}
-                ModalComponent={ViewCard} //Replace with the name of the specific action component (form...)
+                ModalContent={ViewCard} //Replace with the name of the specific action component (card...)
             />
             <ActionButton
                 buttonType={"update"}
                 IconComponent={<ModeEditIcon />}
-                ModalComponent={UpdateForm} //Replace with the name of the specific action component (form...)
+                ModalContent={UpdateForm} //Replace with the name of the specific action component (form...)
             />
             <ActionButton
                 buttonType={"delete"}
