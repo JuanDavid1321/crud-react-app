@@ -1,9 +1,10 @@
 import styles from "./NewUserForm.module.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { auth, db, storage } from "../../firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { doc, serverTimestamp, setDoc } from "firebase/firestore";
-import { auth, db, storage } from "../../firebase";
+import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import Swal from "sweetalert2";
 import GeneralInputs from "./GeneralInputs";
 import {
@@ -17,10 +18,58 @@ import SelectInput from "./SelectInput";
 const NewUserForm = ({ formTitle, setOpen }) => {
     // useState hook for onChange event in the input elements
     const [values, setValues] = useState({});
+    const [file, setFile] = useState("");
+    const [perc, setPerc] = useState(null);
     const navigate = useNavigate();
 
+    // useEffect for
+    useEffect(() => {
+        const uploadFile = () => {
+            const name = new Date().getTime() + file.name; //if is a file with the same name of a previous one it will be renamed with date
+            const storageRef = ref(storage, file.name);
+
+            const uploadTask = uploadBytesResumable(storageRef, file); // upload the file to storage in Firebase
+
+            // storage Firebase progress listener
+            uploadTask.on(
+                "state_changed",
+                (snapshot) => {
+                    const progress =
+                        (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                    console.log("Upload is " + progress + "% done");
+                    setPerc(progress);
+                    switch (snapshot.state) {
+                        case "paused":
+                            console.log("Upload is paused");
+                            break;
+                        case "running":
+                            console.log("Upload is running");
+                            break;
+                        default:
+                            break;
+                    }
+                },
+                (error) => {
+                    console.log(error);
+                },
+                // if everything is ok, is going to give an image URL for storage it with the other input values
+                () => {
+                    getDownloadURL(uploadTask.snapshot.ref).then(
+                        (downloadURL) => {
+                            setValues((prev) => ({
+                                ...prev,
+                                img: downloadURL,
+                            }));
+                        }
+                    );
+                }
+            );
+        };
+        file && uploadFile(); // if we have a file, then call the function to start uploading it
+    }, [file]);
+
     const handleImageChange = (selectedFile) => {
-        setValues({ ...values, image: selectedFile });
+        setFile(selectedFile);
     };
 
     const onChange = (e) => {
@@ -72,6 +121,7 @@ const NewUserForm = ({ formTitle, setOpen }) => {
             });
         }
     };
+    console.log(values);
 
     return (
         <form onSubmit={handleSubmit}>
