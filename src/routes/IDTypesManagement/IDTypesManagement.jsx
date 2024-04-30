@@ -14,7 +14,7 @@ const DocumentTypesManagement = () => {
                         <h2>Gestionar tipos de documento</h2>
                         <CreateActionButtonAndModal
                             IconForButton={<ContactPageIcon />}
-                            textForButton={"Nuevo rol"}
+                            textForButton={"Nuevo tipo de documento"}
                             ModalContent={<></>}
                         />
                     </div>
