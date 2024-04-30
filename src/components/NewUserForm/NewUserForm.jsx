@@ -32,8 +32,8 @@ const NewUserForm = ({ formTitle, setOpen }) => {
     };
 
     const handleSubmit = async (e) => {
-        e.preventDefault();
-        setOpen(false);
+        e.preventDefault(); //prevent page refresh when submitting the form
+        setOpen(false); //close modal after submiting the form
         try {
             Swal.fire({
                 title: "Registrando usuario",
@@ -41,16 +41,17 @@ const NewUserForm = ({ formTitle, setOpen }) => {
                     Swal.showLoading();
                 },
             });
-            const res = await createUserWithEmailAndPassword(
+            // use auth provider to create a new user with email and password
+            const response = await createUserWithEmailAndPassword(
                 auth,
                 values.email,
                 values.password
             );
-            await setDoc(doc(db, "users", res.user.uid), {
+            // upload values to Firestore
+            await setDoc(doc(db, "users", response.user.uid), {
                 ...values,
                 timeStamp: serverTimestamp(),
             });
-
             Swal.fire({
                 icon: "success",
                 title: "Usuario registrado",
@@ -60,6 +61,7 @@ const NewUserForm = ({ formTitle, setOpen }) => {
                 navigate(0);
             });
         } catch (error) {
+            // show an error message if something went wrong
             Swal.fire({
                 icon: "error",
                 title: "Error",
