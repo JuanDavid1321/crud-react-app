@@ -59,7 +59,6 @@ const NewUserForm = ({ formTitle }) => {
                 {/* Pass handleSelectChange callback as a prop */}
                 <SelectInput
                     label={"Tipo de documento de identidad"}
-                    errorMessage={"¡Por favor, debe seleccionar una opción!"}
                     onChange={onChange}
                     options={selectsData[1].options} // Options for this select are in /utils/registerInputsData.js
                     name={selectsData[1].name}
@@ -71,7 +70,6 @@ const NewUserForm = ({ formTitle }) => {
                 />
                 <SelectInput
                     label={"Identidad de género"}
-                    errorMessage={"¡Por favor, debe seleccionar una opción!"}
                     onChange={onChange}
                     options={selectsData[0].options} // Options for this select are in /utils/registerInputsData.js
                     name={selectsData[0].name}
@@ -80,7 +78,6 @@ const NewUserForm = ({ formTitle }) => {
                 <ImageInput onImageChange={handleImageChange} />{" "}
                 <SelectInput
                     label={"Rol en la organización"}
-                    errorMessage={"¡Por favor, debe seleccionar una opción!"}
                     onChange={onChange}
                     options={selectsData[2].options} // Options for this select are in /utils/registerInputsData.js
                     name={selectsData[2].name}

@@ -43,7 +43,7 @@ export const inputs = [
         placeholder: "Seleccione su cumpleaños",
         label: "Fecha de nacimiento",
         errorMessage:
-            "¡Por favor, no debe estar vacío. Seleccione su fecha de cumpleaños!",
+            "¡Por favor, no debe estar vacío y/o usted debe ser mayor de trece (13) años. Seleccione su fecha de nacimiento!",
     },
     {
         id: 4,

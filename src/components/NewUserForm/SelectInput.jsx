@@ -1,7 +1,7 @@
 import styles from "./SelectInput.module.css";
 
 const SelectInput = (props) => {
-    const { label, errorMessage, onChange, options, name } = props; //Destructuring assignment
+    const { label, onChange, options, name } = props; //Destructuring assignment
     return (
         <div className={styles.selectContainer}>
             <label className={styles.labelGeneric}>{label}</label>
@@ -21,9 +21,6 @@ const SelectInput = (props) => {
                     </option>
                 ))}
             </select>
-            <span className={styles.particularErrorMessage}>
-                {errorMessage}
-            </span>
         </div>
     );
 };
