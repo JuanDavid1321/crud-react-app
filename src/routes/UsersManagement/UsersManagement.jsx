@@ -2,9 +2,9 @@ import styles from "./UsersManagement.module.css";
 import Header from "../../components/Header/Header";
 import NewUserForm from "../../components/NewUserForm/NewUserForm";
 import PersonAddRoundedIcon from "@mui/icons-material/PersonAddRounded";
-import CreateActionButtonAndModal from "../../components/Modals/CreateActionButtonAndModal";
-import Table from "../../components/Table/Table";
-import UsersActionButtons from "../../components/ActionButtons/UsersActionButtons/UsersActionButtons";
+import CreateActionButtonAndModal from "../../components/ActionButtons/CreateActionButtonAndModal";
+import UsersTable from "../../components/Tables/UsersTable";
+import { usersColumns } from "../../utils/tableBasicColumns";
 
 const UsersManagement = () => {
     return (
@@ -17,14 +17,10 @@ const UsersManagement = () => {
                         <CreateActionButtonAndModal
                             IconForButton={<PersonAddRoundedIcon />}
                             textForButton={"Nuevo usuario"}
-                            ModalContent={
-                                <NewUserForm
-                                    formTitle={"Crear nuevo usuario"}
-                                />
-                            }
+                            ModalContent={NewUserForm}
                         />
                     </div>
-                    <Table ActionButtons={<UsersActionButtons />} />
+                    <UsersTable tableBasicColumns={usersColumns} />
                 </div>
             </div>
         </>

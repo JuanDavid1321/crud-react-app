@@ -6,34 +6,61 @@ import { modalStyle } from "../../utils/modalStyles";
 
 // Recieves  props from parent component, for reusability
 const ActionButton = (props) => {
-    const appliedStyles = buttonStyles[props.buttonType];
+    // destructuring the props object
+    const { buttonType, IconComponent, ModalContent, deleteAction } = props;
+
+    const appliedStyles = buttonStyles[buttonType];
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
 
-    return (
-        <>
-            {/* Conditional rendering for the delete action button,
+    {
+        /* Conditional rendering for the delete action button,
                 if it exists we don´t have to popup a modal, just have to delete the item  
-            */}
-            {props.deleteAction ? (
-                <button onClick={props.deleteAction} style={appliedStyles}>
-                    {props.IconComponent}
+            */
+    }
+    switch (buttonType) {
+        case "read":
+            return (
+                <>
+                    <button onClick={handleOpen} style={appliedStyles}>
+                        {IconComponent}
+                    </button>
+                    <Modal
+                        open={open}
+                        onClose={handleClose}
+                        aria-labelledby="modal-modal-title"
+                        aria-describedby="modal-modal-description"
+                    >
+                        <Box sx={modalStyle}>{<ModalContent />}</Box>
+                    </Modal>
+                </>
+            );
+        case "update":
+            return (
+                <>
+                    <button onClick={handleOpen} style={appliedStyles}>
+                        {IconComponent}
+                    </button>
+                    <Modal
+                        open={open}
+                        onClose={handleClose}
+                        aria-labelledby="modal-modal-title"
+                        aria-describedby="modal-modal-description"
+                    >
+                        <Box sx={modalStyle}>{<ModalContent />}</Box>
+                    </Modal>
+                </>
+            );
+
+        case "delete":
+            return (
+                <button onClick={deleteAction} style={appliedStyles}>
+                    {IconComponent}
                 </button>
-            ) : (
-                <button onClick={handleOpen} style={appliedStyles}>
-                    {props.IconComponent}
-                </button>
-            )}
-            <Modal
-                open={open}
-                onClose={handleClose}
-                aria-labelledby="modal-modal-title"
-                aria-describedby="modal-modal-description"
-            >
-                <Box sx={modalStyle}>{props.ModalComponent}</Box>
-            </Modal>
-        </>
-    );
+            );
+        default:
+            break;
+    }
 };
 export default ActionButton;

@@ -3,28 +3,25 @@ import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import ModeEditIcon from "@mui/icons-material/ModeEdit";
 import DeleteIcon from "@mui/icons-material/Delete";
 
-const UsersActionButtons = () => {
-    // TODO: implement delete action and pass it the user id to be deleted (remember to use sweetalert2)
-    const handleDelete = () => {
-        console.log("Funciona la eliminación");
-    };
+const UsersActionButtons = (props) => {
+    const { handleDelete, handleView, handleUpdate, ViewCard, UpdateForm } =
+        props;
 
     return (
         <>
             <ActionButton
                 buttonType={"read"}
                 IconComponent={<RemoveRedEyeIcon />}
-                ModalComponent={<></>}
+                ModalContent={ViewCard} //Replace with the name of the specific action component (card...)
             />
             <ActionButton
                 buttonType={"update"}
                 IconComponent={<ModeEditIcon />}
-                ModalComponent={<></>}
+                ModalContent={UpdateForm} //Replace with the name of the specific action component (form...)
             />
             <ActionButton
                 buttonType={"delete"}
                 IconComponent={<DeleteIcon />}
-                ModalComponent={<></>}
                 deleteAction={handleDelete}
             />
         </>

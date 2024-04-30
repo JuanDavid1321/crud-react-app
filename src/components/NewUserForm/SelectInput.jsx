@@ -1,7 +1,7 @@
 import styles from "./SelectInput.module.css";
 
 const SelectInput = (props) => {
-    const { label, errorMessage, onChange, options, name } = props; //Destructuring assignment
+    const { label, onChange, options, name, value } = props; //Destructuring assignment
     return (
         <div className={styles.selectContainer}>
             <label className={styles.labelGeneric}>{label}</label>
@@ -10,6 +10,7 @@ const SelectInput = (props) => {
                 required
                 onChange={onChange}
                 name={name}
+                value={value}
             >
                 {/* Default option */}
                 <option hidden value="">
@@ -21,9 +22,6 @@ const SelectInput = (props) => {
                     </option>
                 ))}
             </select>
-            <span className={styles.particularErrorMessage}>
-                {errorMessage}
-            </span>
         </div>
     );
 };
