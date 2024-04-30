@@ -1,7 +1,7 @@
 import styles from "./RolesManagement.module.css";
 import Header from "../../components/Header/Header";
+import CreateActionButtonAndModal from "../../components/ActionButtons/CreateActionButtonAndModal";
 import AdminPanelSettingsIcon from "@mui/icons-material/AdminPanelSettings";
-import CreateActionButtonAndModal from "../../components/Modals/CreateActionButtonAndModal";
 import RolesTable from "../../components/Tables/RolesTable";
 
 const RolesManagement = () => {

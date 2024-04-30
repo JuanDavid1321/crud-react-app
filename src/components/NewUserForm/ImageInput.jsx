@@ -19,6 +19,7 @@ const ImageInput = ({ onImageChange }) => {
                 </label>
                 <label htmlFor="file"> Seleccione un archivo</label>
                 <input
+                    required
                     className={styles.imageInput}
                     type="file"
                     id="file"

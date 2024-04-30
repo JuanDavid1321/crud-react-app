@@ -2,7 +2,7 @@ import styles from "./IDTypesManagement.module.css";
 import Header from "../../components/Header/Header";
 import ContactPageIcon from "@mui/icons-material/ContactPage";
 import IDTypesTable from "../../components/Tables/IDTypesTable";
-import CreateActionButtonAndModal from "../../components/Modals/CreateActionButtonAndModal";
+import CreateActionButtonAndModal from "../../components/ActionButtons/CreateActionButtonAndModal";
 
 const DocumentTypesManagement = () => {
     return (

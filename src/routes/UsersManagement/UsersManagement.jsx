@@ -2,7 +2,7 @@ import styles from "./UsersManagement.module.css";
 import Header from "../../components/Header/Header";
 import NewUserForm from "../../components/NewUserForm/NewUserForm";
 import PersonAddRoundedIcon from "@mui/icons-material/PersonAddRounded";
-import CreateActionButtonAndModal from "../../components/Modals/CreateActionButtonAndModal";
+import CreateActionButtonAndModal from "../../components/ActionButtons/CreateActionButtonAndModal";
 import UsersTable from "../../components/Tables/UsersTable";
 import { usersColumns } from "../../utils/tableBasicColumns";
 
