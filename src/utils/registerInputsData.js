@@ -104,7 +104,7 @@ export const idDocumentInput = {
 export const selectsData = [
     {
         id: 1,
-        name: "idDocumentType",
+        name: "genderIdentity",
         options: [
             "Masculino",
             "Femenino",
@@ -115,7 +115,7 @@ export const selectsData = [
     },
     {
         id: 2,
-        name: "genderIdentity",
+        name: "idDocumentType",
         options: ["C.C.", "C.E.", "T.I.", "P.B.", "R.C."],
     },
     {

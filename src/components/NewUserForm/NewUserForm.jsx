@@ -17,7 +17,12 @@ import SelectInput from "./SelectInput";
 
 const NewUserForm = ({ formTitle, setOpen }) => {
     // useState hook for onChange event in the input elements
-    const [values, setValues] = useState({ firstName: "Juan David" });
+    const [values, setValues] = useState({
+        firstName: "Juan David",
+        role: "Usuario",
+        idDocumentType: "C.C.",
+        genderIdentity: "Masculino",
+    });
     const [file, setFile] = useState("");
     const [perc, setPerc] = useState(null);
     const navigate = useNavigate();
@@ -140,8 +145,9 @@ const NewUserForm = ({ formTitle, setOpen }) => {
                 <SelectInput
                     label={"Tipo de documento de identidad"}
                     onChange={onChange}
-                    options={selectsData[1].options} // Options for this select are in /utils/registerInputsData.js
+                    options={selectsData[0].options} // Options for this select are in /utils/registerInputsData.js
                     name={selectsData[0].name}
+                    value={values[selectsData[0].name]}
                 />
                 <GeneralInputs
                     {...idDocumentInput}
@@ -151,8 +157,9 @@ const NewUserForm = ({ formTitle, setOpen }) => {
                 <SelectInput
                     label={"Identidad de género"}
                     onChange={onChange}
-                    options={selectsData[0].options} // Options for this select are in /utils/registerInputsData.js
+                    options={selectsData[1].options} // Options for this select are in /utils/registerInputsData.js
                     name={selectsData[1].name}
+                    value={values[selectsData[1].name]}
                 />
                 {/* Pass handleImageChange callback as a prop */}
                 <ImageInput onImageChange={handleImageChange} />{" "}
@@ -161,6 +168,7 @@ const NewUserForm = ({ formTitle, setOpen }) => {
                     onChange={onChange}
                     options={selectsData[2].options} // Options for this select are in /utils/registerInputsData.js
                     name={selectsData[2].name}
+                    value={values[selectsData[2].name]}
                 />
             </div>
             <div className={styles.buttonContainer}>
