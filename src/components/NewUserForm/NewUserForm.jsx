@@ -32,16 +32,15 @@ const NewUserForm = ({ formTitle, setOpen }) => {
         image: "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg",
     });
     const [file, setFile] = useState("");
-    const [fileUploadProcessPorcentage, setFileUploadProcessPorcentage] =
+    const [fileUploadProcessPercentage, setFileUploadProcessPercentage] =
         useState(null);
     const navigate = useNavigate();
 
-    // useEffect for
+    // useEffect for getting the file URL when a new file is uploaded
     useEffect(() => {
         const uploadFile = () => {
             const name = new Date().getTime() + file.name; //if is a file with the same name of a previous one it will be renamed with date
-            console.log(name);
-            const storageRef = ref(storage, file.name);
+            const storageRef = ref(storage, name);
 
             const uploadTask = uploadBytesResumable(storageRef, file); // upload the file to storage in Firebase
 
@@ -51,14 +50,10 @@ const NewUserForm = ({ formTitle, setOpen }) => {
                 (snapshot) => {
                     const progress =
                         (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-                    console.log("Upload is " + progress + "% done");
-                    setFileUploadProcessPorcentage(progress);
+                    setFileUploadProcessPercentage(progress);
                     switch (snapshot.state) {
                         case "paused":
                             console.log("Upload is paused");
-                            break;
-                        case "running":
-                            console.log("Upload is running");
                             break;
                         default:
                             break;
@@ -136,7 +131,6 @@ const NewUserForm = ({ formTitle, setOpen }) => {
             });
         }
     };
-    console.log(values);
 
     return (
         <form onSubmit={handleSubmit}>
@@ -185,8 +179,8 @@ const NewUserForm = ({ formTitle, setOpen }) => {
             <div className={styles.buttonContainer}>
                 <button
                     disabled={
-                        fileUploadProcessPorcentage !== null &&
-                        fileUploadProcessPorcentage < 100
+                        fileUploadProcessPercentage !== null &&
+                        fileUploadProcessPercentage < 100
                     }
                     type="submit"
                     className={styles.submitButton}
