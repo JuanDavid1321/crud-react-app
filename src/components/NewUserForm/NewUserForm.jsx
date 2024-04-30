@@ -14,14 +14,22 @@ import {
 } from "../../utils/registerInputsData"; // Arrays with the props for each input element
 import ImageInput from "./ImageInput";
 import SelectInput from "./SelectInput";
+import ImageView from "./ImageView";
 
 const NewUserForm = ({ formTitle, setOpen }) => {
     // useState hook for onChange event in the input elements
     const [values, setValues] = useState({
-        firstName: "Juan David",
-        role: "Usuario",
-        idDocumentType: "C.C.",
-        genderIdentity: "Masculino",
+        firstName: "",
+        lastName: "",
+        email: "",
+        birthday: "",
+        password: "",
+        phoneNumber: "",
+        idDocumentType: "",
+        idDocument: "",
+        genderIdentity: "",
+        role: "",
+        image: "",
     });
     const [file, setFile] = useState("");
     const [perc, setPerc] = useState(null);
@@ -31,6 +39,7 @@ const NewUserForm = ({ formTitle, setOpen }) => {
     useEffect(() => {
         const uploadFile = () => {
             const name = new Date().getTime() + file.name; //if is a file with the same name of a previous one it will be renamed with date
+            console.log(name);
             const storageRef = ref(storage, file.name);
 
             const uploadTask = uploadBytesResumable(storageRef, file); // upload the file to storage in Firebase
@@ -162,7 +171,8 @@ const NewUserForm = ({ formTitle, setOpen }) => {
                     value={values[selectsData[1].name]}
                 />
                 {/* Pass handleImageChange callback as a prop */}
-                <ImageInput onImageChange={handleImageChange} />{" "}
+                <ImageInput onImageChange={handleImageChange} />
+
                 <SelectInput
                     label={"Rol en la organización"}
                     onChange={onChange}
@@ -170,6 +180,7 @@ const NewUserForm = ({ formTitle, setOpen }) => {
                     name={selectsData[2].name}
                     value={values[selectsData[2].name]}
                 />
+                <ImageView file={file} />
             </div>
             <div className={styles.buttonContainer}>
                 <button type="submit" className={styles.submitButton}>
