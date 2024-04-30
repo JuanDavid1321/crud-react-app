@@ -11,17 +11,16 @@ const UsersActionButtons = (props) => {
             <ActionButton
                 buttonType={"read"}
                 IconComponent={<RemoveRedEyeIcon />}
-                ModalComponent={<></>}
+                ModalComponent={<>Modal para leer</>}
             />
             <ActionButton
                 buttonType={"update"}
                 IconComponent={<ModeEditIcon />}
-                ModalComponent={<></>}
+                ModalComponent={<>Modal para editar</>}
             />
             <ActionButton
                 buttonType={"delete"}
                 IconComponent={<DeleteIcon />}
-                ModalComponent={<></>}
                 deleteAction={handleDelete}
             />
         </>
