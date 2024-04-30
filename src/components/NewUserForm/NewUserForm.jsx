@@ -1,5 +1,9 @@
 import styles from "./NewUserForm.module.css";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { doc, serverTimestamp, setDoc } from "firebase/firestore";
+import { auth, db, storage } from "../../firebase";
 import GeneralInputs from "./GeneralInputs";
 import {
     inputs,
@@ -24,6 +28,7 @@ const NewUserForm = ({ formTitle }) => {
         role: "", //by default the user is a visitor
         image: "", //by default there's no selected file
     });
+    const navigate = useNavigate();
 
     const handleImageChange = (selectedFile) => {
         setValues({ ...values, image: selectedFile });
@@ -37,8 +42,22 @@ const NewUserForm = ({ formTitle }) => {
         setValues({ ...values, [e.target.name]: e.target.value });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
+        try {
+            const res = await createUserWithEmailAndPassword(
+                auth,
+                values.email,
+                values.password
+            );
+            await setDoc(doc(db, "users", res.user.uid), {
+                ...values,
+                timeStamp: serverTimestamp(),
+            });
+            navigate(0);
+        } catch (error) {
+            console.log(error);
+        }
     };
 
     console.log(values);
