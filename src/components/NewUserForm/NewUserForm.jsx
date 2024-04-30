@@ -33,7 +33,14 @@ const NewUserForm = ({ formTitle, setOpen }) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setOpen(false);
         try {
+            Swal.fire({
+                title: "Registrando usuario",
+                didOpen: () => {
+                    Swal.showLoading();
+                },
+            });
             const res = await createUserWithEmailAndPassword(
                 auth,
                 values.email,
@@ -43,8 +50,7 @@ const NewUserForm = ({ formTitle, setOpen }) => {
                 ...values,
                 timeStamp: serverTimestamp(),
             });
-            setOpen(false);
-            //Remember to remove navigate when onSnapShot Firebase method is implemented
+
             Swal.fire({
                 icon: "success",
                 title: "Usuario registrado",
@@ -54,8 +60,6 @@ const NewUserForm = ({ formTitle, setOpen }) => {
                 navigate(0);
             });
         } catch (error) {
-            setOpen(false);
-            //Remember to remove navigate when onSnapShot Firebase method is implemented
             Swal.fire({
                 icon: "error",
                 title: "Error",
@@ -64,11 +68,8 @@ const NewUserForm = ({ formTitle, setOpen }) => {
             }).then(() => {
                 navigate(0);
             });
-            console.log(error);
         }
     };
-
-    console.log(values);
 
     return (
         <form onSubmit={handleSubmit}>
