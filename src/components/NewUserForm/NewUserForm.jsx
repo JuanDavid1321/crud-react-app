@@ -29,10 +29,11 @@ const NewUserForm = ({ formTitle, setOpen }) => {
         idDocument: "",
         genderIdentity: "",
         role: "",
-        image: "",
+        image: "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg",
     });
     const [file, setFile] = useState("");
-    const [perc, setPerc] = useState(null);
+    const [fileUploadProcessPorcentage, setFileUploadProcessPorcentage] =
+        useState(null);
     const navigate = useNavigate();
 
     // useEffect for
@@ -51,7 +52,7 @@ const NewUserForm = ({ formTitle, setOpen }) => {
                     const progress =
                         (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
                     console.log("Upload is " + progress + "% done");
-                    setPerc(progress);
+                    setFileUploadProcessPorcentage(progress);
                     switch (snapshot.state) {
                         case "paused":
                             console.log("Upload is paused");
@@ -72,7 +73,7 @@ const NewUserForm = ({ formTitle, setOpen }) => {
                         (downloadURL) => {
                             setValues((prev) => ({
                                 ...prev,
-                                img: downloadURL,
+                                image: downloadURL,
                             }));
                         }
                     );
@@ -170,9 +171,6 @@ const NewUserForm = ({ formTitle, setOpen }) => {
                     name={selectsData[1].name}
                     value={values[selectsData[1].name]}
                 />
-                {/* Pass handleImageChange callback as a prop */}
-                <ImageInput onImageChange={handleImageChange} />
-
                 <SelectInput
                     label={"Rol en la organización"}
                     onChange={onChange}
@@ -180,10 +178,19 @@ const NewUserForm = ({ formTitle, setOpen }) => {
                     name={selectsData[2].name}
                     value={values[selectsData[2].name]}
                 />
+                {/* Pass handleImageChange callback as a prop */}
+                <ImageInput onImageChange={handleImageChange} />
                 <ImageView file={file} />
             </div>
             <div className={styles.buttonContainer}>
-                <button type="submit" className={styles.submitButton}>
+                <button
+                    disabled={
+                        fileUploadProcessPorcentage !== null &&
+                        fileUploadProcessPorcentage < 100
+                    }
+                    type="submit"
+                    className={styles.submitButton}
+                >
                     Enviar
                 </button>
             </div>
