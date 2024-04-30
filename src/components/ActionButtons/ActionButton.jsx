@@ -3,6 +3,7 @@ import * as React from "react";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import { modalStyle } from "../../utils/modalStyles";
+import NewUserForm from "../NewUserForm/NewUserForm";
 
 // Recieves  props from parent component, for reusability
 const ActionButton = (props) => {
@@ -24,18 +25,20 @@ const ActionButton = (props) => {
                     {IconComponent}
                 </button>
             ) : (
-                <button onClick={handleOpen} style={appliedStyles}>
-                    {IconComponent}
-                </button>
+                <>
+                    <button onClick={handleOpen} style={appliedStyles}>
+                        {IconComponent}
+                    </button>
+                    <Modal
+                        open={open}
+                        onClose={handleClose}
+                        aria-labelledby="modal-modal-title"
+                        aria-describedby="modal-modal-description"
+                    >
+                        <Box sx={modalStyle}>{<ModalComponent />}</Box>
+                    </Modal>
+                </>
             )}
-            <Modal
-                open={open}
-                onClose={handleClose}
-                aria-labelledby="modal-modal-title"
-                aria-describedby="modal-modal-description"
-            >
-                <Box sx={modalStyle}>{ModalComponent}</Box>
-            </Modal>
         </>
     );
 };

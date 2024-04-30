@@ -1,16 +1,14 @@
 import { DataGrid } from "@mui/x-data-grid";
-import UsersActionButtons from "../ActionButtons/UsersActionButtons/UsersActionButtons";
 
-const UsersTable = () => {
-    // TODO: implement delete action and pass it the user id to be deleted (remember to use sweetalert2)
-    const handleDelete = () => {
-        console.log("Funciona la eliminación");
-    };
-
+const UsersTable = ({
+    tableBasicColumns,
+    ActionButtons,
+    handleDelete,
+    ViewActionModal,
+    UpdateActionModal,
+}) => {
     const columns = [
-        { field: "id", headerName: "ID", flex: 1 },
-        { field: "firstName", headerName: "First name", flex: 1 },
-        { field: "lastName", headerName: "Last name", flex: 1 },
+        ...tableBasicColumns,
         {
             field: "actions",
             headerName: "Acciones",
@@ -18,7 +16,13 @@ const UsersTable = () => {
             renderCell: (params) => {
                 // const user = users.find((u) => u.id === params.row.id);
                 // return <ActionButtons user={user} />;
-                return <UsersActionButtons handleDelete={handleDelete} />;
+                return (
+                    <ActionButtons
+                        handleDelete={handleDelete}
+                        ViewCard={ViewActionModal}
+                        UpdateForm={UpdateActionModal}
+                    />
+                );
             },
         },
     ];

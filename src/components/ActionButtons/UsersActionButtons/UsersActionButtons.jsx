@@ -4,19 +4,20 @@ import ModeEditIcon from "@mui/icons-material/ModeEdit";
 import DeleteIcon from "@mui/icons-material/Delete";
 
 const UsersActionButtons = (props) => {
-    const { handleDelete } = props;
+    const { handleDelete, handleView, handleUpdate, ViewCard, UpdateForm } =
+        props;
 
     return (
         <>
             <ActionButton
                 buttonType={"read"}
                 IconComponent={<RemoveRedEyeIcon />}
-                ModalComponent={<>Modal para leer</>}
+                ModalComponent={ViewCard} //Replace with the name of the specific action component (form...)
             />
             <ActionButton
                 buttonType={"update"}
                 IconComponent={<ModeEditIcon />}
-                ModalComponent={<>Modal para editar</>}
+                ModalComponent={UpdateForm} //Replace with the name of the specific action component (form...)
             />
             <ActionButton
                 buttonType={"delete"}

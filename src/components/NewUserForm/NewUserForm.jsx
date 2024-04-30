@@ -89,7 +89,7 @@ const NewUserForm = ({ formTitle, setOpen }) => {
                     label={"Tipo de documento de identidad"}
                     onChange={onChange}
                     options={selectsData[1].options} // Options for this select are in /utils/registerInputsData.js
-                    name={selectsData[1].name}
+                    name={selectsData[0].name}
                 />
                 <GeneralInputs
                     {...idDocumentInput}
@@ -100,7 +100,7 @@ const NewUserForm = ({ formTitle, setOpen }) => {
                     label={"Identidad de género"}
                     onChange={onChange}
                     options={selectsData[0].options} // Options for this select are in /utils/registerInputsData.js
-                    name={selectsData[0].name}
+                    name={selectsData[1].name}
                 />
                 {/* Pass handleImageChange callback as a prop */}
                 <ImageInput onImageChange={handleImageChange} />{" "}
