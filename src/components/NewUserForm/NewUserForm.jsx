@@ -17,7 +17,7 @@ import SelectInput from "./SelectInput";
 
 const NewUserForm = ({ formTitle, setOpen }) => {
     // useState hook for onChange event in the input elements
-    const [values, setValues] = useState({});
+    const [values, setValues] = useState({ firstName: "Juan David" });
     const [file, setFile] = useState("");
     const [perc, setPerc] = useState(null);
     const navigate = useNavigate();
@@ -132,7 +132,7 @@ const NewUserForm = ({ formTitle, setOpen }) => {
                     <GeneralInputs
                         key={item.id}
                         {...item}
-                        value={values[inputs.name]}
+                        value={values[item.name]}
                         onChange={onChange}
                     />
                 ))}

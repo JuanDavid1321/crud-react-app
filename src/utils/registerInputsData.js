@@ -66,7 +66,7 @@ export const inputs = [
     {
         id: 5,
         name: "password",
-        type: "password",
+        type: "text",
         placeholder: "Escriba su nueva contraseña",
         label: "Contraseña",
         errorMessage:
