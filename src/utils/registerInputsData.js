@@ -43,7 +43,7 @@ export const inputs = [
         placeholder: "Seleccione su cumpleaños",
         label: "Fecha de nacimiento",
         errorMessage:
-            "¡Por favor, no debe estar vacío. Seleccione su fecha de cumpleaños!",
+            "¡Por favor, no debe estar vacío y/o usted debe ser mayor de trece (13) años. Seleccione su fecha de nacimiento!",
     },
     {
         id: 4,
@@ -66,7 +66,7 @@ export const inputs = [
     {
         id: 5,
         name: "password",
-        type: "password",
+        type: "text",
         placeholder: "Escriba su nueva contraseña",
         label: "Contraseña",
         errorMessage:
@@ -104,7 +104,7 @@ export const idDocumentInput = {
 export const selectsData = [
     {
         id: 1,
-        name: "idDocumentType",
+        name: "genderIdentity",
         options: [
             "Masculino",
             "Femenino",
@@ -115,7 +115,12 @@ export const selectsData = [
     },
     {
         id: 2,
-        name: "genderIdentity",
+        name: "idDocumentType",
         options: ["C.C.", "C.E.", "T.I.", "P.B.", "R.C."],
+    },
+    {
+        id: 3,
+        name: "role",
+        options: ["Usuario", "Moderador"],
     },
 ];

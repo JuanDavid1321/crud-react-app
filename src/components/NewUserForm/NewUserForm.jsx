@@ -1,5 +1,11 @@
 import styles from "./NewUserForm.module.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { auth, db, storage } from "../../firebase";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { doc, serverTimestamp, setDoc } from "firebase/firestore";
+import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import Swal from "sweetalert2";
 import GeneralInputs from "./GeneralInputs";
 import {
     inputs,
@@ -8,8 +14,9 @@ import {
 } from "../../utils/registerInputsData"; // Arrays with the props for each input element
 import ImageInput from "./ImageInput";
 import SelectInput from "./SelectInput";
+import ImageView from "./ImageView";
 
-const NewUserForm = ({ formTitle }) => {
+const NewUserForm = ({ formTitle, setOpen }) => {
     // useState hook for onChange event in the input elements
     const [values, setValues] = useState({
         firstName: "",
@@ -21,12 +28,58 @@ const NewUserForm = ({ formTitle }) => {
         idDocumentType: "",
         idDocument: "",
         genderIdentity: "",
-        role: "Visitante", //by default the user is a visitor
-        image: "", //by default there's no selected file
+        role: "",
+        image: "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg",
     });
+    const [file, setFile] = useState("");
+    const [fileUploadProcessPercentage, setFileUploadProcessPercentage] =
+        useState(null);
+    const navigate = useNavigate();
+
+    // useEffect for getting the file URL when a new file is uploaded
+    useEffect(() => {
+        const uploadFile = () => {
+            const name = new Date().getTime() + file.name; //if is a file with the same name of a previous one it will be renamed with date
+            const storageRef = ref(storage, name);
+
+            const uploadTask = uploadBytesResumable(storageRef, file); // upload the file to storage in Firebase
+
+            // storage Firebase progress listener
+            uploadTask.on(
+                "state_changed",
+                (snapshot) => {
+                    const progress =
+                        (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                    setFileUploadProcessPercentage(progress);
+                    switch (snapshot.state) {
+                        case "paused":
+                            console.log("Upload is paused");
+                            break;
+                        default:
+                            break;
+                    }
+                },
+                (error) => {
+                    console.log(error);
+                },
+                // if everything is ok, is going to give an image URL for storage it with the other input values
+                () => {
+                    getDownloadURL(uploadTask.snapshot.ref).then(
+                        (downloadURL) => {
+                            setValues((prev) => ({
+                                ...prev,
+                                image: downloadURL,
+                            }));
+                        }
+                    );
+                }
+            );
+        };
+        file && uploadFile(); // if we have a file, then call the function to start uploading it
+    }, [file]);
 
     const handleImageChange = (selectedFile) => {
-        setValues({ ...values, image: selectedFile });
+        setFile(selectedFile);
     };
 
     const onChange = (e) => {
@@ -37,11 +90,47 @@ const NewUserForm = ({ formTitle }) => {
         setValues({ ...values, [e.target.name]: e.target.value });
     };
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
+    const handleSubmit = async (e) => {
+        e.preventDefault(); //prevent page refresh when submitting the form
+        setOpen(false); //close modal after submiting the form
+        try {
+            Swal.fire({
+                title: "Registrando usuario",
+                didOpen: () => {
+                    Swal.showLoading();
+                },
+            });
+            // use auth provider to create a new user with email and password
+            const response = await createUserWithEmailAndPassword(
+                auth,
+                values.email,
+                values.password
+            );
+            // upload values to Firestore
+            await setDoc(doc(db, "users", response.user.uid), {
+                ...values,
+                timeStamp: serverTimestamp(),
+            });
+            Swal.fire({
+                icon: "success",
+                title: "Usuario registrado",
+                showConfirmButton: false,
+                timer: 3000,
+            }).then(() => {
+                navigate(0);
+            });
+        } catch (error) {
+            // show an error message if something went wrong
+            Swal.fire({
+                icon: "error",
+                title: "Error",
+                text: error.message,
+                showConfirmButton: true,
+            }).then(() => {
+                navigate(0);
+            });
+        }
     };
-
-    console.log(values);
 
     return (
         <form onSubmit={handleSubmit}>
@@ -52,17 +141,17 @@ const NewUserForm = ({ formTitle }) => {
                     <GeneralInputs
                         key={item.id}
                         {...item}
-                        value={values[inputs.name]}
+                        value={values[item.name]}
                         onChange={onChange}
                     />
                 ))}
                 {/* Pass handleSelectChange callback as a prop */}
                 <SelectInput
                     label={"Tipo de documento de identidad"}
-                    errorMessage={"¡Por favor, debe seleccionar una opción!"}
                     onChange={onChange}
-                    options={selectsData[1].options} // Options for this select are in /utils/registerInputsData.js
-                    name={selectsData[1].name}
+                    options={selectsData[0].options} // Options for this select are in /utils/registerInputsData.js
+                    name={selectsData[0].name}
+                    value={values[selectsData[0].name]}
                 />
                 <GeneralInputs
                     {...idDocumentInput}
@@ -71,16 +160,31 @@ const NewUserForm = ({ formTitle }) => {
                 />
                 <SelectInput
                     label={"Identidad de género"}
-                    errorMessage={"¡Por favor, debe seleccionar una opción!"}
                     onChange={onChange}
-                    options={selectsData[0].options} // Options for this select are in /utils/registerInputsData.js
-                    name={selectsData[0].name}
+                    options={selectsData[1].options} // Options for this select are in /utils/registerInputsData.js
+                    name={selectsData[1].name}
+                    value={values[selectsData[1].name]}
+                />
+                <SelectInput
+                    label={"Rol en la organización"}
+                    onChange={onChange}
+                    options={selectsData[2].options} // Options for this select are in /utils/registerInputsData.js
+                    name={selectsData[2].name}
+                    value={values[selectsData[2].name]}
                 />
                 {/* Pass handleImageChange callback as a prop */}
-                <ImageInput onImageChange={handleImageChange} />{" "}
+                <ImageInput onImageChange={handleImageChange} />
+                <ImageView file={file} />
             </div>
             <div className={styles.buttonContainer}>
-                <button type="submit" className={styles.submitButton}>
+                <button
+                    disabled={
+                        fileUploadProcessPercentage !== null &&
+                        fileUploadProcessPercentage < 100
+                    }
+                    type="submit"
+                    className={styles.submitButton}
+                >
                     Enviar
                 </button>
             </div>
