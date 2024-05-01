@@ -63,9 +63,9 @@ const UsersTable = ({ tableBasicColumns, tableType }) => {
                             <UsersActionButtons
                                 type={tableType}
                                 selectedElement={selectedElement}
-                                handleDelete={handleDelete}
                                 ViewCard={UsersInfoCard}
                                 UpdateForm={UpdateUserForm}
+                                handleDelete={handleDelete}
                             />
                         );
 

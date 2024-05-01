@@ -61,6 +61,7 @@ const ActionButton = (props) => {
                                 <ModalContent
                                     setOpen={setOpen}
                                     elementToUpdate={selectedElement}
+                                    formTitle={"Editar usuario"}
                                 />
                             }
                         </Box>
