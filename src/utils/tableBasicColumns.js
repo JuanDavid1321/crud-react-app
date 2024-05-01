@@ -30,7 +30,7 @@ export const usersColumns = [
             );
         },
     },
-    { field: "email", headerName: "Correo electrónico", flex: 1 },
-    { field: "password", headerName: "Contraseña", flex: 1 },
     { field: "role", headerName: "Rol", flex: 1 },
+    { field: "email", headerName: "Correo electrónico", flex: 1 },
+    { field: "phoneNumber", headerName: "Celular", flex: 1 },
 ];

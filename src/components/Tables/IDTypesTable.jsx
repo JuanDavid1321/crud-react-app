@@ -1,5 +1,4 @@
 import { DataGrid } from "@mui/x-data-grid";
-import UsersActionButtons from "../ActionButtons/UsersActionButtons/UsersActionButtons";
 import IDTypesActionButtons from "../ActionButtons/IDTypesActionButtons/IDTypesActionButtons";
 
 const IDTypesTable = () => {
