@@ -1,8 +1,44 @@
 import { DataGrid } from "@mui/x-data-grid";
 import UsersActionButtons from "../ActionButtons/UsersActionButtons/UsersActionButtons";
 import NewUserForm from "../NewUserForm/NewUserForm";
+import { useEffect, useState } from "react";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "../../firebase";
+import Swal from "sweetalert2";
 
-const UsersTable = ({ tableBasicColumns }) => {
+const UsersTable = ({ tableBasicColumns, tableType }) => {
+    const [data, setData] = useState([]); // for fetching data
+    const collectionType = tableType;
+
+    // Hook for getting documents from Firestore Collection
+    useEffect(() => {
+        const fetchData = async () => {
+            let list = [];
+            try {
+                const querySnapshot = await getDocs(
+                    collection(db, collectionType)
+                );
+                querySnapshot.forEach((doc) => {
+                    list.push({ id: doc.id, ...doc.data() });
+                });
+                setData(list);
+            } catch (error) {
+                console.log(error);
+            } finally {
+                //  Always executed
+                // Swal alert close when the data is loaded
+                Swal.close();
+            }
+        };
+        Swal.fire({
+            title: "Actualizando datos",
+            didOpen: () => {
+                Swal.showLoading();
+            },
+        });
+        fetchData();
+    }, []);
+
     // TODO: implement delete action and pass it the user id to be deleted (remember to use sweetalert2)
     const handleDelete = () => {
         console.log("Funciona la eliminación");
@@ -14,7 +50,8 @@ const UsersTable = ({ tableBasicColumns }) => {
             headerName: "Acciones",
             flex: 1,
             renderCell: (params) => {
-                // const user = users.find((u) => u.id === params.row.id);
+                // const selectedUser = data.find((u) => u.id === params.row.id);
+                // console.log(selectedUser);
                 // return <ActionButtons user={user} />;
                 return (
                     <UsersActionButtons
@@ -27,18 +64,6 @@ const UsersTable = ({ tableBasicColumns }) => {
         },
     ];
 
-    const rows = [
-        { id: 1, lastName: "Snow", firstName: "Jon" },
-        { id: 2, lastName: "Lannister", firstName: "Cersei" },
-        { id: 3, lastName: "Lannister", firstName: "Jaime" },
-        { id: 4, lastName: "Stark", firstName: "Arya" },
-        { id: 5, lastName: "Targaryen", firstName: "Daenerys" },
-        { id: 6, lastName: "Melisandre", firstName: null },
-        { id: 7, lastName: "Clifford", firstName: "Ferrara" },
-        { id: 8, lastName: "Frances", firstName: "Rossini" },
-        { id: 9, lastName: "Roxie", firstName: "Harvey" },
-    ];
-
     return (
         <div
             style={{
@@ -46,7 +71,7 @@ const UsersTable = ({ tableBasicColumns }) => {
             }}
         >
             <DataGrid
-                rows={rows}
+                rows={data}
                 columns={columns}
                 initialState={{
                     pagination: {

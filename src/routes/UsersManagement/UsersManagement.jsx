@@ -20,7 +20,10 @@ const UsersManagement = () => {
                             ModalContent={NewUserForm}
                         />
                     </div>
-                    <UsersTable tableBasicColumns={usersColumns} />
+                    <UsersTable
+                        tableBasicColumns={usersColumns}
+                        tableType={"users"}
+                    />
                 </div>
             </div>
         </>
