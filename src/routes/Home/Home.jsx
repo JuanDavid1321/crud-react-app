@@ -1,7 +1,7 @@
 import "./Home.css";
 import { useGoogleAuth } from "../../context/GoogleAuthContext";
 import Header from "../../components/Header/Header";
-import WelcomeCard from "../../components/cards/WelcomeCard/WelcomeCard";
+import WelcomeCard from "../../components/Cards/WelcomeCard/WelcomeCard";
 import HeaderForGoogleUsers from "../../components/Header/HeaderForGoogleUsers";
 
 const Home = () => {

@@ -1,9 +1,9 @@
 import { DataGrid } from "@mui/x-data-grid";
+import NewUserForm from "../Forms/NewUserForm/NewUserForm";
 import UsersActionButtons from "../ActionButtons/UsersActionButtons/UsersActionButtons";
-import NewUserForm from "../NewUserForm/NewUserForm";
-import UsersInfoCard from "../cards/UsersInfoCard/UsersInfoCard";
+import UsersInfoCard from "../Cards/UsersInfoCard/UsersInfoCard";
 import { useEffect, useState } from "react";
-import { collection, getDocs, onSnapshot } from "firebase/firestore";
+import { collection, getDocs } from "firebase/firestore";
 import { db } from "../../firebase";
 import Swal from "sweetalert2";
 

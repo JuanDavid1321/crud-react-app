@@ -1,7 +1,7 @@
 import styles from "./NewUserForm.module.css";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { auth, db, storage } from "../../firebase";
+import { auth, db, storage } from "../../../firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { doc, serverTimestamp, setDoc } from "firebase/firestore";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
@@ -10,7 +10,7 @@ import {
     inputs,
     idDocumentInput,
     selectsData,
-} from "../../utils/registerInputsData"; // Arrays with the props for each input element
+} from "../../../utils/registerInputsData"; // Arrays with the props for each input element
 import GeneralInputs from "./GeneralInputs";
 import ImageInput from "./ImageInput";
 import SelectInput from "./SelectInput";
