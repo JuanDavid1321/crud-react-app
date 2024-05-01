@@ -2,12 +2,18 @@ import { buttonStyles } from "../../utils/actionButtonStyles";
 import * as React from "react";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
-import { modalStyle } from "../../utils/modalStyles";
+import { modalStyle, readModalStyle } from "../../utils/modalStyles";
 
 // Recieves  props from parent component, for reusability
 const ActionButton = (props) => {
     // destructuring the props object
-    const { buttonType, IconComponent, ModalContent, deleteAction } = props;
+    const {
+        buttonType,
+        IconComponent,
+        ModalContent,
+        handleClick,
+        selectedElement,
+    } = props;
 
     const appliedStyles = buttonStyles[buttonType];
     const [open, setOpen] = React.useState(false);
@@ -32,7 +38,9 @@ const ActionButton = (props) => {
                         aria-labelledby="modal-modal-title"
                         aria-describedby="modal-modal-description"
                     >
-                        <Box sx={modalStyle}>{<ModalContent />}</Box>
+                        <Box sx={readModalStyle}>
+                            {<ModalContent elementToRead={selectedElement} />}
+                        </Box>
                     </Modal>
                 </>
             );
@@ -57,7 +65,7 @@ const ActionButton = (props) => {
 
         case "delete":
             return (
-                <button onClick={deleteAction} style={appliedStyles}>
+                <button onClick={handleClick} style={appliedStyles}>
                     {IconComponent}
                 </button>
             );

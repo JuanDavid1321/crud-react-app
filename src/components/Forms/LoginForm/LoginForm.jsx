@@ -1,6 +1,6 @@
 import styles from "./LoginForm.module.css";
 import { useState } from "react";
-import GeneralInputs from "../../NewUserForm/GeneralInputs";
+import GeneralInputs from "../NewUserForm/GeneralInputs";
 import GoogleAuth from "../../GoogleAuth/GoogleAuth";
 import { emailInput, passwordInput } from "../../../utils/loginInputsData";
 

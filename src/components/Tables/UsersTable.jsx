@@ -1,6 +1,7 @@
 import { DataGrid } from "@mui/x-data-grid";
+import NewUserForm from "../Forms/NewUserForm/NewUserForm";
 import UsersActionButtons from "../ActionButtons/UsersActionButtons/UsersActionButtons";
-import NewUserForm from "../NewUserForm/NewUserForm";
+import UsersInfoCard from "../Cards/UsersInfoCard/UsersInfoCard";
 import { useEffect, useState } from "react";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../../firebase";
@@ -37,7 +38,7 @@ const UsersTable = ({ tableBasicColumns, tableType }) => {
             },
         });
         fetchData();
-    }, []);
+    }, [collectionType]);
 
     // TODO: implement delete action and pass it the user id to be deleted (remember to use sweetalert2)
     const handleDelete = () => {
@@ -50,16 +51,26 @@ const UsersTable = ({ tableBasicColumns, tableType }) => {
             headerName: "Acciones",
             flex: 1,
             renderCell: (params) => {
-                // const selectedUser = data.find((u) => u.id === params.row.id);
-                // console.log(selectedUser);
-                // return <ActionButtons user={user} />;
-                return (
-                    <UsersActionButtons
-                        handleDelete={handleDelete}
-                        ViewCard={NewUserForm}
-                        UpdateForm={NewUserForm}
-                    />
+                const selectedElement = data.find(
+                    (element) => element.id === params.row.id
                 );
+                // console.log(selectedElement);
+                // return <ActionButtons user={user} />;
+                switch (tableType) {
+                    case "users":
+                        return (
+                            <UsersActionButtons
+                                type={tableType}
+                                selectedElement={selectedElement}
+                                handleDelete={handleDelete}
+                                ViewCard={UsersInfoCard}
+                                UpdateForm={NewUserForm}
+                            />
+                        );
+
+                    default:
+                        break;
+                }
             },
         },
     ];
