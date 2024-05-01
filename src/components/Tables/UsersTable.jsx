@@ -2,7 +2,7 @@ import { DataGrid } from "@mui/x-data-grid";
 import UsersActionButtons from "../ActionButtons/UsersActionButtons/UsersActionButtons";
 import NewUserForm from "../NewUserForm/NewUserForm";
 import { useEffect, useState } from "react";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, onSnapshot } from "firebase/firestore";
 import { db } from "../../firebase";
 
 const UsersTable = ({ tableBasicColumns }) => {
@@ -10,20 +10,38 @@ const UsersTable = ({ tableBasicColumns }) => {
 
     // Hook for getting documents from Firestore Collection 'users'
     useEffect(() => {
-        const fetchData = async () => {
-            let list = [];
-            try {
-                const querySnapshot = await getDocs(collection(db, "users"));
-                querySnapshot.forEach((doc) => {
+        // const fetchData = async () => {
+        //     let list = [];
+        //     try {
+        //         const querySnapshot = await getDocs(collection(db, "users"));
+        //         querySnapshot.forEach((doc) => {
+        //             list.push({ id: doc.id, ...doc.data() });
+        //         });
+        //         setData(list);
+        //     } catch (error) {
+        //         console.log(error);
+        //     }
+        // };
+        // fetchData();
+        // console.log(data);
+        // LISTEN (REALTIME)
+        const unsub = onSnapshot(
+            collection(db, "users"),
+            (snapShot) => {
+                let list = [];
+                snapShot.docs.forEach((doc) => {
                     list.push({ id: doc.id, ...doc.data() });
                 });
                 setData(list);
-            } catch (error) {
+            },
+            (error) => {
                 console.log(error);
             }
+        );
+
+        return () => {
+            unsub();
         };
-        fetchData();
-        console.log(data);
     }, []);
 
     // TODO: implement delete action and pass it the user id to be deleted (remember to use sweetalert2)

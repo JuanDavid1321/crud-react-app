@@ -1,8 +1,8 @@
 export const usersColumns = [
-    { field: "id", headerName: "ID", flex: 1 },
+    { field: "id", headerName: "ID", with: 50 },
     {
-        field: "image",
-        headerName: "Imagen",
+        field: "user",
+        headerName: "Usuario",
         flex: 1,
         renderCell: (params) => {
             return (
@@ -10,9 +10,9 @@ export const usersColumns = [
                     className="cellWithImg"
                     style={{
                         display: "flex",
-                        justifyContent: "center",
+                        justifyContent: "start",
                         alignItems: "center",
-                        paddingTop: "5px",
+                        paddingTop: "1px",
                     }}
                 >
                     <img
@@ -25,13 +25,16 @@ export const usersColumns = [
                             borderRadius: "50%",
                         }}
                     />
-                    {params.row.username}
+                    <p style={{ marginLeft: "8px" }}>
+                        {params.row.firstName} {params.row.lastName}
+                    </p>
                 </div>
             );
         },
     },
     { field: "email", headerName: "Correo electrónico", flex: 1 },
-    { field: "firstName", headerName: "Nombres", flex: 1 },
-    { field: "lastName", headerName: "Apellidos", flex: 1 },
+    { field: "password", headerName: "Contraseña", flex: 1 },
+    // { field: "firstName", headerName: "Nombres", flex: 1 },
+    // { field: "lastName", headerName: "Apellidos", flex: 1 },
     { field: "role", headerName: "Rol", flex: 1 },
 ];
