@@ -1,8 +1,31 @@
 import { DataGrid } from "@mui/x-data-grid";
 import UsersActionButtons from "../ActionButtons/UsersActionButtons/UsersActionButtons";
 import NewUserForm from "../NewUserForm/NewUserForm";
+import { useEffect, useState } from "react";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "../../firebase";
 
 const UsersTable = ({ tableBasicColumns }) => {
+    const [data, setData] = useState([]); // for fetching data
+
+    // Hook for getting documents from Firestore Collection 'users'
+    useEffect(() => {
+        const fetchData = async () => {
+            let list = [];
+            try {
+                const querySnapshot = await getDocs(collection(db, "users"));
+                querySnapshot.forEach((doc) => {
+                    list.push({ id: doc.id, ...doc.data() });
+                });
+                setData(list);
+            } catch (error) {
+                console.log(error);
+            }
+        };
+        fetchData();
+        console.log(data);
+    }, []);
+
     // TODO: implement delete action and pass it the user id to be deleted (remember to use sweetalert2)
     const handleDelete = () => {
         console.log("Funciona la eliminación");
@@ -46,7 +69,7 @@ const UsersTable = ({ tableBasicColumns }) => {
             }}
         >
             <DataGrid
-                rows={rows}
+                rows={data}
                 columns={columns}
                 initialState={{
                     pagination: {
