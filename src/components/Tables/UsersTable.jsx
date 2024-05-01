@@ -50,7 +50,8 @@ const UsersTable = ({ tableBasicColumns, tableType }) => {
             headerName: "Acciones",
             flex: 1,
             renderCell: (params) => {
-                // const user = users.find((u) => u.id === params.row.id);
+                // const selectedUser = data.find((u) => u.id === params.row.id);
+                // console.log(selectedUser);
                 // return <ActionButtons user={user} />;
                 return (
                     <UsersActionButtons
