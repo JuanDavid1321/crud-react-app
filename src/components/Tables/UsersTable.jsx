@@ -6,15 +6,18 @@ import { collection, getDocs } from "firebase/firestore";
 import { db } from "../../firebase";
 import Swal from "sweetalert2";
 
-const UsersTable = ({ tableBasicColumns }) => {
+const UsersTable = ({ tableBasicColumns, tableType }) => {
     const [data, setData] = useState([]); // for fetching data
+    const collectionType = tableType;
 
-    // Hook for getting documents from Firestore Collection 'users'
+    // Hook for getting documents from Firestore Collection
     useEffect(() => {
         const fetchData = async () => {
             let list = [];
             try {
-                const querySnapshot = await getDocs(collection(db, "users"));
+                const querySnapshot = await getDocs(
+                    collection(db, collectionType)
+                );
                 querySnapshot.forEach((doc) => {
                     list.push({ id: doc.id, ...doc.data() });
                 });
@@ -24,7 +27,7 @@ const UsersTable = ({ tableBasicColumns }) => {
             } finally {
                 //  Always executed
                 // Swal alert close when the data is loaded
-                Swal.close(); // Close the SweetAlert
+                Swal.close();
             }
         };
         Swal.fire({
@@ -34,7 +37,6 @@ const UsersTable = ({ tableBasicColumns }) => {
             },
         });
         fetchData();
-        console.log(data);
     }, []);
 
     // TODO: implement delete action and pass it the user id to be deleted (remember to use sweetalert2)
@@ -59,18 +61,6 @@ const UsersTable = ({ tableBasicColumns }) => {
                 );
             },
         },
-    ];
-
-    const rows = [
-        { id: 1, lastName: "Snow", firstName: "Jon" },
-        { id: 2, lastName: "Lannister", firstName: "Cersei" },
-        { id: 3, lastName: "Lannister", firstName: "Jaime" },
-        { id: 4, lastName: "Stark", firstName: "Arya" },
-        { id: 5, lastName: "Targaryen", firstName: "Daenerys" },
-        { id: 6, lastName: "Melisandre", firstName: null },
-        { id: 7, lastName: "Clifford", firstName: "Ferrara" },
-        { id: 8, lastName: "Frances", firstName: "Rossini" },
-        { id: 9, lastName: "Roxie", firstName: "Harvey" },
     ];
 
     return (

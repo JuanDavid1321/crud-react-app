@@ -6,12 +6,12 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import { doc, serverTimestamp, setDoc } from "firebase/firestore";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import Swal from "sweetalert2";
-import GeneralInputs from "./GeneralInputs";
 import {
     inputs,
     idDocumentInput,
     selectsData,
 } from "../../utils/registerInputsData"; // Arrays with the props for each input element
+import GeneralInputs from "./GeneralInputs";
 import ImageInput from "./ImageInput";
 import SelectInput from "./SelectInput";
 import ImageView from "./ImageView";

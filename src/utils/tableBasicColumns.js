@@ -7,7 +7,6 @@ export const usersColumns = [
         renderCell: (params) => {
             return (
                 <div
-                    className="cellWithImg"
                     style={{
                         display: "flex",
                         justifyContent: "start",
@@ -16,7 +15,6 @@ export const usersColumns = [
                     }}
                 >
                     <img
-                        className="cellImg"
                         src={params.row.image}
                         alt="avatar"
                         style={{
@@ -34,7 +32,5 @@ export const usersColumns = [
     },
     { field: "email", headerName: "Correo electrónico", flex: 1 },
     { field: "password", headerName: "Contraseña", flex: 1 },
-    // { field: "firstName", headerName: "Nombres", flex: 1 },
-    // { field: "lastName", headerName: "Apellidos", flex: 1 },
     { field: "role", headerName: "Rol", flex: 1 },
 ];
