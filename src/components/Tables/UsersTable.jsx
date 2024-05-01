@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../../firebase";
 import Swal from "sweetalert2";
+import UpdateUserForm from "../Forms/UpdateUserForm/UpdateUserForm";
 
 const UsersTable = ({ tableBasicColumns, tableType }) => {
     const [data, setData] = useState([]); // for fetching data
@@ -64,7 +65,7 @@ const UsersTable = ({ tableBasicColumns, tableType }) => {
                                 selectedElement={selectedElement}
                                 handleDelete={handleDelete}
                                 ViewCard={UsersInfoCard}
-                                UpdateForm={NewUserForm}
+                                UpdateForm={UpdateUserForm}
                             />
                         );
 

@@ -57,7 +57,12 @@ const ActionButton = (props) => {
                         aria-describedby="modal-modal-description"
                     >
                         <Box sx={modalStyle}>
-                            {<ModalContent setOpen={setOpen} />}
+                            {
+                                <ModalContent
+                                    setOpen={setOpen}
+                                    elementToUpdate={selectedElement}
+                                />
+                            }
                         </Box>
                     </Modal>
                 </>
