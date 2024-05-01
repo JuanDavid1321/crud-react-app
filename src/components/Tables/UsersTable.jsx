@@ -2,46 +2,39 @@ import { DataGrid } from "@mui/x-data-grid";
 import UsersActionButtons from "../ActionButtons/UsersActionButtons/UsersActionButtons";
 import NewUserForm from "../NewUserForm/NewUserForm";
 import { useEffect, useState } from "react";
-import { collection, getDocs, onSnapshot } from "firebase/firestore";
+import { collection, getDocs } from "firebase/firestore";
 import { db } from "../../firebase";
+import Swal from "sweetalert2";
 
 const UsersTable = ({ tableBasicColumns }) => {
     const [data, setData] = useState([]); // for fetching data
 
     // Hook for getting documents from Firestore Collection 'users'
     useEffect(() => {
-        // const fetchData = async () => {
-        //     let list = [];
-        //     try {
-        //         const querySnapshot = await getDocs(collection(db, "users"));
-        //         querySnapshot.forEach((doc) => {
-        //             list.push({ id: doc.id, ...doc.data() });
-        //         });
-        //         setData(list);
-        //     } catch (error) {
-        //         console.log(error);
-        //     }
-        // };
-        // fetchData();
-        // console.log(data);
-        // LISTEN (REALTIME)
-        const unsub = onSnapshot(
-            collection(db, "users"),
-            (snapShot) => {
-                let list = [];
-                snapShot.docs.forEach((doc) => {
+        const fetchData = async () => {
+            let list = [];
+            try {
+                const querySnapshot = await getDocs(collection(db, "users"));
+                querySnapshot.forEach((doc) => {
                     list.push({ id: doc.id, ...doc.data() });
                 });
                 setData(list);
-            },
-            (error) => {
+            } catch (error) {
                 console.log(error);
+            } finally {
+                //  Always executed
+                // Swal alert close when the data is loaded
+                Swal.close(); // Close the SweetAlert
             }
-        );
-
-        return () => {
-            unsub();
         };
+        Swal.fire({
+            title: "Actualizando datos",
+            didOpen: () => {
+                Swal.showLoading();
+            },
+        });
+        fetchData();
+        console.log(data);
     }, []);
 
     // TODO: implement delete action and pass it the user id to be deleted (remember to use sweetalert2)
