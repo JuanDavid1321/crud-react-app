@@ -1,8 +1,9 @@
 import { DataGrid } from "@mui/x-data-grid";
 import UsersActionButtons from "../ActionButtons/UsersActionButtons/UsersActionButtons";
 import NewUserForm from "../NewUserForm/NewUserForm";
+import UsersInfoCard from "../cards/UsersInfoCard/UsersInfoCard";
 import { useEffect, useState } from "react";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, onSnapshot } from "firebase/firestore";
 import { db } from "../../firebase";
 import Swal from "sweetalert2";
 
@@ -50,16 +51,26 @@ const UsersTable = ({ tableBasicColumns, tableType }) => {
             headerName: "Acciones",
             flex: 1,
             renderCell: (params) => {
-                // const selectedUser = data.find((u) => u.id === params.row.id);
-                // console.log(selectedUser);
-                // return <ActionButtons user={user} />;
-                return (
-                    <UsersActionButtons
-                        handleDelete={handleDelete}
-                        ViewCard={NewUserForm}
-                        UpdateForm={NewUserForm}
-                    />
+                const selectedElement = data.find(
+                    (element) => element.id === params.row.id
                 );
+                // console.log(selectedElement);
+                // return <ActionButtons user={user} />;
+                switch (tableType) {
+                    case "users":
+                        return (
+                            <UsersActionButtons
+                                type={tableType}
+                                selectedElement={selectedElement}
+                                handleDelete={handleDelete}
+                                ViewCard={UsersInfoCard}
+                                UpdateForm={NewUserForm}
+                            />
+                        );
+
+                    default:
+                        break;
+                }
             },
         },
     ];

@@ -14,7 +14,7 @@ const GoogleAuth = () => {
         if (googleUser) {
             navigate("/");
         }
-    }, [googleUser, navigate]); //googleUser and navigate state changing are dependencies of the effect hook
+    }, [googleUser]); //googleUser and navigate state changing are dependencies of the effect hook
 
     return (
         <>
