@@ -21,8 +21,9 @@ const UpdateUserForm = ({ formTitle, setOpen, elementToUpdate }) => {
     const [file, setFile] = useState("");
     const [fileUploadProcessPercentage, setFileUploadProcessPercentage] =
         useState(null);
+
     const navigate = useNavigate();
-    console.log(elementToUpdate);
+
     // useEffect for getting the file URL when a new file is uploaded
     useEffect(() => {
         const uploadFile = () => {
@@ -115,6 +116,7 @@ const UpdateUserForm = ({ formTitle, setOpen, elementToUpdate }) => {
             });
         }
     };
+
     return (
         <form onSubmit={handleSubmit}>
             <h2 className={styles.formTitle}>{formTitle}</h2>
