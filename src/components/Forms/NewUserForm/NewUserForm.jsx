@@ -115,7 +115,7 @@ const NewUserForm = ({ formTitle, setOpen }) => {
                 icon: "success",
                 title: "Usuario registrado",
                 showConfirmButton: false,
-                timer: 3000,
+                timer: 1500,
             }).then(() => {
                 navigate(0);
             });

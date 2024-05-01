@@ -38,7 +38,7 @@ const UsersTable = ({ tableBasicColumns, tableType }) => {
             },
         });
         fetchData();
-    }, []);
+    }, [collectionType]);
 
     // TODO: implement delete action and pass it the user id to be deleted (remember to use sweetalert2)
     const handleDelete = () => {
