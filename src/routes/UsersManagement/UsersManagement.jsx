@@ -6,7 +6,7 @@ import CreateActionButtonAndModal from "../../components/ActionButtons/CreateAct
 import Table from "../../components/Tables/Table";
 import { usersColumns } from "../../utils/tableBasicColumns";
 import UpdateUserForm from "../../components/Forms/UpdateUserForm/UpdateUserForm";
-import UsersInfoCard from "../../components/Cards/UsersInfoCard/UsersInfoCard";
+import UsersInfoCard from "../../components/InfoCards/UsersInfoCard/UsersInfoCard";
 
 const UsersManagement = () => {
     return (
