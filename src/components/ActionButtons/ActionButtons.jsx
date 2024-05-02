@@ -1,9 +1,9 @@
-import ActionButton from "../ActionButton";
+import ActionButton from "./ActionButton";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import ModeEditIcon from "@mui/icons-material/ModeEdit";
 import DeleteIcon from "@mui/icons-material/Delete";
 
-const UsersActionButtons = (props) => {
+const ActionButtons = (props) => {
     const { type, selectedElement, ViewCard, UpdateForm, handleDelete } = props;
 
     switch (type) {
@@ -30,8 +30,22 @@ const UsersActionButtons = (props) => {
                 </>
             );
         default:
-            break;
+            return (
+                <>
+                    <ActionButton
+                        buttonType={"update"}
+                        selectedElement={selectedElement}
+                        IconComponent={<ModeEditIcon />}
+                        ModalContent={UpdateForm} //Replace with the name of the specific action component (form...)
+                    />
+                    <ActionButton
+                        buttonType={"delete"}
+                        IconComponent={<DeleteIcon />}
+                        handleClick={handleDelete}
+                    />
+                </>
+            );
     }
 };
 
-export default UsersActionButtons;
+export default ActionButtons;

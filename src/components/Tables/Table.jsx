@@ -1,13 +1,13 @@
 import { DataGrid } from "@mui/x-data-grid";
-import UsersActionButtons from "../ActionButtons/UsersActionButtons/UsersActionButtons";
-import UsersInfoCard from "../Cards/UsersInfoCard/UsersInfoCard";
+import ActionButtons from "../ActionButtons/ActionButtons";
 import { useEffect, useState } from "react";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../../firebase";
 import Swal from "sweetalert2";
-import UpdateUserForm from "../Forms/UpdateUserForm/UpdateUserForm";
 
-const UsersTable = ({ tableBasicColumns, tableType }) => {
+const Table = (props) => {
+    const { tableBasicColumns, tableType, UpdateForm, ViewCard } = props;
+
     const [data, setData] = useState([]); // for fetching data
     const collectionType = tableType;
 
@@ -60,11 +60,11 @@ const UsersTable = ({ tableBasicColumns, tableType }) => {
                 switch (tableType) {
                     case "users":
                         return (
-                            <UsersActionButtons
+                            <ActionButtons
                                 type={tableType}
                                 selectedElement={selectedElement}
-                                ViewCard={UsersInfoCard}
-                                UpdateForm={UpdateUserForm}
+                                ViewCard={ViewCard}
+                                UpdateForm={UpdateForm}
                                 handleDelete={() =>
                                     handleDelete(selectedElement.id)
                                 }
@@ -73,10 +73,10 @@ const UsersTable = ({ tableBasicColumns, tableType }) => {
 
                     default:
                         return (
-                            <UsersActionButtons
+                            <ActionButtons
                                 type={tableType}
                                 selectedElement={selectedElement}
-                                UpdateForm={UpdateUserForm}
+                                UpdateForm={UpdateForm}
                                 handleDelete={() =>
                                     handleDelete(selectedElement.id)
                                 }
@@ -107,4 +107,4 @@ const UsersTable = ({ tableBasicColumns, tableType }) => {
     );
 };
 
-export default UsersTable;
+export default Table;

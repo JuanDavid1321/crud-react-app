@@ -5,6 +5,7 @@ import Modal from "@mui/material/Modal";
 import { modalStyle } from "../../utils/modalStyles";
 
 export default function CreateActionButtonAndModal({
+    formTitle,
     ModalContent,
     IconForButton,
     textForButton,
@@ -26,12 +27,7 @@ export default function CreateActionButtonAndModal({
                 aria-describedby="modal-modal-description"
             >
                 <Box sx={modalStyle}>
-                    {
-                        <ModalContent
-                            formTitle={"Crear nuevo usuario"}
-                            setOpen={setOpen}
-                        />
-                    }
+                    {<ModalContent formTitle={formTitle} setOpen={setOpen} />}
                 </Box>
             </Modal>
         </>
