@@ -1,11 +1,11 @@
 import { DataGrid } from "@mui/x-data-grid";
-import NewUserForm from "../Forms/NewUserForm/NewUserForm";
 import UsersActionButtons from "../ActionButtons/UsersActionButtons/UsersActionButtons";
 import UsersInfoCard from "../Cards/UsersInfoCard/UsersInfoCard";
 import { useEffect, useState } from "react";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../../firebase";
 import Swal from "sweetalert2";
+import UpdateUserForm from "../Forms/UpdateUserForm/UpdateUserForm";
 
 const UsersTable = ({ tableBasicColumns, tableType }) => {
     const [data, setData] = useState([]); // for fetching data
@@ -41,9 +41,10 @@ const UsersTable = ({ tableBasicColumns, tableType }) => {
     }, [collectionType]);
 
     // TODO: implement delete action and pass it the user id to be deleted (remember to use sweetalert2)
-    const handleDelete = () => {
-        console.log("Funciona la eliminación");
+    const handleDelete = (id) => {
+        console.log(`Funciona la eliminación de ${id}`);
     };
+
     const columns = [
         ...tableBasicColumns,
         {
@@ -51,25 +52,36 @@ const UsersTable = ({ tableBasicColumns, tableType }) => {
             headerName: "Acciones",
             flex: 1,
             renderCell: (params) => {
+                // find the selected element in the array of rows by comparing id´s
                 const selectedElement = data.find(
                     (element) => element.id === params.row.id
                 );
-                // console.log(selectedElement);
-                // return <ActionButtons user={user} />;
+
                 switch (tableType) {
                     case "users":
                         return (
                             <UsersActionButtons
                                 type={tableType}
                                 selectedElement={selectedElement}
-                                handleDelete={handleDelete}
                                 ViewCard={UsersInfoCard}
-                                UpdateForm={NewUserForm}
+                                UpdateForm={UpdateUserForm}
+                                handleDelete={() =>
+                                    handleDelete(selectedElement.id)
+                                }
                             />
                         );
 
                     default:
-                        break;
+                        return (
+                            <UsersActionButtons
+                                type={tableType}
+                                selectedElement={selectedElement}
+                                UpdateForm={UpdateUserForm}
+                                handleDelete={() =>
+                                    handleDelete(selectedElement.id)
+                                }
+                            />
+                        );
                 }
             },
         },

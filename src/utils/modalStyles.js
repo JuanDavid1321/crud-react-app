@@ -3,7 +3,7 @@ export const modalStyle = {
     top: "50%",
     left: "50%",
     transform: "translate(-50%, -50%)",
-    width: "70%",
+    width: "80%",
     bgcolor: "background.paper",
     p: 4,
     padding: "20px 60px",
@@ -19,7 +19,7 @@ export const readModalStyle = {
     top: "50%",
     left: "50%",
     transform: "translate(-50%, -50%)",
-    width: "45%",
+    width: "55%",
     padding: 0,
     borderRadius: "25px",
     boxShadow:
