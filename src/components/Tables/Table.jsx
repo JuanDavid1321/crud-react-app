@@ -1,7 +1,7 @@
 import { DataGrid } from "@mui/x-data-grid";
 import ActionButtons from "../ActionButtons/ActionButtons";
 import { useEffect, useState } from "react";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, doc, deleteDoc } from "firebase/firestore";
 import { db } from "../../firebase";
 import Swal from "sweetalert2";
 
@@ -40,9 +40,40 @@ const Table = (props) => {
         fetchData();
     }, [collectionType]);
 
-    // TODO: implement delete action and pass it the user id to be deleted (remember to use sweetalert2)
-    const handleDelete = (id) => {
-        console.log(`Funciona la eliminación de ${id}`);
+    const handleDelete = async (id) => {
+        Swal.fire({
+            icon: "warning",
+            title: "¿Estás seguro?",
+            text: "¡No podrás revertir esto!",
+            showCancelButton: true,
+            confirmButtonText: "Sí, eliminarlo",
+            cancelButtonText: "No, cancelar",
+        }).then(async (result) => {
+            if (result.isConfirmed) {
+                try {
+                    await deleteDoc(doc(db, collectionType, id));
+                    setData(data.filter((item) => item.id !== id));
+
+                    const deletedElement = data.find(
+                        (element) => element.id === id
+                    );
+                    Swal.fire({
+                        icon: "success",
+                        title: "¡Eliminado!",
+                        text: `Los datos de ${deletedElement.firstName} ${deletedElement.lastName} han sido eliminados.`,
+                        showConfirmButton: false,
+                        timer: 1500,
+                    });
+                } catch (error) {
+                    console.log(error);
+                    Swal.fire({
+                        icon: "error",
+                        title: "Error",
+                        text: "Ha ocurrido un error al intentar eliminar el elemento.",
+                    });
+                }
+            }
+        });
     };
 
     const columns = [
