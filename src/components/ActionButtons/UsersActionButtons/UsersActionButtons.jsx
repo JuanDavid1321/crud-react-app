@@ -18,6 +18,7 @@ const UsersActionButtons = (props) => {
                     />
                     <ActionButton
                         buttonType={"update"}
+                        selectedElement={selectedElement}
                         IconComponent={<ModeEditIcon />}
                         ModalContent={UpdateForm} //Replace with the name of the specific action component (form...)
                     />
