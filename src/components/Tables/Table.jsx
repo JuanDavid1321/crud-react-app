@@ -48,19 +48,17 @@ const Table = (props) => {
             showCancelButton: true,
             confirmButtonText: "Sí, eliminarlo",
             cancelButtonText: "No, cancelar",
+            confirmButtonColor: "#0A8B5E",
+            cancelButtonColor: "#DE3C14",
         }).then(async (result) => {
             if (result.isConfirmed) {
                 try {
                     await deleteDoc(doc(db, collectionType, id));
                     setData(data.filter((item) => item.id !== id));
 
-                    const deletedElement = data.find(
-                        (element) => element.id === id
-                    );
                     Swal.fire({
                         icon: "success",
-                        title: "¡Eliminado!",
-                        text: `Los datos de ${deletedElement.firstName} ${deletedElement.lastName} han sido eliminados.`,
+                        title: "¡Elemento eliminado!",
                         showConfirmButton: false,
                         timer: 1500,
                     });
