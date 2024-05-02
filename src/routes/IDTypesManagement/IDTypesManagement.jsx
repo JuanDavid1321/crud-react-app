@@ -1,8 +1,11 @@
 import styles from "./IDTypesManagement.module.css";
 import Header from "../../components/Header/Header";
 import ContactPageIcon from "@mui/icons-material/ContactPage";
-import IDTypesTable from "../../components/Tables/IDTypesTable";
 import CreateActionButtonAndModal from "../../components/ActionButtons/CreateActionButtonAndModal";
+import Table from "../../components/Tables/Table";
+import { usersColumns } from "../../utils/tableBasicColumns";
+import UpdateUserForm from "../../components/Forms/UpdateUserForm/UpdateUserForm";
+import NewUserForm from "../../components/Forms/NewUserForm/NewUserForm";
 
 const DocumentTypesManagement = () => {
     return (
@@ -15,10 +18,15 @@ const DocumentTypesManagement = () => {
                         <CreateActionButtonAndModal
                             IconForButton={<ContactPageIcon />}
                             textForButton={"Nuevo tipo de documento"}
-                            ModalContent={<></>}
+                            formTitle={"Crear nuevo tipo de documento"}
+                            ModalContent={NewUserForm}
                         />
                     </div>
-                    <IDTypesTable />
+                    <Table
+                        tableBasicColumns={usersColumns}
+                        tableType={"roles"}
+                        UpdateForm={UpdateUserForm}
+                    />
                 </div>
             </div>
         </>

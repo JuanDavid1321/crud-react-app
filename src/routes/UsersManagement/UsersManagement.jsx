@@ -3,8 +3,10 @@ import Header from "../../components/Header/Header";
 import NewUserForm from "../../components/Forms/NewUserForm/NewUserForm";
 import PersonAddRoundedIcon from "@mui/icons-material/PersonAddRounded";
 import CreateActionButtonAndModal from "../../components/ActionButtons/CreateActionButtonAndModal";
-import UsersTable from "../../components/Tables/UsersTable";
+import Table from "../../components/Tables/Table";
 import { usersColumns } from "../../utils/tableBasicColumns";
+import UpdateUserForm from "../../components/Forms/UpdateUserForm/UpdateUserForm";
+import UsersInfoCard from "../../components/Cards/UsersInfoCard/UsersInfoCard";
 
 const UsersManagement = () => {
     return (
@@ -17,12 +19,15 @@ const UsersManagement = () => {
                         <CreateActionButtonAndModal
                             IconForButton={<PersonAddRoundedIcon />}
                             textForButton={"Nuevo usuario"}
+                            formTitle={"Crear nuevo usuario"}
                             ModalContent={NewUserForm}
                         />
                     </div>
-                    <UsersTable
+                    <Table
                         tableBasicColumns={usersColumns}
                         tableType={"users"}
+                        ViewCard={UsersInfoCard}
+                        UpdateForm={UpdateUserForm}
                     />
                 </div>
             </div>
