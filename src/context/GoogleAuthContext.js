@@ -1,9 +1,9 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import {
     GoogleAuthProvider,
-    signInWithRedirect,
     signOut,
     onAuthStateChanged,
+    signInWithPopup,
 } from "firebase/auth";
 import { auth } from "../firebase";
 
@@ -22,9 +22,10 @@ export const GoogleAuthContextProvider = ({ children }) => {
             // Create a Google provider
             const provider = new GoogleAuthProvider();
             // Sign in with Google and wait for the response
-            const result = await signInWithRedirect(auth, provider);
+            const result = await signInWithPopup(auth, provider);
             // Set the user state props and spread with the authentication result
             setGoogleUser(result.googleUser);
+            setIsLoggedInWithGoogle(true);
         } catch (error) {
             console.log("Error signing in with Google", error);
         }

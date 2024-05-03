@@ -1,6 +1,6 @@
 import styles from "./GoogleAuth.module.css";
 import { useGoogleAuth } from "../../context/GoogleAuthContext";
-import GoogleButtonSeparator from "../GoogleAuth/GoogleButtonSeparator";
+import GoogleButtonSeparator from "./GoogleButtonSeparator";
 import GoogleButton from "react-google-button";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";

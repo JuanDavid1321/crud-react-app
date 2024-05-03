@@ -1,5 +1,5 @@
 import styles from "./IDTypesManagement.module.css";
-import Header from "../../components/Header/Header";
+import HeaderForGoogleUsers from "../../components/Header/HeaderForGoogleUsers";
 import ContactPageIcon from "@mui/icons-material/ContactPage";
 import CreateActionButtonAndModal from "../../components/ActionButtons/CreateActionButtonAndModal";
 import Table from "../../components/Tables/Table";
@@ -10,7 +10,7 @@ import NewUserForm from "../../components/Forms/NewUserForm/NewUserForm";
 const DocumentTypesManagement = () => {
     return (
         <>
-            <Header />
+            <HeaderForGoogleUsers />
             <div className={styles.idTypesManagementContainer}>
                 <div className={styles.idTypesTableContainer}>
                     <div className={styles.idTypesTitleAndButtonContainer}>

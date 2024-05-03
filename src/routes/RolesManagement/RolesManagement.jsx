@@ -1,5 +1,5 @@
 import styles from "./RolesManagement.module.css";
-import Header from "../../components/Header/Header";
+import HeaderForGoogleUsers from "../../components/Header/HeaderForGoogleUsers";
 import CreateActionButtonAndModal from "../../components/ActionButtons/CreateActionButtonAndModal";
 import AdminPanelSettingsIcon from "@mui/icons-material/AdminPanelSettings";
 import Table from "../../components/Tables/Table";
@@ -10,7 +10,7 @@ import NewUserForm from "../../components/Forms/NewUserForm/NewUserForm";
 const RolesManagement = () => {
     return (
         <>
-            <Header />
+            <HeaderForGoogleUsers />
             <div className={styles.rolesManagementContainer}>
                 <div className={styles.rolesTableContainer}>
                     <div className={styles.rolesTitleAndButtonContainer}>

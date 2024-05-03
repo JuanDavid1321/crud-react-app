@@ -9,7 +9,7 @@ import UsersManagement from "./routes/UsersManagement/UsersManagement";
 
 function App() {
     return (
-        <BrowserRouter basename={process.env.PUBLIC_URL}>
+        <BrowserRouter>
             <GoogleAuthContextProvider>
                 <Routes>
                     <Route path="/login" element={<Login />} />

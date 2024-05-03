@@ -18,7 +18,6 @@ const LoginForm = ({ formTitle }) => {
          */
         setValues({ ...values, [e.target.name]: e.target.value });
     };
-    console.log(values);
 
     return (
         <form className={styles.form} onSubmit={(e) => e.preventDefault()}>

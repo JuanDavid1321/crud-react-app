@@ -1,8 +1,8 @@
 import "./Home.css";
 import { useGoogleAuth } from "../../context/GoogleAuthContext";
 import WelcomeCard from "../../components/InfoCards/WelcomeCard/WelcomeCard";
-import Header from "../../components/Header/Header";
 import HeaderForGoogleUsers from "../../components/Header/HeaderForGoogleUsers";
+import Header from "../../components/Header/Header";
 
 const Home = () => {
     const { googleUser, isLoggedInWithGoogle } = useGoogleAuth();

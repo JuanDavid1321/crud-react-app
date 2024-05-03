@@ -1,5 +1,5 @@
 import styles from "./UsersManagement.module.css";
-import Header from "../../components/Header/Header";
+import Header from "../../components/Header/HeaderForGoogleUsers";
 import NewUserForm from "../../components/Forms/NewUserForm/NewUserForm";
 import PersonAddRoundedIcon from "@mui/icons-material/PersonAddRounded";
 import CreateActionButtonAndModal from "../../components/ActionButtons/CreateActionButtonAndModal";
