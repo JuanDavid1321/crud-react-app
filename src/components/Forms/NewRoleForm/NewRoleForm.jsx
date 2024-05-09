@@ -37,7 +37,7 @@ const NewRoleForm = ({ formTitle, setOpen }) => {
                 },
             });
             // upload values to Firestore
-            await setDoc(doc(db, "roles"), {
+            await setDoc(doc(db, "roles", values.role), {
                 ...values,
                 timeStamp: serverTimestamp(),
             });
@@ -61,24 +61,27 @@ const NewRoleForm = ({ formTitle, setOpen }) => {
             });
         }
     };
+    console.log(values);
 
     return (
         <form onSubmit={handleSubmit}>
             <h2 className={styles.formTitle}>{formTitle}</h2>
-            <div className={styles.inputsContainer}>
-                <div className={styles.formInput}>
-                    <label className={styles.labelGeneric}>Rol</label>
-                    <input
-                        required
-                        className={styles.inputGeneric}
-                        onChange={onChange}
-                        onBlur={handleNotFocused}
-                        focused={notFocused.toString()}
-                    />
-                    <span className={styles.particularErrorMessage}>
-                        No puede contener
-                    </span>
-                </div>
+            <div className={styles.formInput}>
+                <label className={styles.labelGeneric}>Rol</label>
+                <input
+                    required
+                    name="role"
+                    type="text"
+                    pattern="^[A-Za-zÀÁÉÍÓÚñü s]+$"
+                    className={styles.inputGeneric}
+                    onChange={onChange}
+                    onBlur={handleNotFocused}
+                    focused={notFocused.toString()}
+                />
+                <span className={styles.particularErrorMessage}>
+                    "¡Por favor, no debe estar vacío y/o no debe contener
+                    caracteres especiales y números!",
+                </span>
             </div>
             <div className={styles.buttonContainer}>
                 <button type="submit" className={styles.submitButton}>
