@@ -24,7 +24,7 @@ const DocumentTypesManagement = () => {
                     </div>
                     <Table
                         tableBasicColumns={usersColumns}
-                        tableType={"roles"}
+                        tableType={"idDocuments"}
                         UpdateForm={UpdateUserForm}
                     />
                 </div>

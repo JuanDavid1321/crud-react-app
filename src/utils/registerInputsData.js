@@ -116,11 +116,11 @@ export const selectsData = [
     {
         id: 2,
         name: "idDocumentType",
-        options: ["C.C.", "C.E.", "T.I.", "P.B.", "R.C."],
+        options: [],
     },
     {
         id: 3,
         name: "role",
-        options: ["Usuario", "Moderador"],
+        options: [],
     },
 ];

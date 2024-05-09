@@ -22,12 +22,11 @@ export const GoogleAuthContextProvider = ({ children }) => {
             // Create a Google provider
             const provider = new GoogleAuthProvider();
             // Sign in with Google and wait for the response
-            const result = await signInWithPopup(auth, provider);
-            // Set the user state props and spread with the authentication result
-            setGoogleUser(result.googleUser);
+            await signInWithPopup(auth, provider);
             setIsLoggedInWithGoogle(true);
         } catch (error) {
             console.log("Error signing in with Google", error);
+            setIsLoggedInWithGoogle(false);
         }
     };
 
@@ -49,7 +48,6 @@ export const GoogleAuthContextProvider = ({ children }) => {
         // Create a function to listen for changes in the authentication state
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
             setGoogleUser(currentUser);
-            setIsLoggedInWithGoogle(true);
         });
         // Return a function to unsubscribe when the component is unmounted
         return () => {
