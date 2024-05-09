@@ -2,7 +2,7 @@ import styles from "./NewRoleForm.module.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { db } from "../../../firebase";
-import { doc, serverTimestamp, setDoc } from "firebase/firestore";
+import { collection, doc, serverTimestamp, setDoc } from "firebase/firestore";
 import Swal from "sweetalert2";
 
 const NewRoleForm = ({ formTitle, setOpen }) => {
@@ -37,7 +37,7 @@ const NewRoleForm = ({ formTitle, setOpen }) => {
                 },
             });
             // upload values to Firestore
-            await setDoc(doc(db, "roles", values.role), {
+            await setDoc(doc(collection(db, "roles")), {
                 ...values,
                 timeStamp: serverTimestamp(),
             });
