@@ -3,7 +3,7 @@ import HeaderForGoogleUsers from "../../components/Header/HeaderForGoogleUsers";
 import CreateActionButtonAndModal from "../../components/ActionButtons/CreateActionButtonAndModal";
 import AdminPanelSettingsIcon from "@mui/icons-material/AdminPanelSettings";
 import Table from "../../components/Tables/Table";
-import { usersColumns } from "../../utils/tableBasicColumns";
+import { rolesColumns } from "../../utils/tableBasicColumns";
 import UpdateUserForm from "../../components/Forms/UpdateUserForm/UpdateUserForm";
 import NewUserForm from "../../components/Forms/NewUserForm/NewUserForm";
 
@@ -23,7 +23,7 @@ const RolesManagement = () => {
                         />
                     </div>
                     <Table
-                        tableBasicColumns={usersColumns}
+                        tableBasicColumns={rolesColumns}
                         tableType={"roles"}
                         UpdateForm={UpdateUserForm}
                     />
