@@ -3,7 +3,7 @@ import HeaderForGoogleUsers from "../../components/Header/HeaderForGoogleUsers";
 import ContactPageIcon from "@mui/icons-material/ContactPage";
 import CreateActionButtonAndModal from "../../components/ActionButtons/CreateActionButtonAndModal";
 import Table from "../../components/Tables/Table";
-import { usersColumns } from "../../utils/tableBasicColumns";
+import { idDocumentTypesColumns } from "../../utils/tableBasicColumns";
 import UpdateUserForm from "../../components/Forms/UpdateUserForm/UpdateUserForm";
 import NewUserForm from "../../components/Forms/NewUserForm/NewUserForm";
 
@@ -23,7 +23,7 @@ const DocumentTypesManagement = () => {
                         />
                     </div>
                     <Table
-                        tableBasicColumns={usersColumns}
+                        tableBasicColumns={idDocumentTypesColumns}
                         tableType={"idDocuments"}
                         UpdateForm={UpdateUserForm}
                         updateFormTitle={"Editar tipo de documento"}
