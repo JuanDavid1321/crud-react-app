@@ -26,6 +26,7 @@ const DocumentTypesManagement = () => {
                         tableBasicColumns={usersColumns}
                         tableType={"idDocuments"}
                         UpdateForm={UpdateUserForm}
+                        updateFormTitle={"Editar tipo de documento"}
                     />
                 </div>
             </div>

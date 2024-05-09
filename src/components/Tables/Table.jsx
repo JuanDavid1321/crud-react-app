@@ -6,7 +6,13 @@ import { db } from "../../firebase";
 import Swal from "sweetalert2";
 
 const Table = (props) => {
-    const { tableBasicColumns, tableType, UpdateForm, ViewCard } = props;
+    const {
+        tableBasicColumns,
+        tableType,
+        UpdateForm,
+        updateFormTitle,
+        ViewCard,
+    } = props;
 
     const [data, setData] = useState([]); // for fetching data
     const collectionType = tableType;
@@ -94,6 +100,7 @@ const Table = (props) => {
                                 selectedElement={selectedElement}
                                 ViewCard={ViewCard}
                                 UpdateForm={UpdateForm}
+                                updateFormTitle={updateFormTitle}
                                 handleDelete={() =>
                                     handleDelete(selectedElement.id)
                                 }
@@ -106,6 +113,7 @@ const Table = (props) => {
                                 type={tableType}
                                 selectedElement={selectedElement}
                                 UpdateForm={UpdateForm}
+                                updateFormTitle={updateFormTitle}
                                 handleDelete={() =>
                                     handleDelete(selectedElement.id)
                                 }

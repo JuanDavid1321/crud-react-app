@@ -13,6 +13,7 @@ const ActionButton = (props) => {
         ModalContent,
         handleClick,
         selectedElement,
+        updateFormTitle,
     } = props;
 
     const appliedStyles = buttonStyles[buttonType];
@@ -61,7 +62,7 @@ const ActionButton = (props) => {
                                 <ModalContent
                                     setOpen={setOpen}
                                     elementToUpdate={selectedElement}
-                                    formTitle={"Editar usuario"}
+                                    formTitle={updateFormTitle}
                                 />
                             }
                         </Box>
