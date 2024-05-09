@@ -65,7 +65,6 @@ const NewRoleForm = ({ formTitle, setOpen }) => {
             });
         }
     };
-    console.log(values);
 
     return (
         <form onSubmit={handleSubmit}>
@@ -77,6 +76,7 @@ const NewRoleForm = ({ formTitle, setOpen }) => {
                     name="role"
                     type="text"
                     pattern="^[A-Za-záéíóúÀÁÉÍÓÚñü s]+$"
+                    placeholder="Escriba el nombre del rol"
                     className={styles.inputGeneric}
                     onChange={onChange}
                     onBlur={handleNotFocused}

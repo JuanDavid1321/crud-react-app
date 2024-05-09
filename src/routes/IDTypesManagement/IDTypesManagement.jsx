@@ -5,7 +5,7 @@ import CreateActionButtonAndModal from "../../components/ActionButtons/CreateAct
 import Table from "../../components/Tables/Table";
 import { idDocumentTypesColumns } from "../../utils/tableBasicColumns";
 import UpdateUserForm from "../../components/Forms/UpdateUserForm/UpdateUserForm";
-import NewUserForm from "../../components/Forms/NewUserForm/NewUserForm";
+import NewIDDocumentTypeForm from "../../components/Forms/NewIDDocumentTypeForm/NewIDDocumentTypeForm";
 
 const DocumentTypesManagement = () => {
     return (
@@ -19,7 +19,7 @@ const DocumentTypesManagement = () => {
                             IconForButton={<ContactPageIcon />}
                             textForButton={"Nuevo tipo de documento"}
                             formTitle={"Crear nuevo tipo de documento"}
-                            ModalContent={NewUserForm}
+                            ModalContent={NewIDDocumentTypeForm}
                         />
                     </div>
                     <Table
