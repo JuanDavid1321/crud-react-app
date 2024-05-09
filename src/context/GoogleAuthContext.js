@@ -22,9 +22,7 @@ export const GoogleAuthContextProvider = ({ children }) => {
             // Create a Google provider
             const provider = new GoogleAuthProvider();
             // Sign in with Google and wait for the response
-            const result = await signInWithPopup(auth, provider);
-            // Set the user state props and spread with the authentication result
-            setGoogleUser(result.googleUser);
+            await signInWithPopup(auth, provider);
             setIsLoggedInWithGoogle(true);
         } catch (error) {
             console.log("Error signing in with Google", error);
