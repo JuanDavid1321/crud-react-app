@@ -4,9 +4,10 @@ import { useGoogleAuth } from "./GoogleAuthContext";
 const ProtectedWithGoogleAuth = ({ children }) => {
     const { googleUser } = useGoogleAuth();
 
-    if (!googleUser) return <Navigate to="/login" />; // If user is not logged in, redirect them to the login page.
+    // Implement an emailAndPassword condition for returning children components
 
-    return children; // Otherwise, show the protected content
+    if (googleUser) return children; // If user is logged in, show the protected content
+    return <Navigate to="/login" />; // Otherwise, redirect them to the login page
 };
 
 export default ProtectedWithGoogleAuth;
