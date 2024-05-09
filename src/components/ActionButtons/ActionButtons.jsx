@@ -4,7 +4,14 @@ import ModeEditIcon from "@mui/icons-material/ModeEdit";
 import DeleteIcon from "@mui/icons-material/Delete";
 
 const ActionButtons = (props) => {
-    const { type, selectedElement, ViewCard, UpdateForm, handleDelete } = props;
+    const {
+        type,
+        selectedElement,
+        ViewCard,
+        UpdateForm,
+        updateFormTitle,
+        handleDelete,
+    } = props;
 
     switch (type) {
         case "users":
@@ -18,6 +25,7 @@ const ActionButtons = (props) => {
                     />
                     <ActionButton
                         buttonType={"update"}
+                        updateFormTitle={updateFormTitle}
                         selectedElement={selectedElement}
                         IconComponent={<ModeEditIcon />}
                         ModalContent={UpdateForm} //Replace with the name of the specific action component (form...)
@@ -34,6 +42,7 @@ const ActionButtons = (props) => {
                 <>
                     <ActionButton
                         buttonType={"update"}
+                        updateFormTitle={updateFormTitle}
                         selectedElement={selectedElement}
                         IconComponent={<ModeEditIcon />}
                         ModalContent={UpdateForm} //Replace with the name of the specific action component (form...)

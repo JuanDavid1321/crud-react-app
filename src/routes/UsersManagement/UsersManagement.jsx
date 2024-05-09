@@ -28,6 +28,7 @@ const UsersManagement = () => {
                         tableType={"users"}
                         ViewCard={UsersInfoCard}
                         UpdateForm={UpdateUserForm}
+                        updateFormTitle={"Editar usuario"}
                     />
                 </div>
             </div>

@@ -4,9 +4,8 @@ import CreateActionButtonAndModal from "../../components/ActionButtons/CreateAct
 import AdminPanelSettingsIcon from "@mui/icons-material/AdminPanelSettings";
 import Table from "../../components/Tables/Table";
 import { rolesColumns } from "../../utils/tableBasicColumns";
-import UpdateUserForm from "../../components/Forms/UpdateUserForm/UpdateUserForm";
-import NewUserForm from "../../components/Forms/NewUserForm/NewUserForm";
 import NewRoleForm from "../../components/Forms/NewRoleForm/NewRoleForm";
+import UpdateRoleForm from "../../components/Forms/UpdateRoleForm/UpdateRoleForm";
 
 const RolesManagement = () => {
     return (
@@ -26,7 +25,8 @@ const RolesManagement = () => {
                     <Table
                         tableBasicColumns={rolesColumns}
                         tableType={"roles"}
-                        UpdateForm={UpdateUserForm}
+                        UpdateForm={UpdateRoleForm}
+                        updateFormTitle={"Editar rol"}
                     />
                 </div>
             </div>
