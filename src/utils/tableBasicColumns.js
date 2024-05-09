@@ -43,3 +43,17 @@ export const rolesColumns = [
         flex: 1,
     },
 ];
+
+export const idDocumentTypesColumns = [
+    { field: "id", headerName: "ID", flex: 1 },
+    {
+        field: "idDocumentType",
+        headerName: "Tipo de documento",
+        flex: 1,
+    },
+    {
+        field: "description",
+        headerName: "Descripción",
+        flex: 1,
+    },
+];

@@ -4,7 +4,7 @@ export const inputs = [
         id: 1,
         name: "firstName",
         type: "text",
-        placeholder: "Escriba su nombre/nombres",
+        placeholder: "Escriba el nombre o nombres",
         label: "Nombres",
         errorMessage:
             "¡Por favor, no debe estar vacío y/o no debe contener caracteres especiales y números!",
@@ -21,7 +21,7 @@ export const inputs = [
         id: 2,
         name: "lastName",
         type: "text",
-        placeholder: "Escriba su apellido/apellidos",
+        placeholder: "Escriba el apellido o apellidos",
         label: "Apellidos",
         errorMessage:
             "¡Por favor, no debe estar vacío y/o no debe contener caracteres especiales y números!",
@@ -40,7 +40,7 @@ export const inputs = [
         type: "date",
         min: "1924-01-01", // The minimum date that can be selected.
         max: "2011-12-31", // The maximum date that can be selected, minimum (13 years old) https://www.icbf.gov.co/mis-manos-te-ensenan/que-edad-puedo-darle-un-celular-una-tableta-o-acceso-internet-un-nino
-        placeholder: "Seleccione su cumpleaños",
+        placeholder: "Seleccione la fecha de cumpleaños",
         label: "Fecha de nacimiento",
         errorMessage:
             "¡Por favor, no debe estar vacío y/o usted debe ser mayor de trece (13) años. Seleccione su fecha de nacimiento!",
@@ -49,7 +49,7 @@ export const inputs = [
         id: 4,
         name: "email",
         type: "email",
-        placeholder: "Escriba su correo electrónico",
+        placeholder: "Escriba el correo electrónico",
         label: "Email",
         errorMessage:
             "¡Por favor, no debe estar vacío y/o debe ser un correo electrónico válido!",
@@ -67,7 +67,7 @@ export const inputs = [
         id: 5,
         name: "password",
         type: "text",
-        placeholder: "Escriba su nueva contraseña",
+        placeholder: "Escriba la contraseña",
         label: "Contraseña",
         errorMessage:
             "¡Por favor, no debe estar vacío y/o debe tener entre 8-200 caracteres, contener al menos una letra, contener al menos un número y un simbolo especial (!@#$%^&*)!",
@@ -85,7 +85,7 @@ export const inputs = [
         id: 6,
         name: "phoneNumber",
         type: "number",
-        placeholder: "Digite su número de celular",
+        placeholder: "Digite el número de celular",
         label: "Número de celular",
         errorMessage:
             "¡Por favor, no debe estar vacío. Ingrese su número de celular!",
@@ -96,7 +96,7 @@ export const idDocumentInput = {
     label: "Documento de identidad",
     type: "number",
     name: "idDocument",
-    placeholder: "Digite su número de identidad",
+    placeholder: "Digite el número de identidad",
     errorMessage:
         "¡Por favor, no debe estar vacío. Ingrese su documento de identidad!",
 };
