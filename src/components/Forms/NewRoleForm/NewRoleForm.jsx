@@ -4,8 +4,11 @@ import { useNavigate } from "react-router-dom";
 import { db } from "../../../firebase";
 import { collection, doc, serverTimestamp, setDoc } from "firebase/firestore";
 import Swal from "sweetalert2";
+import { useGoogleAuth } from "../../../context/GoogleAuthContext";
 
 const NewRoleForm = ({ formTitle, setOpen }) => {
+    const { googleUser } = useGoogleAuth();
+
     // useState hook for onChange event in the input elements
     const [values, setValues] = useState({ role: "" });
 
@@ -39,6 +42,7 @@ const NewRoleForm = ({ formTitle, setOpen }) => {
             // upload values to Firestore
             await setDoc(doc(collection(db, "roles")), {
                 ...values,
+                createdBy: googleUser.displayName,
                 timeStamp: serverTimestamp(),
             });
             Swal.fire({
