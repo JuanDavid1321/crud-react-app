@@ -3,9 +3,10 @@ import HeaderForGoogleUsers from "../../components/Header/HeaderForGoogleUsers";
 import CreateActionButtonAndModal from "../../components/ActionButtons/CreateActionButtonAndModal";
 import AdminPanelSettingsIcon from "@mui/icons-material/AdminPanelSettings";
 import Table from "../../components/Tables/Table";
-import { usersColumns } from "../../utils/tableBasicColumns";
+import { rolesColumns } from "../../utils/tableBasicColumns";
 import UpdateUserForm from "../../components/Forms/UpdateUserForm/UpdateUserForm";
 import NewUserForm from "../../components/Forms/NewUserForm/NewUserForm";
+import NewRoleForm from "../../components/Forms/NewRoleForm/NewRoleForm";
 
 const RolesManagement = () => {
     return (
@@ -19,11 +20,11 @@ const RolesManagement = () => {
                             IconForButton={<AdminPanelSettingsIcon />}
                             textForButton={"Nuevo rol"}
                             formTitle={"Crear nuevo rol"}
-                            ModalContent={NewUserForm}
+                            ModalContent={NewRoleForm}
                         />
                     </div>
                     <Table
-                        tableBasicColumns={usersColumns}
+                        tableBasicColumns={rolesColumns}
                         tableType={"roles"}
                         UpdateForm={UpdateUserForm}
                     />

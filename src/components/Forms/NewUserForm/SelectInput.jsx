@@ -16,11 +16,32 @@ const SelectInput = (props) => {
                 <option hidden value="">
                     Seleccione una opción
                 </option>
-                {options.map((option, index) => (
-                    <option key={index} value={option}>
-                        {option}
-                    </option>
-                ))}
+                {name === "idDocumentType" ? (
+                    <>
+                        <option value="C.C.">C.C.</option>
+                        {options.map((option, index) => (
+                            <option key={index} value={option}>
+                                {option}
+                            </option>
+                        ))}
+                    </>
+                ) : name === "role" ? (
+                    <>
+                        <option value="Usuario">Usuario</option>
+                        <option value="Moderador">Moderador</option>
+                        {options.map((option, index) => (
+                            <option key={index} value={option}>
+                                {option}
+                            </option>
+                        ))}
+                    </>
+                ) : (
+                    options.map((option, index) => (
+                        <option key={index} value={option}>
+                            {option}
+                        </option>
+                    ))
+                )}
             </select>
         </div>
     );
