@@ -11,7 +11,7 @@ const GoogleAuth = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        if (googleUser) {
+        if (googleUser != null) {
             navigate("/");
         }
     }, [googleUser, navigate]); //googleUser and navigate state changing are dependencies of the effect hook
