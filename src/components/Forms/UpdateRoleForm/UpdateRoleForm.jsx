@@ -1,25 +1,18 @@
-import styles from "./NewRoleForm.module.css";
+import styles from "./UpdateRoleForm.module.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { db } from "../../../firebase";
-import { collection, doc, serverTimestamp, setDoc } from "firebase/firestore";
+import { doc, getDoc, serverTimestamp, updateDoc } from "firebase/firestore";
 import Swal from "sweetalert2";
-import { useGoogleAuth } from "../../../context/GoogleAuthContext";
 
-const NewRoleForm = ({ formTitle, setOpen }) => {
-    const { googleUser } = useGoogleAuth();
-
+const UpdateRoleForm = ({ formTitle, setOpen, elementToUpdate }) => {
     // useState hook for onChange event in the input elements
-    const [values, setValues] = useState({ role: "" });
+    const [values, setValues] = useState({ ...elementToUpdate });
 
     //Hook for display error message (validation) just when input is not focused
     const [notFocused, setNotFocused] = useState(false);
 
     const navigate = useNavigate();
-
-    const handleNotFocused = (e) => {
-        setNotFocused(true); // Set not focused to true when input is not in focus
-    };
 
     const onChange = (e) => {
         /*
@@ -29,25 +22,31 @@ const NewRoleForm = ({ formTitle, setOpen }) => {
         setValues({ ...values, [e.target.name]: e.target.value });
     };
 
+    const handleNotFocused = (e) => {
+        setNotFocused(true); // Set not focused to true when input is not in focus
+    };
+
     const handleSubmit = async (e) => {
         e.preventDefault(); //prevent page refresh when submitting the form
         setOpen(false); //close modal after submiting the form
         try {
             Swal.fire({
-                title: "Registrando rol",
+                title: "Actualizando rol",
                 didOpen: () => {
                     Swal.showLoading();
                 },
             });
-            // upload values to Firestore
-            await setDoc(doc(collection(db, "roles")), {
+            // Get actual user´s doc
+            const userDocRef = doc(db, "roles", elementToUpdate.id);
+            const userDoc = await getDoc(userDocRef);
+            // Update Firestore values
+            await updateDoc(userDocRef, {
                 ...values,
-                createdBy: googleUser.displayName,
                 timeStamp: serverTimestamp(),
             });
             Swal.fire({
                 icon: "success",
-                title: "Nuevo rol registrado",
+                title: "Rol actualizado",
                 showConfirmButton: false,
                 timer: 1500,
             }).then(() => {
@@ -65,7 +64,6 @@ const NewRoleForm = ({ formTitle, setOpen }) => {
             });
         }
     };
-    console.log(values);
 
     return (
         <form onSubmit={handleSubmit}>
@@ -76,6 +74,7 @@ const NewRoleForm = ({ formTitle, setOpen }) => {
                     required
                     name="role"
                     type="text"
+                    value={values.role}
                     pattern="^[A-Za-záéíóúÀÁÉÍÓÚñü s]+$"
                     className={styles.inputGeneric}
                     onChange={onChange}
@@ -96,4 +95,4 @@ const NewRoleForm = ({ formTitle, setOpen }) => {
     );
 };
 
-export default NewRoleForm;
+export default UpdateRoleForm;
