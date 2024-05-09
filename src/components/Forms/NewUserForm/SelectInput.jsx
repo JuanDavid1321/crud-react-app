@@ -60,8 +60,7 @@ const SelectInput = (props) => {
                 {/* Conditional rendering */}
                 {name === "idDocumentType" ? (
                     <>
-                        {/* Default option */}
-                        <option value="C.C.">C.C.</option>{" "}
+                        {/* Load fetch data */}
                         {idDocumentOptions.map((idDocumentOption) => (
                             <option
                                 key={idDocumentOption.id}
@@ -73,8 +72,7 @@ const SelectInput = (props) => {
                     </>
                 ) : name === "role" ? (
                     <>
-                        {/* Default option */}
-                        <option value="Usuario">Usuario</option>{" "}
+                        {/* Load fetch data */}
                         {roleOptions.map((roleOption) => (
                             <option key={roleOption.id} value={roleOption.role}>
                                 {roleOption.role}

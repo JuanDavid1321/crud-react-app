@@ -73,7 +73,7 @@ const NewIDDocumentTypeForm = ({ formTitle, setOpen }) => {
         <form onSubmit={handleSubmit}>
             <h2 className={styles.formTitle}>{formTitle}</h2>
             <div className={styles.formInput}>
-                <label className={styles.labelGeneric}>Tipo de documento</label>
+                <label>Tipo de documento</label>
                 <input
                     required
                     name="idDocumentType"

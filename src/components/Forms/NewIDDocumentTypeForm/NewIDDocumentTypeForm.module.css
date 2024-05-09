@@ -31,11 +31,15 @@
     align-items: start;
 }
 
+.labelGeneric {
+    padding-top: 20px;
+}
+
 .inputGeneric {
     padding: 15px;
     border-radius: 5px;
     border: 1px solid var(--border-color);
-    width: 97%;
+    width: 97.5%;
 }
 
 .particularErrorMessage {
