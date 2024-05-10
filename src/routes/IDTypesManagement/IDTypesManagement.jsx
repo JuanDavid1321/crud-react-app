@@ -4,8 +4,8 @@ import ContactPageIcon from "@mui/icons-material/ContactPage";
 import CreateActionButtonAndModal from "../../components/ActionButtons/CreateActionButtonAndModal";
 import Table from "../../components/Tables/Table";
 import { idDocumentTypesColumns } from "../../utils/tableBasicColumns";
-import UpdateUserForm from "../../components/Forms/UpdateUserForm/UpdateUserForm";
 import NewIDDocumentTypeForm from "../../components/Forms/NewIDDocumentTypeForm/NewIDDocumentTypeForm";
+import UpdateIDDocumentTypeForm from "../../components/Forms/UpdateIDDocumentTypeForm/UpdateIDDocumentTypeForm";
 
 const DocumentTypesManagement = () => {
     return (
@@ -25,7 +25,7 @@ const DocumentTypesManagement = () => {
                     <Table
                         tableBasicColumns={idDocumentTypesColumns}
                         tableType={"idDocuments"}
-                        UpdateForm={UpdateUserForm}
+                        UpdateForm={UpdateIDDocumentTypeForm}
                         updateFormTitle={"Editar tipo de documento"}
                     />
                 </div>
