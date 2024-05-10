@@ -37,6 +37,12 @@ Para replicar este proyecto, debe realizar los siguientes pasos:
 
     ![img4](./assets/img4.png)
 
+* #### Habilitar la autenticación con correo y contraseña
+
+    En la misma subsección que dice "Authentication", debe habilitar la autenticación con correo y contraseña. La imagen a continuación lo guiará de manera visual.
+
+    ![img8](./assets/img8.png)
+
 * #### Habilitar Firestore
     Las base de datos en Firestore es el método de persistencia más famoso que brinda Firebase a sus usuarios. Para habilitarlo, nuevamente en el panel lateral izquierdo en la sección "Build" debe seleccionar la subsección "Firestore". Nuevamente debe dar click en el botón "Create database". La imagen a continuación lo guiará de manera visual.
 
