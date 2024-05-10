@@ -15,7 +15,6 @@ const GoogleAuthContext = createContext();
 export const GoogleAuthContextProvider = ({ children }) => {
     // State variables for user information
     const [googleUser, setGoogleUser] = useState({});
-    const [isLoggedInWithGoogle, setIsLoggedInWithGoogle] = useState(false);
 
     // Create a function to sign in with Google
     const googleSignIn = async () => {
@@ -30,7 +29,6 @@ export const GoogleAuthContextProvider = ({ children }) => {
             const provider = new GoogleAuthProvider();
             // Sign in with Google and wait for the response
             await signInWithPopup(auth, provider);
-            setIsLoggedInWithGoogle(true);
             Swal.fire({
                 icon: "success",
                 title: "Inicio de sesión con Google completado",
@@ -39,7 +37,6 @@ export const GoogleAuthContextProvider = ({ children }) => {
             });
         } catch (error) {
             console.log("Error signing in with Google", error);
-            setIsLoggedInWithGoogle(false);
         }
     };
 
@@ -50,7 +47,6 @@ export const GoogleAuthContextProvider = ({ children }) => {
             await signOut(auth);
             // Set the user state with init values
             setGoogleUser(null);
-            setIsLoggedInWithGoogle(false);
             Swal.fire({
                 icon: "success",
                 title: "Sesión con Google finalizada",
@@ -81,7 +77,6 @@ export const GoogleAuthContextProvider = ({ children }) => {
                 googleUser,
                 googleSignIn,
                 googleLogOut,
-                isLoggedInWithGoogle,
             }}
         >
             {children}

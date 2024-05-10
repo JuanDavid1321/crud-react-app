@@ -1,9 +1,14 @@
 import styles from "./VisitorHome.module.css";
+import WelcomeCard from "../../components/InfoCards/WelcomeCard/WelcomeCard";
+import Header from "../../components/Header/Header";
 
 const VisitorHome = () => {
     return (
         <>
-            <h1>asdsad</h1>
+            <div className={styles.home}>
+                <Header />
+                <WelcomeCard userName={"visitante"} />
+            </div>
         </>
     );
 };
