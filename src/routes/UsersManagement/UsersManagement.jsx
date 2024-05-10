@@ -1,5 +1,5 @@
 import styles from "./UsersManagement.module.css";
-import Header from "../../components/Header/HeaderForGoogleUsers";
+import HeaderForGoogleUsers from "../../components/Header/HeaderForGoogleUsers";
 import NewUserForm from "../../components/Forms/NewUserForm/NewUserForm";
 import PersonAddRoundedIcon from "@mui/icons-material/PersonAddRounded";
 import CreateActionButtonAndModal from "../../components/ActionButtons/CreateActionButtonAndModal";
@@ -11,7 +11,7 @@ import UsersInfoCard from "../../components/InfoCards/UsersInfoCard/UsersInfoCar
 const UsersManagement = () => {
     return (
         <>
-            <Header />
+            <HeaderForGoogleUsers />
             <div className={styles.usersManagementContainer}>
                 <div className={styles.usersTableContainer}>
                     <div className={styles.usersTitleAndButtonContainer}>
