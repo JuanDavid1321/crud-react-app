@@ -1,6 +1,6 @@
 <a name="readme-top"></a>
 
-# 🖥 Proyecto CRUD App 🖥
+# 🖥 Proyecto CRUD App
 
 <p align="center">
     <a href="https://nodejs.org/en/download"><img alt="npm version" src="https://img.shields.io/badge/npm-v10.5.0-green"></a>
@@ -70,17 +70,23 @@ npm install
 
 ### 4️⃣ Configurar las variables de entorno
 
- [!CAUTION]
-No comparta sus variables de entorno
+> [!CAUTION]
+> No comparta sus variables de entorno
 
 Es importante que sean cambiadas las variables de entorno en el archivo [.env_example](./.env_example), reemplazando `YOURS` en cada de una de ellas con los datos proporcionados en la creación de la aplicación web con Firebase.
 
 `REACT_APP_FIREBASE_API_KEY="YOURS"`
+
 `REACT_APP_FIREBASE_AUTH_DOMAIN="YOURS"`
-`REACT_APP_FIREBASE_PROJECT_ID="YOURS"`
+
+`REACT_APP_FIREBASE_PROJECT_ID="YOURS"` 
+
 `REACT_APP_FIREBASE_STORAGE_BUCKET="YOURS"`
+
 `REACT_APP_FIREBASE_MESSAGING_SENDER_ID="YOURS"`
+
 `REACT_APP_FIREBASE_APP_ID="YOURS"`
+
 
 Después, para que funcionen las variables de entorno debe cambiar el nombre del archivo [.env_example](./.env_example) a `.env` en su repositorio local.
 
