@@ -6,6 +6,7 @@ import {
     signInWithPopup,
 } from "firebase/auth";
 import { auth } from "../firebase";
+import Swal from "sweetalert2";
 
 // Create an authentication context
 const GoogleAuthContext = createContext();
@@ -19,11 +20,23 @@ export const GoogleAuthContextProvider = ({ children }) => {
     // Create a function to sign in with Google
     const googleSignIn = async () => {
         try {
+            Swal.fire({
+                title: "Iniciando sesión con Google",
+                didOpen: () => {
+                    Swal.showLoading();
+                },
+            });
             // Create a Google provider
             const provider = new GoogleAuthProvider();
             // Sign in with Google and wait for the response
             await signInWithPopup(auth, provider);
             setIsLoggedInWithGoogle(true);
+            Swal.fire({
+                icon: "success",
+                title: "Inicio de sesión completado",
+                showConfirmButton: false,
+                timer: 1500,
+            });
         } catch (error) {
             console.log("Error signing in with Google", error);
             setIsLoggedInWithGoogle(false);
@@ -38,6 +51,12 @@ export const GoogleAuthContextProvider = ({ children }) => {
             // Set the user state with init values
             setGoogleUser(null);
             setIsLoggedInWithGoogle(false);
+            Swal.fire({
+                icon: "success",
+                title: "Sesión finalizada",
+                showConfirmButton: false,
+                timer: 1500,
+            });
         } catch (error) {
             console.log(error);
         }
