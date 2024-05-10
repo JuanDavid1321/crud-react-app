@@ -2,7 +2,7 @@ import styles from "./UpdateRoleForm.module.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { db } from "../../../firebase";
-import { doc, getDoc, serverTimestamp, updateDoc } from "firebase/firestore";
+import { doc, serverTimestamp, updateDoc } from "firebase/firestore";
 import Swal from "sweetalert2";
 
 const UpdateRoleForm = ({ formTitle, setOpen, elementToUpdate }) => {
@@ -38,7 +38,6 @@ const UpdateRoleForm = ({ formTitle, setOpen, elementToUpdate }) => {
             });
             // Get actual user´s doc
             const userDocRef = doc(db, "roles", elementToUpdate.id);
-            const userDoc = await getDoc(userDocRef);
             // Update Firestore values
             await updateDoc(userDocRef, {
                 ...values,

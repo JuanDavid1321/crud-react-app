@@ -2,7 +2,7 @@ import styles from "./UpdateUserForm.module.css";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { db, storage } from "../../../firebase";
-import { doc, getDoc, serverTimestamp, updateDoc } from "firebase/firestore";
+import { doc, serverTimestamp, updateDoc } from "firebase/firestore";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import Swal from "sweetalert2";
 import {
@@ -90,7 +90,6 @@ const UpdateUserForm = ({ formTitle, setOpen, elementToUpdate }) => {
             });
             // Get actual user´s doc
             const userDocRef = doc(db, "users", elementToUpdate.id);
-            const userDoc = await getDoc(userDocRef);
             // Update Firestore values
             await updateDoc(userDocRef, {
                 ...values,
