@@ -31,6 +31,10 @@
     align-items: start;
 }
 
+.labelGeneric {
+    padding-top: 20px;
+}
+
 .inputGeneric {
     padding: 15px;
     border-radius: 5px;
