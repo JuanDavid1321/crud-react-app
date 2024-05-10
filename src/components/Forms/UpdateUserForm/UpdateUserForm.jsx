@@ -159,7 +159,7 @@ const UpdateUserForm = ({ formTitle, setOpen, elementToUpdate }) => {
                 />
                 {/* Pass handleImageChange callback as a prop */}
                 <ImageInput onImageChange={handleImageChange} />
-                <ImageViewForUpdating file={file} actualFile={values.image} />
+                <ImageViewForUpdating file={file} currentFile={values.image} />
             </div>
             <div className={styles.buttonContainer}>
                 <button
