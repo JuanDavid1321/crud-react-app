@@ -5,6 +5,7 @@ import GoogleAuth from "../../GoogleAuth/GoogleAuth";
 import { emailInput, passwordInput } from "../../../utils/loginInputsData";
 import { db } from "../../../firebase";
 import { collection, getDocs } from "firebase/firestore";
+import Swal from "sweetalert2";
 
 const LoginForm = ({ formTitle }) => {
     // useState hook for onChange event in the input elements
@@ -24,6 +25,12 @@ const LoginForm = ({ formTitle }) => {
     const handleLoginWithEmailAndPassword = async (e) => {
         e.preventDefault();
         try {
+            Swal.fire({
+                title: "Iniciando sesión con correo y contraseña",
+                didOpen: () => {
+                    Swal.showLoading();
+                },
+            });
             const userSnapshot = await getDocs(collection(db, "users"));
             userSnapshot.forEach((doc) => {
                 const userData = doc.data();
@@ -32,8 +39,19 @@ const LoginForm = ({ formTitle }) => {
                     userData.password === values.password
                 ) {
                     // Inicio de sesión exitoso, redirigir a la página deseada
-                    console.log("Inicio de sesión exitoso");
-                    return;
+                    Swal.fire({
+                        icon: "success",
+                        title: "Datos correctos",
+                        showConfirmButton: false,
+                        timer: 1500,
+                    });
+                } else {
+                    Swal.fire({
+                        icon: "error",
+                        title: "Datos incorrectos",
+                        showConfirmButton: false,
+                        timer: 1500,
+                    });
                 }
             });
         } catch (error) {

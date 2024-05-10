@@ -33,7 +33,7 @@ export const GoogleAuthContextProvider = ({ children }) => {
             setIsLoggedInWithGoogle(true);
             Swal.fire({
                 icon: "success",
-                title: "Inicio de sesión completado",
+                title: "Inicio de sesión con Google completado",
                 showConfirmButton: false,
                 timer: 1500,
             });
@@ -53,7 +53,7 @@ export const GoogleAuthContextProvider = ({ children }) => {
             setIsLoggedInWithGoogle(false);
             Swal.fire({
                 icon: "success",
-                title: "Sesión finalizada",
+                title: "Sesión con Google finalizada",
                 showConfirmButton: false,
                 timer: 1500,
             });
