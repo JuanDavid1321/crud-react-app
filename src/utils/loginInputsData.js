@@ -22,7 +22,7 @@ export const passwordInput = {
     name: "password",
     placeholder: "Escriba su nueva contraseña",
     errorMessage:
-        "¡Por favor, no debe estar vacío y/o debe tener entre 8-200 caracteres, contener al menos una letra, contener al menos un número y un simbolo especial (!@#$%^&*)!",
+        "¡Por favor, no debe estar vacío y/o debe ser una contraseña válida!",
     /*
             ^                   coincide con el inicio de la cadena.
             (?=.*[0-9])         asegura que haya al menos un número del 0-9 en la cadena

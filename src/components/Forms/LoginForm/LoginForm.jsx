@@ -3,6 +3,8 @@ import { useState } from "react";
 import GeneralInputs from "../NewUserForm/GeneralInputs";
 import GoogleAuth from "../../GoogleAuth/GoogleAuth";
 import { emailInput, passwordInput } from "../../../utils/loginInputsData";
+import { db } from "../../../firebase";
+import { collection, getDocs } from "firebase/firestore";
 
 const LoginForm = ({ formTitle }) => {
     // useState hook for onChange event in the input elements
@@ -19,8 +21,31 @@ const LoginForm = ({ formTitle }) => {
         setValues({ ...values, [e.target.name]: e.target.value });
     };
 
+    const handleLoginWithEmailAndPassword = async (e) => {
+        e.preventDefault();
+        try {
+            const userSnapshot = await getDocs(collection(db, "users"));
+            userSnapshot.forEach((doc) => {
+                const userData = doc.data();
+                if (
+                    userData.email === values.email &&
+                    userData.password === values.password
+                ) {
+                    // Inicio de sesión exitoso, redirigir a la página deseada
+                    console.log("Inicio de sesión exitoso");
+                    return;
+                }
+            });
+        } catch (error) {
+            console.error("Error al iniciar sesión:", error);
+        }
+    };
+
     return (
-        <form className={styles.form} onSubmit={(e) => e.preventDefault()}>
+        <form
+            className={styles.form}
+            onSubmit={handleLoginWithEmailAndPassword}
+        >
             <h2 className={styles.formTitle}>{formTitle}</h2>
             <div className={styles.inputsContainer}>
                 <GeneralInputs
