@@ -10,7 +10,7 @@ Para dar solución a esta condición y tomando en cuenta que la base de datos a 
 
 2. El proyecto debe realizar los procesos de autenticación y autorización de usuarios a través de Json Web Token (JWT), o a través de OAuth 2.0:
 
-Para dar solución a esta condición y tomando en cuenta que el Backend as a Service (BaaS) es Firebase, fue posible realizar los procesos por medio de proveedores configurados en el BaaS. Específicamente fueron empleados los proveedores: EmailAndPassword Provider y GoogleAuth Provider. Más información disponible en: [Autenticarse con Firebase usando cuentas basadas en contraseña usando Javascript] (https://firebase.google.com/docs/auth/web/password-auth?hl=es) [Autenticar usando Google con JavaScript] (https://firebase.google.com/docs/auth/web/google-signin?hl=es)
+Para dar solución a esta condición y tomando en cuenta que el Backend as a Service (BaaS) es Firebase, fue posible realizar los procesos por medio de proveedores configurados en el BaaS. Específicamente fueron empleados los proveedores: EmailAndPassword Provider y GoogleAuth Provider. Más información disponible en: [Autenticarse con Firebase usando cuentas basadas en contraseña usando Javascript](https://firebase.google.com/docs/auth/web/password-auth?hl=es) [Autenticar usando Google con JavaScript](https://firebase.google.com/docs/auth/web/google-signin?hl=es)
 
 ## Instrucciones de uso
 Para replicar este proyecto, debe realizar los siguientes pasos:
