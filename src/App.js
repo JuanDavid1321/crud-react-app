@@ -6,6 +6,7 @@ import Home from "./routes/Home/Home";
 import IDTypesManagement from "./routes/IDTypesManagement/IDTypesManagement";
 import RolesManagement from "./routes/RolesManagement/RolesManagement";
 import UsersManagement from "./routes/UsersManagement/UsersManagement";
+import VisitorHome from "./routes/VisitorHome/VisitorHome";
 
 function App() {
     return (
@@ -21,6 +22,7 @@ function App() {
                             </ProtectedWithGoogleAuth>
                         }
                     />
+                    <Route path="/vhome" element={<VisitorHome />} />
                     <Route
                         path="/documents"
                         element={

@@ -1,8 +1,12 @@
 import styles from "./LoginForm.module.css";
 import { useState } from "react";
-import GeneralInputs from "../NewUserForm/GeneralInputs";
+import { useNavigate } from "react-router-dom";
 import GoogleAuth from "../../GoogleAuth/GoogleAuth";
+import { db } from "../../../firebase";
+import { collection, getDocs } from "firebase/firestore";
+import GeneralInputs from "../NewUserForm/GeneralInputs";
 import { emailInput, passwordInput } from "../../../utils/loginInputsData";
+import Swal from "sweetalert2";
 
 const LoginForm = ({ formTitle }) => {
     // useState hook for onChange event in the input elements
@@ -10,6 +14,8 @@ const LoginForm = ({ formTitle }) => {
         email: "",
         password: "",
     });
+
+    const navigate = useNavigate();
 
     const onChange = (e) => {
         /*
@@ -19,8 +25,51 @@ const LoginForm = ({ formTitle }) => {
         setValues({ ...values, [e.target.name]: e.target.value });
     };
 
+    const handleLoginWithEmailAndPassword = async (e) => {
+        e.preventDefault();
+        try {
+            Swal.fire({
+                title: "Iniciando sesión con correo y contraseña",
+                didOpen: () => {
+                    Swal.showLoading();
+                },
+            });
+
+            // Fetch users data
+            const userSnapshot = await getDocs(collection(db, "users"));
+            userSnapshot.forEach((doc) => {
+                const userData = doc.data();
+                if (
+                    // Validate user email and password
+                    userData.email === values.email &&
+                    userData.password === values.password
+                ) {
+                    Swal.fire({
+                        icon: "success",
+                        title: "Inicio de sesión con correo y contraseña completado",
+                        showConfirmButton: false,
+                        timer: 1500,
+                    });
+                    navigate("/vhome");
+                } else {
+                    Swal.fire({
+                        icon: "error",
+                        title: "Datos incorrectos",
+                        showConfirmButton: false,
+                        timer: 1500,
+                    });
+                }
+            });
+        } catch (error) {
+            console.error("Error al iniciar sesión:", error);
+        }
+    };
+
     return (
-        <form className={styles.form} onSubmit={(e) => e.preventDefault()}>
+        <form
+            className={styles.form}
+            onSubmit={handleLoginWithEmailAndPassword}
+        >
             <h2 className={styles.formTitle}>{formTitle}</h2>
             <div className={styles.inputsContainer}>
                 <GeneralInputs

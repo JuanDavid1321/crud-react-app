@@ -1,8 +1,8 @@
 import React from "react";
 import styles from "../NewUserForm/ImageView.module.css";
 
-const ImageViewForUpdating = ({ file, actualFile }) => {
-    const imageUrl = file ? URL.createObjectURL(file) : actualFile;
+const ImageViewForUpdating = ({ file, currentFile }) => {
+    const imageUrl = file ? URL.createObjectURL(file) : currentFile;
 
     return (
         <div className={styles.imageViewContainer}>
