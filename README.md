@@ -7,7 +7,7 @@
     <a href="https://nodejs.org/en/download"><img alt="npm version" src="https://img.shields.io/badge/react-v18.2.0-blue"></a>    
 </p>
 
-Este proyecto fue desarrollado como requerimiento para la asignatura de Desarrollo de Aplicaciones  perteneciente al Departamento de Telemática del programa de Ingeniería en Electrónica y Telecomunicaciones de la Universidad del Cauca. El objetivo específico del desarrollo del proyecto es reforzar los conceptos más importantes para la implementación de aplicaciones web desde el desarrollo FrontEnd.
+Este proyecto fue desarrollado como requerimiento para la asignatura de Desarrollo de Aplicaciones Web perteneciente al Departamento de Telemática del programa de Ingeniería en Electrónica y Telecomunicaciones de la Universidad del Cauca. El objetivo específico del desarrollo del proyecto es reforzar los conceptos más importantes para la implementación de aplicaciones web desde el desarrollo FrontEnd.
 
 ## 📖 Instrucciones de uso
 Para replicar este proyecto, debe realizar los siguientes pasos:
