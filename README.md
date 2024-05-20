@@ -143,5 +143,7 @@ Abra [http://localhost:3000](http://localhost:3000) para verla en su navegador d
 - ![MUI](https://img.shields.io/badge/MUI-%230081CB.svg?style=for-the-badge&logo=mui&logoColor=white)
 
 - ![React Router](https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white)
+  
+- ![Vercel](https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)
 
 <p align="right"><a href="#readme-top">⬆ Volver arriba ⬆</a></p>
